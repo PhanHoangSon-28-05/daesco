@@ -1,0 +1,164 @@
+/*!
+Theme Name: wecangroup child
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Template: wecangroup
+Description: wecangroup Company Theme
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: wecangroup
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+wecangroup is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+wecangroup is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+html,
+body {
+    margin-bottom: 0 !important;
+}
+
+.site-title {
+    margin: 0;
+}
+
+.contact-page-content a {
+    border: 0;
+    background: #0000;
+    color: var(--white);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: var(--f-semi-bold);
+}
+
+.contact-page-content a:hover {
+    color: var(--orange);
+}
+
+.contact-page-content a:hover i {
+    background: var(--orange);
+    color: var(--white);
+}
+
+.contact-page-content i {
+    width: 20px;
+    height: 20px;
+    background: var(--white);
+    color: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body .pv__contact--1 .contact-inner .row-cust .f-contact .wpcf7-submit {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 24px;
+    width: auto;
+    border: 0;
+    background: var(--gradient);
+    color: var(--white);
+    padding: 15px 40px;
+    border-radius: 5px;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+#popuprecuit .wpcf7-file {
+    display: none;
+}
+
+.wpcf7-spinner {
+    margin: 10px auto;
+    display: block;
+}
+
+.load-more {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.parag .current {
+    background: none !important;
+}
+
+.parag .page-link {
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+}
+
+.parag .page-link,
+.parag .page-link:visited,
+.parag .page-numbers,
+.parag .page-numbers:visited {
+    color: var(--grey) !important;
+}
+
+.parag .current,
+.parag .page-link:hover,
+.parag .page-link:focus,
+.parag .page-numbers:hover,
+.parag .page-numbers:focus {
+    color: var(--orange) !important;
+    background: none;
+}
+
+.parag .page-numbers {
+    padding: 0 10px;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: var(--f-bold);
+}
+
+.parag .navi {
+    display: inline-block;
+}
+
+.parag .navi {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+
+.current-lang:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 600px) and (max-width: 960px) {}
+
+@media (min-width: 800px) and (max-width: 1280px) {}
+
+@media (min-width: 810px) and (max-width: 1080px) {}
+
+@media (min-width: 600px) and (max-width: 960px) and (orientation: landscape) {}
+
+@media (min-width: 800px) and (max-width: 1280px) and (orientation: landscape) {}
+
+@media (min-width: 810px) and (max-width: 1080px) and (orientation: landscape) {}
+
+@media (min-width: 992px) and (max-width: 1824px) {}
+
+@media (min-width: 1824px) {}
