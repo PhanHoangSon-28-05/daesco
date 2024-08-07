@@ -112,7 +112,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('filemanager') }}" class="nav-link">
-                    <i class="fa-solid fa-address-card"></i>
+                    <i class="fa-solid fa-folder"></i>
                     Quản lý file
                 </a>
             </li>

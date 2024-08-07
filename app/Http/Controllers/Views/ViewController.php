@@ -59,9 +59,18 @@ class ViewController extends Controller
     }
     public function introduce()
     {
+        $catepro = $this->cateRepo->getCateSlug('gioi-thieu');
+        $posttakes = $this->postRepo->getDESC(5);
+        $catetype = $this->cateRepo->getCateType(2);
+
+        $attributes['catetypes'] = $catetype;
+        $attributes['posttakes'] = $posttakes;
+        $attributes['catepro'] = $catepro;
+
+        $result = array_merge($attributes, $this->get());
         return view(
             'view.tong-quan',
-            $this->get()
+            $result
         );
     }
     public function recruitment()

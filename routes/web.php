@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
 
 
+
 Route::get('/', function () {
     return view('view.trang-chu');
 });

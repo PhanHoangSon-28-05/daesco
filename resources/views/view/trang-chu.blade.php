@@ -345,7 +345,7 @@
                                             </figure>
                                         </div>
                                         <div class="info">
-                                            <span>Thông tin công ty</span>
+                                            <span>Trưởng Phòng dịch vụ ô tô</span>
                                             <h3>{{ $posts[0]->name_vi }}</h3>
                                             <time><img
                                                     src="{{ URL::asset('view/style//themes/wecangroup-child/dist/images/time.svg') }}"

@@ -31,7 +31,9 @@
                                                 <div class="desc">
                                                     <a href="" class="cate">Thông
                                                         tin công ty</a>
-                                                    <h4><a href="#">{{ $post->name_vi }}</a></h4>
+                                                    <h4><a
+                                                            href="{{ URL::route('datile.news', [$slugCate, $post->slug]) }}">{{ $post->name_vi }}</a>
+                                                    </h4>
                                                     <span
                                                         class="time">{{ Carbon::parse($post->created_at)->toDateString() }}</span>
                                                     <p class="note">{{ $post->description_vi }}</p>

@@ -12,7 +12,7 @@
                         </div>
                         <div class="content">
                             <div class="row row-10">
-                                {{ $postDetail->detail_vn }}
+                                {!! $postDetail->detail_vi !!}
                             </div>
                         </div>
                     </div>

@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name_en');
             $table->string('pic');
             $table->string('slug');
-            $table->text('description_vi');
-            $table->text('description_en');
-            $table->text('detail_vi');
-            $table->text('detail_en');
+            $table->text('description_vi')->nullable();
+            $table->text('description_en')->nullable();
+            $table->longText('detail_vi')->nullable();
+            $table->longText('detail_en')->nullable();
             $table->timestamps();
         });
     }
