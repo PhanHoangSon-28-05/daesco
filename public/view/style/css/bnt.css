@@ -1,0 +1,41 @@
+.header-inner {
+    top: 0 !important;
+}
+
+.btn-tab {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: var(--f-bold);
+    color: var(--white);
+    border: 0;
+    background: var(--gradient);
+    padding: 10px 50px;
+    border-radius: 10px 10px 0 0;
+    margin-top: 15px;
+    opacity: 0.5;
+}
+
+.btn-tab:hover {
+    opacity: 1;
+}
+
+#productServiceTab .active {
+    opacity: 1;
+}
+
+#productServiceTabContent figure img {
+    height: 100% !important;
+}
+
+#productServiceTabContent .nav-link {
+    width: 50%;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--white);
+    background: var(--gradient);
+    opacity: 0.8;
+}
+
+#productServiceTabContent .nav-link:hover {
+    opacity: 1;
+}
