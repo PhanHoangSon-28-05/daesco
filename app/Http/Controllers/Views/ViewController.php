@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Footer;
 use App\Models\Header;
+use App\Models\Slider;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use App\Repositories\Post\PostRepositoryInterface;
 use App\Repositories\Services\ServiceRepositoryInterface;
+use App\Repositories\Sliders\SliderRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ViewController extends Controller
@@ -16,15 +18,18 @@ class ViewController extends Controller
     protected $cateRepo;
     protected $serviceRepo;
     protected $postRepo;
+    protected $sliderRepo;
 
     public function __construct(
         CategoryRepositoryInterface $cateRepo,
         ServiceRepositoryInterface $serviceRepo,
         PostRepositoryInterface $postRepo,
+        SliderRepositoryInterface $sliderRepo,
     ) {
         $this->cateRepo = $cateRepo;
         $this->serviceRepo = $serviceRepo;
         $this->postRepo = $postRepo;
+        $this->sliderRepo = $sliderRepo;
     }
 
     public function get()
@@ -32,9 +37,14 @@ class ViewController extends Controller
         $header = Header::all()->first();
         $cate = $this->cateRepo->getCate();
         $footer = Footer::all()->first();
+        $cateSearchPro = $this->cateRepo->getCateType(2);
+        $cateSearchPosts = $this->postRepo->getPost();
+
         return [ //Header
             'header' => $header,
+            'cateSearchPro' => $cateSearchPro,
             'cates' => $cate,
+            'cateSearchPosts' => $cateSearchPosts,
             // /Header
 
             'footer' => $footer,
@@ -43,13 +53,18 @@ class ViewController extends Controller
 
     public function index()
     {
+        $slugCate = 'company-regulations-and-regulations';
         $catepro = $this->cateRepo->getCateType(2);
-        $posttakes = $this->cateRepo->getCateSlugtoPost('company-regulations-and-regulations')->take(5);
+        $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
         $getIntroduce = $this->cateRepo->getIntroduce();
+        $sliders = $this->sliderRepo->getSlider();
 
+
+        $attributes['slugCate'] = $slugCate;
         $attributes['getIntroduce'] = $getIntroduce;
         $attributes['posts'] = $posttakes;
         $attributes['catepros'] = $catepro;
+        $attributes['sliders'] = $sliders;
 
         $result = array_merge($attributes, $this->get());
         return view(
@@ -59,6 +74,7 @@ class ViewController extends Controller
     }
     public function introduce()
     {
+        $slugCate = 'company-regulations-and-regulations';
         $catepro = $this->cateRepo->getCateSlug('gioi-thieu');
         $posttakes = $this->postRepo->getDESC(5);
         $catetype = $this->cateRepo->getCateType(2);

@@ -335,7 +335,7 @@
                             data-aos="fade-right" class="aos-init aos-animate col-md-6 big-item">
                             <div class="big-blog">
                                 <article class="blog">
-                                    <a href="">
+                                    <a href="{{ URL::route('datile.news', [$slugCate, $posts[0]->slug]) }}">
                                         <div class="img">
                                             <figure>
                                                 <img src="@if (file_exists(public_path('storage/' . $posts[0]->pic)) && $posts[0]->pic) {{ asset('storage/' . $posts[0]->pic) }}
@@ -363,7 +363,7 @@
                                             data-aos-duration="1200" data-aos="fade-left"
                                             class="aos-init aos-animate col-md-6 b-item">
                                             <article class="blog">
-                                                <a href="#">
+                                                <a href="{{ URL::route('datile.news', [$slugCate, $posts[$i]->slug]) }}">
                                                     <div class="img">
                                                         <figure>
                                                             <img src="@if (file_exists(public_path('storage/' . $posts[$i]->pic)) && $posts[$i]->pic) {{ asset('storage/' . $posts[$i]->pic) }}

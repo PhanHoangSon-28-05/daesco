@@ -68,6 +68,7 @@ Route::group([], function () use ($categories) {
         Route::get($categories[3]->slug, [ViewController::class, 'contact'])->name(strtolower($categories[3]->name_en));
     }
 
+
     Route::group(['prefix' => '/category'], function () {
         Route::get('/{slug}', [ViewController::class, 'page_category_product'])->name(View::PAGE_CATE_PRO);
         Route::get('/{slug}/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
@@ -101,6 +102,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('ads', [AdsController::class, 'index'])->name(Ads::INDEX);
     Route::get('infos', [InfoController::class, 'index'])->name(Info::INDEX);
     Route::get('posts', [PostController::class, 'index'])->name(Post::INDEX);
+    Route::get('/posts/filter', [PostController::class, 'filter'])->name('posts.filter');
+    Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
+
     Route::get('filemanager', function () {
         return view('admins.layouts.filemanager');
     })->name('filemanager');

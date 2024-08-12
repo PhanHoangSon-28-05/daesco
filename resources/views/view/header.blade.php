@@ -3,7 +3,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1 class="site-title"><a href="index.html" rel="home">
+                    <h1 class="site-title"><a href="/" rel="home">
                             <picture><img src="{{ URL::asset('view/style/images/inc/logo-dsco.png') }}" alt="">
                             </picture>
                         </a></h1>
@@ -54,9 +54,34 @@
                                 <div class="drop-search">
                                     <form role="search" method="get" id="searchform" class="pv__search"
                                         action="">
-                                        <input type="search" placeholder="Tìm kiếm" value="" name="s"
-                                            id="s" />
-                                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label class="sr-only" for="myInput">Tìm kiếm</label>
+                                                <div class="input-group mb-2">
+                                                    <input type="text" class="form-control" id="myInput"
+                                                        placeholder="Tìm kiếm" onkeyup="filterFunction()">
+                                                    <div class="input-group-prepend input-group-text bg-primary">
+                                                        <i class="fa-solid fa-magnifying-glass text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="content col-12" id="myDropdown">
+                                                @foreach ($cateSearchPro as $cate)
+                                                    @foreach ($cate->prod as $value)
+                                                        <a href="{{ $value->links }}">{{ $value->title_vi }}</a>
+                                                    @endforeach
+                                                @endforeach
+                                                @foreach ($cateSearchPosts as $value)
+                                                    @if ($value->category && $value->category->slug != null)
+                                                        <a
+                                                            href="{{ URL::route('datile.news', [$value->category->slug, $value->slug]) }}">
+                                                            {{ $value->name_vi }}
+                                                        </a>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -70,8 +95,9 @@
                                         <div class="m-link-1">
                                             <a
                                                 href="
-                                                @if (in_array($cate->name_en, ['Home', 'Introduce', 'Recruitment', 'Contact'])) {{ route(strtolower($cate->name_en)) }}
-                                                @else @endif ">{{ $cate->name_vi }}</a>
+                                                @if (in_array($cate->slug, ['field-of-activity'])) @elseif (in_array($cate->slug, ['shareholders'])){{ URL::route(\App\Models\View::PAGE_CATE_PRO, $cate->slug) }}
+                                                @else
+                                                 {{ route(strtolower($cate->name_en)) }} @endif ">{{ $cate->name_vi }}</a>
                                             @include('view.partials.category-check', [
                                                 'parentId' => $cate->id,
                                             ])
@@ -150,3 +176,27 @@
         <div class="overlay"></div>
     </div>
 </header>
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        const a = document.getElementById("myDropdown").getElementsByTagName("a");
+        for (let i = 0; i < a.length; i++) {
+            a[i].style.display = "none";
+        }
+    }
+
+    function filterFunction() {
+        const input = document.getElementById("myInput");
+        const filter = input.value.toUpperCase();
+        const div = document.getElementById("myDropdown");
+        const a = div.getElementsByTagName("a");
+        for (let i = 0; i < a.length; i++) {
+            const txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "block";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+</script>

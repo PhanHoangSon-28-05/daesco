@@ -1,5 +1,12 @@
 @extends('view.index')
 @section('title', 'Giới thiệu')
+@section('style')
+    <style>
+        .container .content p {
+            width: 100%;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Content -->
     <main id="content-wrapper" class="main-v2">
@@ -44,7 +51,8 @@
                                         <div class="item">
                                             <a href="" class="cate">Thông tin
                                                 công ty</a>
-                                            <h4><a href="">{{ $posttake->name_vi }}</a>
+                                            <h4><a
+                                                    href="{{ URL::route('datile.news', [$posttake->category->slug, $posttake->slug]) }}">{{ $posttake->name_vi }}</a>
                                             </h4>
                                         </div>
                                     </div>

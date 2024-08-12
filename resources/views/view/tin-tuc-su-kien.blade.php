@@ -21,12 +21,6 @@
                                         <div class="blog">
                                             <a href="{{ URL::route('datile.news', [$slugCate, $post->slug]) }}"
                                                 class="img">
-                                                <picture><img
-                                                        src="@if (file_exists(public_path('storage/' . $post->pic)) && $post->pic) {{ asset('storage/' . $post->pic) }}
-                                                            @else
-                                                            {{ URL::asset('view/style/images/post/daesco-tải xuống.jpg') }} @endif"
-                                                        alt="{{ $post->name_vi }}" />
-                                                </picture>
 
                                                 <div class="desc">
                                                     <a href="" class="cate">Thông
@@ -50,7 +44,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="sidebar">
-                            <div class="menu-sidebar">
+                            <div class="menu-sidebar mb-2 bg-light border border-secondary">
                                 <ul>
                                     @foreach ($catetypes as $catetype)
                                         <li>
@@ -60,6 +54,15 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            <div class="contact-bar mt-1 mb-2 bg-light border border-secondary">
+                                <div class="contact-header bg-danger text-white p-2">
+                                    <i class="fas fa-clock"></i> LIÊN HỆ MUA HÀNG
+                                </div>
+                                <div class="contact-body p-2">
+                                    <p class="mb-1"><strong>Trần Hữu Thành</strong></p>
+                                    <p><i class="fas fa-phone"></i> <span class="text-danger">0903525526</span></p>
+                                </div>
+                            </div>
                             <div class="list-bar">
                                 <h3>Bài viết mới nhất</h3>
                                 @foreach ($posttakes as $posttake)
@@ -67,7 +70,8 @@
                                         <div class="item">
                                             <a href="" class="cate">Thông tin
                                                 công ty</a>
-                                            <h4><a href="">{{ $posttake->name_vi }}</a>
+                                            <h4><a
+                                                    href="{{ URL::route('datile.news', [$slugCate, $posttake->slug]) }}">{{ $posttake->name_vi }}</a>
                                             </h4>
                                         </div>
                                     </div>

@@ -18,7 +18,7 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
 
     public function getPost()
     {
-        return $this->model->select('name_vi')->take(5)->get();
+        return $this->model->all();
     }
 
     public function createPost(

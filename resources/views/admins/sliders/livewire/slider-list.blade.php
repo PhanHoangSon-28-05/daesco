@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title float-left text-uppercase">quản lý chức vụ</h5>
+        <h5 class="card-title float-left text-uppercase">quản lý slider</h5>
         <button type="button" class="btn btn-sm rounded-0 btn-primary text-uppercase float-right" data-toggle="modal"
             data-target="#crudSliderModal">
             Thêm mới

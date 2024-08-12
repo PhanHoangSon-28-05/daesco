@@ -15,7 +15,7 @@ class SliderRepository extends BaseRepository implements SliderRepositoryInterfa
 
     public function getSlider()
     {
-        return $this->model->get();
+        return $this->model->orderBy('created_at', 'DESC')->take(7)->get();
     }
 
     public function createSlider($stt, $pic)

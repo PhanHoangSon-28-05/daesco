@@ -1,5 +1,12 @@
 @extends('view.index')
 @section('title', $postDetail->name_vi)
+@section('style')
+    <style>
+        .container .content p {
+            width: 100%;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Content -->
     <main id="content-wrapper" class="main-v2">
@@ -27,6 +34,15 @@
                                         </li>
                                     @endforeach
                                 </ul>
+                            </div>
+                            <div class="contact-bar mt-1 mb-2 bg-light border border-secondary">
+                                <div class="contact-header bg-danger text-white p-2">
+                                    <i class="fas fa-clock"></i> LIÊN HỆ MUA HÀNG
+                                </div>
+                                <div class="contact-body p-2">
+                                    <p class="mb-1"><strong>Trần Hữu Thành</strong></p>
+                                    <p><i class="fas fa-phone"></i> <span class="text-danger">0903525526</span></p>
+                                </div>
                             </div>
                             <div class="list-bar">
                                 <h3>Bài viết mới nhất</h3>

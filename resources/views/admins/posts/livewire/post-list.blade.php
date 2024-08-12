@@ -7,6 +7,7 @@
         </button>
     </div>
     @livewire('search')
+
     <div class="card-table table-responsive shadow-none mb-0">
         <table class="table table-bordered">
             <thead>
@@ -14,29 +15,47 @@
                     <th>STT</th>
                     <th>Tiêu đề</th>
                     <th>Mô tả</th>
-                    <th>Danh mục</th>
+                    <th>
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
+                                Danh mục
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="javascript:void(0);"
+                                    onclick="filterPostsByCategory(null)">Hiện tất
+                                    cả</a>
+                                @foreach ($cates as $cate)
+                                    <a class="dropdown-item" href="javascript:void(0);"
+                                        onclick="filterPostsByCategory({{ $cate->id }})">{{ $cate->name_vi }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </th>
                     <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody id="myTable">
-                @foreach ($posts as $post)
-                    <tr class="border border-secondary">
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $post->name_vi }}</td>
-                        <td>{{ $post->description_vi }}</td>
-                        {{-- @dd($post->category->name_vi) --}}
-                        <td>{{ $post->category->name_vi ?? '' }} ({{ $post->category->name_en ?? '' }})
-                        <td>
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                data-target="#crudPostModal" data-post-id={{ $post->id }}><i
-                                    class="fa-solid fa-pen"></i></button>
-                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                                data-target="#crudPostModal" data-post-id={{ -$post->id }}><i
-                                    class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                @endforeach
+                @include('admins.posts.livewire.partials.post-table', ['posts' => $posts])
             </tbody>
         </table>
     </div>
+    {{ $posts->links('vendor.livewire.table') }}
 </div>
+
+@push('script')
+    <script>
+        function filterPostsByCategory(categoryId) {
+            $.ajax({
+                url: '{{ route('posts.filter') }}',
+                method: 'GET',
+                data: {
+                    category_id: categoryId
+                },
+                success: function(response) {
+                    $('#myTable').html(response);
+                }
+            });
+        }
+    </script>
+@endpush
