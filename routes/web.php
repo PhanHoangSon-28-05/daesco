@@ -17,6 +17,7 @@ use App\Http\Controllers\Admins\PageController;
 use App\Http\Controllers\Admins\PostController;
 use App\Http\Controllers\Admins\ServiceController;
 use App\Http\Controllers\Admins\UserController;
+use App\Http\Controllers\Image\ImageController;
 use App\Http\Controllers\Views\ViewController;
 use App\Models\Ads;
 use App\Models\Category;
@@ -109,4 +110,5 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admins.layouts.filemanager');
     })->name('filemanager');
 });
+Route::get('storage/{folder?}/{size?}/{name?}', [ImageController::class, 'getImage'])->name('storages.image');
 Route::get('{path}', [FileController::class, 'show'])->where('path', '.*')->name('assets.show');
