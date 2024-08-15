@@ -87,7 +87,8 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">Thông tin chung</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.lazy="detail_vi" id="editor" placeholder="Required example textarea"></textarea>
+                                                <textarea class="form-control detail" wire:model.lazy="detail_vi" id="editor_detail_vi"
+                                                    placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('detail_vi')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -184,7 +185,7 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">Detail</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.lazy="detail_en" id="editor_detail_en"
+                                                <textarea class="form-control detail" wire:model.lazy="detail_en" id="editor_detail_en"
                                                     placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('detail_en')
@@ -252,58 +253,28 @@
 
 
 @push('script')
-    <script type="importmap">
-    {
-        "imports": {
-            "ckeditor5": "{{ URL::asset('admins/assets/vendor/ckeditor5.js') }}",
-            "ckeditor5/": "{{ URL::asset('admins/assets/vendor/') }}"
-        }
-    }
-</script>
-    <script type="module">
-        import {
-            ClassicEditor,
-            Essentials,
-            Paragraph,
-            Bold,
-            Italic,
-            Font
-        } from 'ckeditor5';
-
-        ClassicEditor
-            .create(document.querySelector('#editor'), {
-                plugins: [Essentials, Paragraph, Bold, Italic, Font],
-                toolbar: {
-                    items: [
-                        'exportPDF', 'exportWord', '|',
-                        'findAndReplace', 'selectAll', '|',
-                        'heading', '|',
-                        'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript',
-                        'removeFormat', '|',
-                        'bulletedList', 'numberedList', 'todoList', '|',
-                        'outdent', 'indent', '|',
-                        'undo', 'redo',
-                        '-',
-                        'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
-                        'alignment', 'autoformat', '|',
-                        'link', 'autoImage', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'codeBlock',
-                        'htmlEmbed',
-                        '|',
-                        'specialCharacters', 'horizontalLine', 'pageBreak', '|',
-                        'textPartLanguage', '|',
-                        'sourceEditing'
-                    ],
-                    shouldNotGroupWhenFull: true
-                }
-            })
-            .then(editor => {
-                window.editor = editor;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
     <script>
+        var options = {
+            selector: ".detail",
+            theme: "modern",
+            width: 1000,
+            height: 500,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+                "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+            ],
+            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+            toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor | print preview code ",
+            image_advtab: true,
+
+            external_filemanager_path: "/admins/assets/js/responsive_filemanager/filemanager/",
+            filemanager_title: "Trình quản lý tệp",
+            external_plugins: {
+                "filemanager": "/admins/assets/js/responsive_filemanager/filemanager/plugin.min.js"
+            }
+        };
+
         $(document).ready(function() {
             $('#crudPageModal').on('show.bs.modal', function(e) {
                 var id = e.relatedTarget.getAttribute('data-page-id') ?? 0;
@@ -314,27 +285,30 @@
                 $('#crudPageModal').modal('hide');
             });
 
-        });
-        $('#crudPageModal').on('shown.bs.modal', function() {
-            CKEDITOR.replace('editor_detail_vi');
-            CKEDITOR.instances.editor_detail_vi.on('change', function() {
-                @this.set('detail_vi', CKEDITOR.instances
-                    .editor_detail_vi.getData());
-            });
-        });
 
-        $('#crudPageModal').on('shown.bs.modal', function() {
-            CKEDITOR.replace('editor_detail_en');
-            CKEDITOR.instances.editor_detail_en.on('change', function() {
-                @this.set('detail_en', CKEDITOR.instances
-                    .editor_detail_en.getData());
+            $('#crudPageModal').on('shown.bs.modal', function() {
+                // CKEDITOR.replace('editor_detail_vi', options);
+                tinymce.init(options);
+                // CKEDITOR.instances.editor_detail_vi.on('change', function() {
+                //     @this.set('detail_vi', CKEDITOR.instances
+                //         .editor_detail_vi.getData());
+                // });
             });
-        });
 
-        $('#crudPageModal').on('hidden.bs.modal', function() {
-            for (instance in CKEDITOR.instances) {
-                CKEDITOR.instances[instance].destroy(true);
-            }
+            $('#crudPageModal').on('shown.bs.modal', function() {
+                // CKEDITOR.replace('editor_detail_en', options);
+                tinymce.init(options);
+                // CKEDITOR.instances.editor_detail_en.on('change', function() {
+                //     @this.set('detail_en', CKEDITOR.instances
+                //         .editor_detail_en.getData());
+                // });
+            });
+
+            $('#crudPostModal').on('hidden.bs.modal', function() {
+                for (instance in CKEDITOR.instances) {
+                    CKEDITOR.instances[instance].destroy(true);
+                }
+            });
         });
     </script>
 @endpush
