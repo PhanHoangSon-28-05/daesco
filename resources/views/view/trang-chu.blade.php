@@ -49,7 +49,7 @@
                                 <div class="o-item">
                                     <div data-aos-anchor-placement="top-bottom" data-aos-delay="500"
                                         data-aos-duration="1200" data-aos="fade-up" class="aos-init aos-animate img">
-                                        <figure><img class="" src="{{ asset('storage/' . $cate->image) }}"
+                                        <figure><img class="" src="{{ asset('storages/' . $cate->image) }}"
                                                 alt="{{ $cate->name_vi }}"></figure>
                                     </div>
                                     <div class="desc text-center">
@@ -338,7 +338,7 @@
                                     <a href="{{ URL::route('datile.news', [$slugCate, $posts[0]->slug]) }}">
                                         <div class="img">
                                             <figure>
-                                                <img src="@if (file_exists(public_path('storage/' . $posts[0]->pic)) && $posts[0]->pic) {{ asset('storage/' . $posts[0]->pic) }}
+                                                <img src="@if (file_exists(public_path('storages/' . $posts[0]->pic)) && $posts[0]->pic) {{ asset('storages/' . $posts[0]->pic) }}
                                                             @else
                                                             {{ URL::asset('view/style/images/post/daesco-tải xuống.jpg') }} @endif"
                                                     alt="{{ $posts[0]->name_vi }}" />
@@ -366,7 +366,7 @@
                                                 <a href="{{ URL::route('datile.news', [$slugCate, $posts[$i]->slug]) }}">
                                                     <div class="img">
                                                         <figure>
-                                                            <img src="@if (file_exists(public_path('storage/' . $posts[$i]->pic)) && $posts[$i]->pic) {{ asset('storage/' . $posts[$i]->pic) }}
+                                                            <img src="@if (file_exists(public_path('storages/' . $posts[$i]->pic)) && $posts[$i]->pic) {{ asset('storages/' . $posts[$i]->pic) }}
                                                             @else
                                                             {{ URL::asset('view/style/images/post/daesco-tải xuống.jpg') }} @endif"
                                                                 alt="{{ $posts[$i]->name_vi }}" />

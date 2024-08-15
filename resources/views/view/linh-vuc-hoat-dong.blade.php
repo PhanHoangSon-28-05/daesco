@@ -48,7 +48,7 @@
                                         <div class="acb-item">
                                             <a href="{{ $value->links }}">
                                                 <div class="img">
-                                                    <img src="{{ asset('storage/' . $value->pic) ?? asset('storage/image-erro.png') }}"
+                                                    <img src="{{ asset('storages/' . $value->pic) ?? asset('storages/image-erro.png') }}"
                                                         alt="blog">
                                                     </figure>
                                                 </div>
@@ -69,9 +69,9 @@
                                                 <a href="{{ $value->links }}">
                                                     <div class="img">
                                                         <figure><img
-                                                                src="@if (file_exists(public_path('storage/' . $value->pic))) {{ asset('storage/' . $value->pic) }}
+                                                                src="@if (file_exists(public_path('storages/' . $value->pic))) {{ asset('storages/' . $value->pic) }}
                                                             @else
-                                                            {{ asset('storage/image-erro.png') }} @endif"
+                                                            {{ asset('storages/image-erro.png') }} @endif"
                                                                 alt="blog">
                                                         </figure>
                                                     </div>

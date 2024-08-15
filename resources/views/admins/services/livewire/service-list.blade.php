@@ -22,7 +22,7 @@
                     <tr class="border border-secondary">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $service->name_vi }}</td>
-                        <td class="w-50"><img src="{{ asset('storage/' . $service->pic) }}" class="w-25"
+                        <td class="w-50"><img src="{{ asset('storages/' . $service->pic) }}" class="w-25"
                                 alt=""></td>
                         </td>
                         <td>

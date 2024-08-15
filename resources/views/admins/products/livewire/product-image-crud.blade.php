@@ -46,7 +46,7 @@
                                         <div class="d-inline mb-2">
                                             <div class="col-3">
                                                 <div class="shadow rounded">
-                                                    <img src="{{ asset('storage/' . $image->image) }}" alt=""
+                                                    <img src="{{ asset('storages/' . $image->image) }}" alt=""
                                                         width="100px">
                                                     <div class="d-flex flex-row bd-highlight">
                                                         @if ($image->image != $product->pic)

@@ -24,7 +24,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $page->name_vi }}</td>
                         <td>{{ $page->description_vi }}</td>
-                        <td class="w-50"><img src="{{ asset('storage/' . $page->pic) }}" class="w-25"
+                        <td class="w-50"><img src="{{ asset('storages/' . $page->pic) }}" class="w-25"
                                 alt=""></td>
                         </td>
                         <td>

@@ -21,7 +21,7 @@
                     <tr class="border border-secondary">
                         <td style="width: 61px;">{{ $loop->iteration }}</td>
                         <td style="width: 450px;">{{ $value->url }}</td>
-                        <td class="w-25"> <img src="{{ asset('storage/' . $value->pic) }}"
+                        <td class="w-25"> <img src="{{ asset('storages/' . $value->pic) }}"
                                 class="p-0 mr-2 mb-1 col-4"></td>
                         <td class="w-25">
                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
