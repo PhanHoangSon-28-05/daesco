@@ -280,6 +280,28 @@
 
 @push('script')
     <script>
+        var options = {
+            filebrowserBrowseUrl : '{{route("filemanager")}}',
+            filebrowserUploadUrl : '{{route("filemanager")}}',
+            filebrowserImageBrowseUrl : '{{route("filemanager")}}'
+        };
+
+        // var options = { 
+        //     selector: ".editor_detail_vi",theme: "modern",width: 680,height: 300, 
+        //     plugins: [ 
+        //          "advlist autolink link image lists charmap print preview hr anchor pagebreak", 
+        //          "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking", 
+        //          "table contextmenu directionality emoticons paste textcolor responsivefilemanager code" 
+        //    ], 
+        //    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect", 
+        //    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor | print preview code ", 
+        //    image_advtab: true , 
+           
+        //    external_filemanager_path:"/admins/assets/js/responsive_filemanager/filemanager/", 
+        //    filemanager_title:"Trình quản lý tệp" , 
+        //    external_plugins: { "filemanager" : "/admins/assets/js/responsive_filemanager/filemanager/plugin.min.js"} 
+        // };
+
         $(document).ready(function() {
             $('#crudPostModal').on('show.bs.modal', function(e) {
                 var id = e.relatedTarget.getAttribute('data-post-id') ?? 0;
@@ -292,7 +314,8 @@
 
 
             $('#crudPostModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_detail_vi');
+                CKEDITOR.replace('editor_detail_vi', options);
+                // tinymce.init(options);
                 CKEDITOR.instances.editor_detail_vi.on('change', function() {
                     @this.set('detail_vi', CKEDITOR.instances
                         .editor_detail_vi.getData());
@@ -300,7 +323,8 @@
             });
 
             $('#crudPostModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_detail_en');
+                CKEDITOR.replace('editor_detail_en', options);
+                // tinymce.init(options);
                 CKEDITOR.instances.editor_detail_en.on('change', function() {
                     @this.set('detail_en', CKEDITOR.instances
                         .editor_detail_en.getData());

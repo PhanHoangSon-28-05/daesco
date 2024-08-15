@@ -18,17 +18,16 @@ class ImageController extends Controller
     public function getImage($folder = null, $size = null, $name = null)
     {
 
-        $url = 'app/public/' . $folder . '/' . $size . '/';
+        $url = 'app/public/' . $folder . '/' . $size;
         return $this->getImageStorage($url, $name);
     }
 
 
     public function getImageStorage($url, $filename)
     {
-        $path = storage_path($url . '/' . ($filename ?? '1'));
+        $path = storage_path($url);
         if (!File::exists($path)) {
-            $path = storage_path('app/public/index/default/error.jpg');
-            // abort(404);
+            return 0;
         }
         $file = File::get($path);
         $type = File::mimeType($path);

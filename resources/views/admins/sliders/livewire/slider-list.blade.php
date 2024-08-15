@@ -21,7 +21,7 @@
                     <tr class="border border-secondary text-center">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $slider->stt }}</td>
-                        <td class="w-50"><img src="{{ asset('storage/' . $slider->pic) }}" class="w-25"
+                        <td class="w-50"><img src="{{ asset('storages/' . $slider->pic) }}" class="w-25"
                                 alt=""></td>
                         <td>
                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"

@@ -4,6 +4,12 @@
 @section('style')
     <script src="{{ URL::asset('admins/global_assets/js/plugins/editors/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ URL::asset('admins/global_assets/js/demo_posts/editor_ckeditor_default.js') }}"></script>
+<!--     <script src="{{ asset('admins/assets/js/tm.min.js') }}"></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.css' rel='stylesheet'>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/mode/htmlmixed/htmlmixed.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/mode/javascript/javascript.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/mode/xml/xml.js'></script> -->
 @endsection
 @section('content')
     <div class="breadcrumb-line breadcrumb-line-light header-elements-lg-inline">

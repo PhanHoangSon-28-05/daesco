@@ -106,9 +106,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/posts/filter', [PostController::class, 'filter'])->name('posts.filter');
     Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
 
-    Route::get('filemanager', function () {
+    Route::get('filemanager?', function () {
         return view('admins.layouts.filemanager');
     })->name('filemanager');
 });
-Route::get('storage/{folder?}/{size?}/{name?}', [ImageController::class, 'getImage'])->name('storages.image');
+Route::get('storages/{folder?}/{size?}/{name?}', [ImageController::class, 'getImage'])->name('storages.image');
 Route::get('{path}', [FileController::class, 'show'])->where('path', '.*')->name('assets.show');
