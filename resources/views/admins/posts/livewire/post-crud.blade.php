@@ -87,7 +87,7 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">Thông tin chung</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.lazy="detail_vi" id="editor_detail_vi"
+                                                <textarea class="form-control detail" wire:model.lazy="detail_vi" id="editor_detail_vi"
                                                     placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('detail_vi')
@@ -199,7 +199,7 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">Detail</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.lazy="detail_en" id="editor_detail_en"
+                                                <textarea class="form-control detail" wire:model.lazy="detail_en" id="editor_detail_en"
                                                     placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('detail_en')
@@ -280,27 +280,27 @@
 
 @push('script')
     <script>
-        var options = {
-            filebrowserBrowseUrl : '{{route("filemanager")}}',
-            filebrowserUploadUrl : '{{route("filemanager")}}',
-            filebrowserImageBrowseUrl : '{{route("filemanager")}}'
-        };
-
-        // var options = { 
-        //     selector: ".editor_detail_vi",theme: "modern",width: 680,height: 300, 
-        //     plugins: [ 
-        //          "advlist autolink link image lists charmap print preview hr anchor pagebreak", 
-        //          "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking", 
-        //          "table contextmenu directionality emoticons paste textcolor responsivefilemanager code" 
-        //    ], 
-        //    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect", 
-        //    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor | print preview code ", 
-        //    image_advtab: true , 
-           
-        //    external_filemanager_path:"/admins/assets/js/responsive_filemanager/filemanager/", 
-        //    filemanager_title:"Trình quản lý tệp" , 
-        //    external_plugins: { "filemanager" : "/admins/assets/js/responsive_filemanager/filemanager/plugin.min.js"} 
+        // var options = {
+        //     filebrowserBrowseUrl : '{{route("filemanager")}}',
+        //     filebrowserUploadUrl : '{{route("filemanager")}}',
+        //     filebrowserImageBrowseUrl : '{{route("filemanager")}}'
         // };
+
+        var options = { 
+            selector: ".detail",theme: "modern",width: 1000,height: 500, 
+            plugins: [ 
+                 "advlist autolink link image lists charmap print preview hr anchor pagebreak", 
+                 "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking", 
+                 "table contextmenu directionality emoticons paste textcolor responsivefilemanager code" 
+           ], 
+           toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect", 
+           toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor | print preview code ", 
+           image_advtab: true , 
+           
+           external_filemanager_path:"/admins/assets/js/responsive_filemanager/filemanager/", 
+           filemanager_title:"Trình quản lý tệp" , 
+           external_plugins: { "filemanager" : "/admins/assets/js/responsive_filemanager/filemanager/plugin.min.js"} 
+        };
 
         $(document).ready(function() {
             $('#crudPostModal').on('show.bs.modal', function(e) {
@@ -314,21 +314,21 @@
 
 
             $('#crudPostModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_detail_vi', options);
-                // tinymce.init(options);
-                CKEDITOR.instances.editor_detail_vi.on('change', function() {
-                    @this.set('detail_vi', CKEDITOR.instances
-                        .editor_detail_vi.getData());
-                });
+                // CKEDITOR.replace('editor_detail_vi', options);
+                tinymce.init(options);
+                // CKEDITOR.instances.editor_detail_vi.on('change', function() {
+                //     @this.set('detail_vi', CKEDITOR.instances
+                //         .editor_detail_vi.getData());
+                // });
             });
 
             $('#crudPostModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_detail_en', options);
-                // tinymce.init(options);
-                CKEDITOR.instances.editor_detail_en.on('change', function() {
-                    @this.set('detail_en', CKEDITOR.instances
-                        .editor_detail_en.getData());
-                });
+                // CKEDITOR.replace('editor_detail_en', options);
+                tinymce.init(options);
+                // CKEDITOR.instances.editor_detail_en.on('change', function() {
+                //     @this.set('detail_en', CKEDITOR.instances
+                //         .editor_detail_en.getData());
+                // });
             });
 
             $('#crudPostModal').on('hidden.bs.modal', function() {

@@ -6,7 +6,7 @@ if (session_id() == '') {
 
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
-mb_http_input('UTF-8');
+mb_http_input();
 mb_language('uni');
 mb_regex_encoding('UTF-8');
 ob_start('mb_output_handler');
@@ -96,7 +96,7 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_base_path' => '../thumbs/',
+    'thumbs_base_path' => '../source/',
 
     /*
     |--------------------------------------------------------------------------
