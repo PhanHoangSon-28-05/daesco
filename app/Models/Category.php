@@ -19,11 +19,11 @@ class Category extends Model
 
     protected $fillable = [
         'parent_id',
-        'type',
         'name_vi',
         'name_en',
         'slug',
-        'image'
+        'image',
+        'stt'
     ];
 
     public function prod(): HasMany

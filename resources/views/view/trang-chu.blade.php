@@ -21,7 +21,7 @@
                         <p style="text-align: justify;">Công ty Cổ Phần Máy - Thiết Bị Dầu Khí Đà Nẵng, tiền
                             thân là Công ty Thiết bị Phụ tùng Đà Nẵng, trước đây là Công ty thành viên của Tổng
                             Công ty Máy và Phụ tùng (MachinoImport) thuộc Bộ Thương mại. </span></p>
-                        <a href="{{ route(strtolower($getIntroduce->name_en)) }}"><button class="effect-bnt">Trang Giới
+                        <a href=""><button class="effect-bnt">Trang Giới
                                 thiệu</button></a>
                     </div>
                 </div>
@@ -44,13 +44,21 @@
                 </div>
                 <div class="content">
                     <div class="row row-10">
-                        @foreach ($catepros as $cate)
+                        @foreach ($cateFieldOperations as $cate)
                             <div class="col-md-6 ope-item">
                                 <div class="o-item">
                                     <div data-aos-anchor-placement="top-bottom" data-aos-delay="500"
                                         data-aos-duration="1200" data-aos="fade-up" class="aos-init aos-animate img">
-                                        <figure><img class="" src="{{ asset('storages/' . $cate->image) }}"
-                                                alt="{{ $cate->name_vi }}"></figure>
+                                        <figure>
+                                            @if ($cate->image)
+                                                <img src="{{ asset('storages/' . $cate->image) }}"
+                                                    alt="{{ $cate->name_vi }}">
+                                            @else
+                                                <img src="{{ asset('storage/image-erro.png') }}"
+                                                    alt="{{ $cate->name_vi }}">
+                                            @endif
+
+                                        </figure>
                                     </div>
                                     <div class="desc text-center">
                                         <h3 data-aos-anchor-placement="top-bottom" data-aos-delay="500"

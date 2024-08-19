@@ -37,43 +37,20 @@ use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
 
 
 
-Route::get('/', function () {
-    return view('view.trang-chu');
-});
-
-Route::get('/admin/dashboard', function () {
-    return view('admins.layouts.master');
-})->name('admin.dashboard')->middleware('auth');
 
 /**
  * View Client
  */
+Route::get('/', [ViewController::class, 'index']);
+Route::get('/introduce', [ViewController::class, 'introduce'])->name('introduce');
+Route::get('/recruitment', [ViewController::class, 'recruitment'])->name('recruitment');
+Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 
 
-$categoryRepository = app(CategoryRepositoryInterface::class);
-$categories = $categoryRepository->getCateSlugNoChill();
-Route::group([], function () use ($categories) {
-    if (count($categories) > 0) {
-        Route::get($categories[0]->slug, [ViewController::class, 'index'])->name(strtolower($categories[0]->name_en));
-    }
 
-    if (count($categories) > 1) {
-        Route::get($categories[1]->slug, [ViewController::class, 'introduce'])->name(strtolower($categories[1]->name_en));
-    }
-
-    if (count($categories) > 2) {
-        Route::get($categories[2]->slug, [ViewController::class, 'recruitment'])->name(strtolower($categories[2]->name_en));
-    }
-
-    if (count($categories) > 3) {
-        Route::get($categories[3]->slug, [ViewController::class, 'contact'])->name(strtolower($categories[3]->name_en));
-    }
-
-
-    Route::group(['prefix' => '/category'], function () {
-        Route::get('/{slug}', [ViewController::class, 'page_category_product'])->name(View::PAGE_CATE_PRO);
-        Route::get('/{slug}/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
-    });
+Route::group(['prefix' => '/category'], function () {
+    Route::get('/{slug}', [ViewController::class, 'page_category_product'])->name(View::PAGE_CATE_PRO);
+    Route::get('/{slug}/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
 });
 
 
@@ -89,6 +66,9 @@ Route::post('admin/login', [LoginController::class, 'login'])->name('login.perfo
 Route::get('admin/logout', [LogoutController::class, 'perform'])->name('logout.perform');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admins.layouts.master');
+    })->name('admin.dashboard');
     Route::get('roles', [RoleController::class, 'index'])->name(Role::INDEX);
     Route::get('users', [UserController::class, 'index'])->name(User::INDEX);
     Route::get('categories', [CategoryController::class, 'index'])->name(Category::INDEX);

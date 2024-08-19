@@ -10,7 +10,8 @@
     <ul>
         <li>
             @foreach ($childCateNews as $value)
-                <a href="{{ URL::route(\App\Models\View::PAGE_CATE_PRO, $value->slug) }}">{{ $value->name_vi }}</a>
+                {{-- {{ URL::route(\App\Models\View::PAGE_CATE_PRO, $value->slug) }} --}}
+                <a href="">{{ $value->name_vi }}</a>
             @endforeach
         </li>
     </ul>

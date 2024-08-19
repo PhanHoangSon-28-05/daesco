@@ -1,7 +1,7 @@
 @inject('categoryRepo', 'App\Repositories\Categorys\CategoryRepositoryInterface')
 
 @php
-    $childCategories = $categoryRepo->getChildPro($parentId);
+    $childCategories = $categoryRepo->getChildNew($parentId);
 @endphp
 
 @foreach ($childCategories as $childCategory)

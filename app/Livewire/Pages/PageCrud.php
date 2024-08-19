@@ -117,7 +117,7 @@ class PageCrud extends Component
 
     public function render(CategoryRepositoryInterface $categoryRepo)
     {
-        $categories = $categoryRepo->getCategoryType(1);
+        $categories = $categoryRepo->getAll();
         return view('admins.pages.livewire.page-crud', ['categories' => $categories]);
     }
 }

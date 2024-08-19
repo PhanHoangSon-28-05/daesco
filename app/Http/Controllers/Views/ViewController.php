@@ -37,7 +37,7 @@ class ViewController extends Controller
         $header = Header::all()->first();
         $cate = $this->cateRepo->getCate();
         $footer = Footer::all()->first();
-        $cateSearchPro = $this->cateRepo->getCateType(2);
+        $cateSearchPro = $this->cateRepo->getAll();
         $cateSearchPosts = $this->postRepo->getPost();
 
         return [ //Header
@@ -54,16 +54,16 @@ class ViewController extends Controller
     public function index()
     {
         $slugCate = 'company-regulations-and-regulations';
-        $catepro = $this->cateRepo->getCateType(2);
+        $sliders = $this->sliderRepo->getSlider();
+        $cateFieldOperation = $this->cateRepo->getFieldOperation();
         $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
         $getIntroduce = $this->cateRepo->getIntroduce();
-        $sliders = $this->sliderRepo->getSlider();
 
 
         $attributes['slugCate'] = $slugCate;
         $attributes['getIntroduce'] = $getIntroduce;
         $attributes['posts'] = $posttakes;
-        $attributes['catepros'] = $catepro;
+        $attributes['cateFieldOperations'] = $cateFieldOperation;
         $attributes['sliders'] = $sliders;
 
         $result = array_merge($attributes, $this->get());
@@ -75,11 +75,9 @@ class ViewController extends Controller
     public function introduce()
     {
         $slugCate = 'company-regulations-and-regulations';
-        $catepro = $this->cateRepo->getCateSlug('gioi-thieu');
+        $catepro = $this->cateRepo->getCateSlug('introduce');
         $posttakes = $this->postRepo->getDESC(5);
-        $catetype = $this->cateRepo->getCateType(2);
 
-        $attributes['catetypes'] = $catetype;
         $attributes['posttakes'] = $posttakes;
         $attributes['catepro'] = $catepro;
 
@@ -102,45 +100,5 @@ class ViewController extends Controller
             'view.lien-he',
             $this->get()
         );
-    }
-
-    public function page_category_product($slug)
-    {
-        $catepro = $this->cateRepo->getCateSlug($slug);
-        $posts = $this->cateRepo->getCateSlugtoPost($slug);
-        $posttakes = $this->postRepo->getDESC(5);
-        $catetype = $this->cateRepo->getCateType(2);
-        $services = $this->serviceRepo->getAll();
-
-        $attributes['slugCate'] = $slug;
-        $attributes['catepros'] = $catepro;
-        $attributes['catetypes'] = $catetype;
-        $attributes['posts'] = $posts;
-        $attributes['posttakes'] = $posttakes;
-        $attributes['services'] = $services;
-
-        $result = array_merge($attributes, $this->get());
-
-        if ($catepro->type == 2) {
-            return view('view.linh-vuc-hoat-dong', $result);
-        } else {
-            return view('view.tin-tuc-su-kien', $result);
-        }
-    }
-
-    public function detailnews($slug, $slugDetail)
-    {
-        $posttakes = $this->postRepo->getDESC(5);
-        $postDetail = $this->postRepo->getSlug($slugDetail);
-        $catetype = $this->cateRepo->getCateType(2);
-
-        $attributes['slugCate'] = $slug;
-        $attributes['catetypes'] = $catetype;
-        $attributes['posttakes'] = $posttakes;
-        $attributes['postDetail'] = $postDetail;
-
-        $result = array_merge($attributes, $this->get());
-
-        return view('view.chi-tiet-tin-tuc', $result);
     }
 }

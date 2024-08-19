@@ -12,11 +12,9 @@ class CategoryList extends Component
     ];
     public function render(CategoryRepositoryInterface $categoryRepo)
     {
-        $categories_news = $categoryRepo->getCategoryType(1);
-        $categories_products = $categoryRepo->getCategoryType(2);
+        $categories_news = $categoryRepo->getChildNew(0);
         return view('admins.category.livewire.category-list', [
             'categories_news' => $categories_news,
-            'categories_products' => $categories_products,
         ]);
     }
 }

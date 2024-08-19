@@ -18,33 +18,24 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         return $this->model->get();
     }
 
-    public function getCategoryType($type)
-    {
-        return $this->model->where('type', $type)->where('parent_id', 0)->get();
-    }
-
     public function getChildNew($parentId)
     {
-        return $this->model->where('parent_id', $parentId)->where('type', 1)->get();
-    }
-    public function getChildPro($parentId)
-    {
-        return $this->model->where('parent_id', $parentId)->where('type', 2)->get();
+        return $this->model->where('parent_id', $parentId)->orderBy('stt')->get();
     }
 
     public function createCategory(
         $parent_id,
-        $type,
         $name_vi,
         $name_en,
-        $image
+        $image,
+        $stt
     ) {
         $cateData = [
             'parent_id' => $parent_id,
-            'type' =>  $type,
             'name_vi' => trim($name_vi),
             'name_en' =>  trim($name_en),
             'image' =>  trim($image),
+            'stt' =>  trim($stt),
         ];
 
         if ($name_en) {
@@ -71,13 +62,16 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $parent_id,
         $name_vi,
         $name_en,
-        $image
+        $image,
+        $stt
     ) {
         $category = $this->model->find($id);
+        // dd($category);
         $cateData = [
             'parent_id' => $parent_id,
             'name_vi' => trim($name_vi),
             'name_en' =>  trim($name_en),
+            'stt' =>  trim($stt),
         ];
 
         if ($name_en) {
@@ -85,18 +79,20 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         } else {
             $cateData['slug'] = Str::slug($name_vi);
         }
+        if ($image) {
+            if ($image != $category->image) {
+                Storage::disk('public')->delete($category->image);
+                $extension = $image->getClientOriginalName();
+                $filename = time() . '_' . $extension;
 
-        if ($image != $category->image) {
-            Storage::disk('public')->delete($category->image);
-            $extension = $image->getClientOriginalName();
-            $filename = time() . '_' . $extension;
+                $path =  $image->storeAs('category', $filename, 'public');
 
-            $path =  $image->storeAs('category', $filename, 'public');
-
-            $cateData['image'] = $path;
-        } else {
-            $path = $category->image;
+                $cateData['image'] = $path;
+            } else {
+                $path = $category->image;
+            }
         }
+
 
         $category->update($cateData);
         return $category;
@@ -104,16 +100,11 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
     //Views
 
-    public function getIntroduce()
-    {
-        $get = $this->model->where('slug', 'gioi-thieu')->get()->first();
-        return $get;
-    }
-
+    // Headers
     public function getCate()
     {
 
-        $cate = $this->model->where('parent_id', 0)->get();
+        $cate = $this->model->where('parent_id', 0)->orderBy('stt')->get();
 
         return $cate;
     }
@@ -123,6 +114,24 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $cate = $this->model->where('parent_id', $id)->get();
         return $cate;
     }
+    // End Headers
+
+    // Home
+    public function getIntroduce()
+    {
+        $get = $this->model->where('slug', 'gioi-thieu')->get()->first();
+        return $get;
+    }
+    public function getFieldOperation()
+    {
+        $get = $this->model->where('slug', 'field-operation')->get()->first();
+        $cate = $this->model->where('parent_id', $get->id)->get();
+
+        return $cate;
+    }
+
+
+    // End Home
 
     public function getCateSlug($slug)
     {
@@ -150,11 +159,5 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
             ->where('parent_id', 0)->get();
 
         return $categories;
-    }
-
-    public function getCateType($type)
-    {
-        $cate = $this->model->where('parent_id', '<>', 0)->where('type', $type)->get();
-        return $cate;
     }
 }

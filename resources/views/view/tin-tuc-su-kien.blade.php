@@ -10,72 +10,227 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="title">
-                            <div class="link-title"><span><span class="breadcrumb_last"
-                                        aria-current="page">{{ $catepros->name_vi }}</span></span></div>
-                            <h2 class="">{{ $catepros->name_vi }}</h2>
+                            <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Tin
+                                        tức</span></span></div>
+                            <h2>Tin tức</h2>
                         </div>
                         <div class="content">
                             <div class="row row-10">
-                                @foreach ($posts as $post)
-                                    <div class="col-md-6 p-10">
-                                        <div class="blog">
-                                            <a href="{{ URL::route('datile.news', [$slugCate, $post->slug]) }}"
-                                                class="img">
-
-                                                <div class="desc">
-                                                    <a href="" class="cate">Thông
-                                                        tin công ty</a>
-                                                    <h4><a
-                                                            href="{{ URL::route('datile.news', [$slugCate, $post->slug]) }}">{{ $post->name_vi }}</a>
-                                                    </h4>
-                                                    <span
-                                                        class="time">{{ Carbon::parse($post->created_at)->toDateString() }}</span>
-                                                    <p class="note">{{ $post->description_vi }}</p>
-                                                </div>
-                                            </a>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img src="style/images/post/daesco-tải xuống.jpg"
+                                                    alt="Nhân viên hành chính nhân sự" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Nhân viên hành chính nhân sự</a></h4>
+                                            <span class="time">09-08-2018</span>
+                                            <p class="note">Tuyển dụng Trưởng Phòng Dịch vụ ô tô làm việc tại
+                                                Huế</p>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img src="style/images/post/daesco-tải xuống.jpg"
+                                                    alt="Trưởng Phòng dịch vụ ô tô" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Trưởng Phòng dịch vụ ô tô</a></h4>
+                                            <span class="time">10-08-2024</span>
+                                            <p class="note">Tuyển dụng Trưởng Phòng Dịch vụ ô tô làm việc tại
+                                                Huế</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img
+                                                    src="style/images/post/daesco-Mitsubishi-Outlander-Plug-in-Hybrid-2023-anh-1.jpg"
+                                                    alt="Xe điện Outlander Plug-In Hybrid 2023 &#8211; crossover" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Xe điện Outlander Plug-In Hybrid 2023 &#8211;
+                                                    crossover</a></h4>
+                                            <span class="time">13-07-2018</span>
+                                            <p class="note">Bạn có biết Việt Nam là một trong những đất nước có
+                                                thuế xe ô tô cao nhất thế giới? Vậy cách tính thuế ô tô như thế
+                                                nào? Thực trạng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img src="style/images/post/daesco-tải xuống.jpg"
+                                                    alt="Nhân viên hành chính nhân sự" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Nhân viên hành chính nhân sự</a></h4>
+                                            <span class="time">09-08-2018</span>
+                                            <p class="note">Tuyển dụng Trưởng Phòng Dịch vụ ô tô làm việc tại
+                                                Huế</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img src="style/images/post/daesco-tải xuống.jpg"
+                                                    alt="Trưởng Phòng dịch vụ ô tô" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Trưởng Phòng dịch vụ ô tô</a></h4>
+                                            <span class="time">10-08-2024</span>
+                                            <p class="note">Tuyển dụng Trưởng Phòng Dịch vụ ô tô làm việc tại
+                                                Huế</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img
+                                                    src="style/images/post/daesco-Mitsubishi-Outlander-Plug-in-Hybrid-2023-anh-1.jpg"
+                                                    alt="Xe điện Outlander Plug-In Hybrid 2023 &#8211; crossover" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Xe điện Outlander Plug-In Hybrid 2023 &#8211;
+                                                    crossover</a></h4>
+                                            <span class="time">13-07-2018</span>
+                                            <p class="note">Bạn có biết Việt Nam là một trong những đất nước có
+                                                thuế xe ô tô cao nhất thế giới? Vậy cách tính thuế ô tô như thế
+                                                nào? Thực trạng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img src="style/images/post/daesco-tải xuống.jpg"
+                                                    alt="Trưởng Phòng dịch vụ ô tô" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Trưởng Phòng dịch vụ ô tô</a></h4>
+                                            <span class="time">10-08-2024</span>
+                                            <p class="note">Tuyển dụng Trưởng Phòng Dịch vụ ô tô làm việc tại
+                                                Huế</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-10">
+                                    <div class="blog">
+                                        <a href="#" class="img">
+                                            <picture><img
+                                                    src="style/images/post/daesco-Mitsubishi-Outlander-Plug-in-Hybrid-2023-anh-1.jpg"
+                                                    alt="Xe điện Outlander Plug-In Hybrid 2023 &#8211; crossover" />
+                                            </picture>
+                                        </a>
+                                        <div class="desc">
+                                            <a href="" class="cate">Thông
+                                                tin công ty</a>
+                                            <h4><a href="#">Xe điện Outlander Plug-In Hybrid 2023 &#8211;
+                                                    crossover</a></h4>
+                                            <span class="time">13-07-2018</span>
+                                            <p class="note">Bạn có biết Việt Nam là một trong những đất nước có
+                                                thuế xe ô tô cao nhất thế giới? Vậy cách tính thuế ô tô như thế
+                                                nào? Thực trạng</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="pagination-container">
-                                {!! $posts->links() !!}
+                            <div class="parag">
+                                <ul>
+                                    <li class="page-item active"><span> <span aria-current="page"
+                                                class="page-link current">1</span></span></li>
+                                    <li class="page-item"><span> <a class="page-link" href="">2</a></span>
+                                    </li>
+                                    <li class="page-item"><span> <a class="page-link" href="">3</a></span>
+                                    </li>
+                                    <li class="page-item"><span> <span
+                                                class="page-link dots">&hellip;</span></span></li>
+                                    <li class="page-item"><span> <a class="page-link" href="">5</a></span>
+                                    </li>
+                                    <li class="page-item"><span> <a class="page-link" href="">6</a></span>
+                                    </li>
+                                    <li class="page-item"><span> <a class="page-link" href="">7</a></span>
+                                    </li>
+                                    <li class="page-item"><span> <a class="next page-link" href=""><span
+                                                    class="navi next"><i
+                                                        class="fa fa-angle-right"></i></span></a></span></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="sidebar">
-                            <div class="menu-sidebar mb-2 bg-light border border-secondary">
+                            <div class="menu-sidebar">
                                 <ul>
-                                    @foreach ($catetypes as $catetype)
-                                        <li>
-                                            <a
-                                                href="{{ URL::route(\App\Models\View::PAGE_CATE_PRO, $catetype->slug) }}">{{ $catetype->name_vi }}</a>
-                                        </li>
-                                    @endforeach
+                                    <li><a href="">Tất cả</a></li>
+                                    <li>
+                                        <a href="">Ô TÔ MITSUBISHI</a>
+                                    </li>
+                                    <li>
+                                        <a href="">DỊCH VỤ CHO THUÊ KHO BÃI</a>
+                                    </li>
                                 </ul>
-                            </div>
-                            <div class="contact-bar mt-1 mb-2 bg-light border border-secondary">
-                                <div class="contact-header bg-danger text-white p-2">
-                                    <i class="fas fa-clock"></i> LIÊN HỆ MUA HÀNG
-                                </div>
-                                <div class="contact-body p-2">
-                                    <p class="mb-1"><strong>Trần Hữu Thành</strong></p>
-                                    <p><i class="fas fa-phone"></i> <span class="text-danger">0903525526</span></p>
-                                </div>
                             </div>
                             <div class="list-bar">
                                 <h3>Bài viết mới nhất</h3>
-                                @foreach ($posttakes as $posttake)
-                                    <div class="blog">
-                                        <div class="item">
-                                            <a href="" class="cate">Thông tin
-                                                công ty</a>
-                                            <h4><a
-                                                    href="{{ URL::route('datile.news', [$slugCate, $posttake->slug]) }}">{{ $posttake->name_vi }}</a>
-                                            </h4>
-                                        </div>
+                                <div class="blog">
+                                    <div class="item">
+                                        <a href="" class="cate">Thông tin
+                                            công ty</a>
+                                        <h4><a href="">Trưởng Phòng dịch vụ ô tô</a>
+                                        </h4>
                                     </div>
-                                @endforeach
+                                    <div class="item">
+                                        <a href="" class="cate">Thông tin
+                                            công ty</a>
+                                        <h4><a href="">Xe điện Outlander Plug-In Hybrid 2023 &#8211;
+                                                crossover</a></h4>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" class="cate">Thông tin
+                                            công ty</a>
+                                        <h4><a href="#">Nhân viên hành chính nhân sự</a></h4>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" class="cate">Thông tin
+                                            công ty</a>
+                                        <h4><a href="">Trưởng Phòng dịch vụ ô tô</a>
+                                        </h4>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" class="cate">Thông tin
+                                            công ty</a>
+                                        <h4><a href="">Xe điện Outlander Plug-In Hybrid 2023 &#8211;
+                                                crossover</a></h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

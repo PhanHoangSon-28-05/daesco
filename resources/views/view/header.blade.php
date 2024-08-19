@@ -1,6 +1,6 @@
 <header id="header" class="header">
     <div class="header-inner header-desktop">
-        <div class="container">
+        <div class="container-fluid">
             <div class="header-content">
                 <div class="logo">
                     <h1 class="site-title"><a href="/" rel="home">
@@ -74,8 +74,7 @@
                                                 @endforeach
                                                 @foreach ($cateSearchPosts as $value)
                                                     @if ($value->category && $value->category->slug != null)
-                                                        <a
-                                                            href="{{ URL::route('datile.news', [$value->category->slug, $value->slug]) }}">
+                                                        <a {{-- {{ URL::route('datile.news', [$value->category->slug, $value->slug]) }} --}} href="">
                                                             {{ $value->name_vi }}
                                                         </a>
                                                     @endif
@@ -93,11 +92,11 @@
                                 @foreach ($cates as $cate)
                                     <li class="link-lv-1 w-auto">
                                         <div class="m-link-1">
-                                            <a
-                                                href="
-                                                @if (in_array($cate->slug, ['field-of-activity'])) @elseif (in_array($cate->slug, ['shareholders'])){{ URL::route(\App\Models\View::PAGE_CATE_PRO, $cate->slug) }}
-                                                @else
-                                                 {{ route(strtolower($cate->name_en)) }} @endif ">{{ $cate->name_vi }}</a>
+                                            @if (Route::has($cate->slug))
+                                                <a href="{{ URL::route($cate->slug) }}">{{ $cate->name_vi }}</a>
+                                            @else
+                                                <a href="">{{ $cate->name_vi }}</a>
+                                            @endif
                                             @include('view.partials.category-check', [
                                                 'parentId' => $cate->id,
                                             ])
@@ -135,10 +134,8 @@
                 <ul class="menu-mobi">
                     @foreach ($cates as $cate)
                         <li class="">
-                            <a
-                                href="
-                                @if (in_array($cate->name_en, ['Home', 'Introduce', 'Recruitment', 'Contact'])) {{ route(strtolower($cate->name_en)) }}
-                                @else @endif ">{{ $cate->name_vi }}
+                            <a href="
+                                 ">{{ $cate->name_vi }}
                                 @include('view.partials.category-mobie', [
                                     'parentId' => $cate->id,
                                 ])

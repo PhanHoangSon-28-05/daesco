@@ -121,7 +121,7 @@ class PostCrud extends Component
     }
     public function render(CategoryRepositoryInterface $categoryRepo)
     {
-        $categories = $categoryRepo->getCategoryType(1);
+        $categories = $categoryRepo->getAll();
         $years = Year::orderBy('id', 'DESC')->get();
         return view('admins.posts.livewire.post-crud', [
             'categories' => $categories,
