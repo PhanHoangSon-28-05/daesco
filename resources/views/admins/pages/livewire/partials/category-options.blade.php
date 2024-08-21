@@ -5,7 +5,9 @@
 @endphp
 
 @foreach ($childCategories as $childCategory)
-    <option value="{{ $childCategory->id }}">{{ $prefix }} {{ $childCategory->name_vi }}
+    <option value="{{ $childCategory->id }}">
+        {{ $prefix }}
+        {{ $childCategory->name_vi }}
         @if (strlen($childCategory->name_en) > 0)
             ({{ $childCategory->name_en }})
         @endif

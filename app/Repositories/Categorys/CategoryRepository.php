@@ -30,6 +30,8 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $image,
         $stt
     ) {
+        $stt = $stt ?: 0;
+
         $cateData = [
             'parent_id' => $parent_id,
             'name_vi' => trim($name_vi),
@@ -66,28 +68,34 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $stt
     ) {
         $category = $this->model->find($id);
-        // dd($category);
+        $stt = $stt ?: 0;
         $cateData = [
             'parent_id' => $parent_id,
             'name_vi' => trim($name_vi),
             'name_en' =>  trim($name_en),
             'stt' =>  trim($stt),
         ];
+        // dd($cateData);
 
         if ($name_en) {
             $cateData['slug'] = Str::slug($name_en);
         } else {
             $cateData['slug'] = Str::slug($name_vi);
         }
+
         if ($image) {
             if ($image != $category->image) {
-                Storage::disk('public')->delete($category->image);
-                $extension = $image->getClientOriginalName();
-                $filename = time() . '_' . $extension;
+                try {
+                    Storage::disk('public')->delete($category->image);
+                    $extension = $image->getClientOriginalName();
+                    $filename = time() . '_' . $extension;
 
-                $path =  $image->storeAs('category', $filename, 'public');
+                    $path =  $image->storeAs('category', $filename, 'public');
 
-                $cateData['image'] = $path;
+                    $cateData['image'] = $path;
+                } catch (\Throwable $th) {
+                    // continue;
+                }
             } else {
                 $path = $category->image;
             }
@@ -111,7 +119,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
     public function getCateNews($id)
     {
-        $cate = $this->model->where('parent_id', $id)->get();
+        $cate = $this->model->where('parent_id', $id)->orderBy('stt')->get();
         return $cate;
     }
     // End Headers
@@ -143,21 +151,5 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         $posts = $this->getCateSlug($slug)->posts()->orderBy('created_at', 'DESC')->paginate(6);
         return $posts;
-    }
-
-    public function getCateSlugNoChill()
-    {
-
-        $parentIds = $this->model->select('parent_id')
-            ->whereNotNull('parent_id')
-            ->pluck('parent_id');
-
-        $categories = $this->model->whereNotIn('id', $parentIds)
-            ->whereNotIn('parent_id', function ($query) {
-                $query->select('id')->from('categories');
-            })
-            ->where('parent_id', 0)->get();
-
-        return $categories;
     }
 }

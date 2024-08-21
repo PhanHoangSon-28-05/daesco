@@ -10,6 +10,15 @@
 @section('content')
     <!-- Content -->
     <main id="content-wrapper" class="main-v2">
+        <section class="pv__about--1" style="background-image: url('{{URL::asset('storages/'.$cate->image)}}');">
+            <div class="container">
+                <div class="title">
+                    <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Tổng
+                                quan</span></span></div>
+                    <h1>Tổng quan</h1>
+                </div>
+            </div>
+        </section>
         <section id="gt1" class="pv-about-new--1">
             <div class="container">
                 <div class="content">
@@ -20,7 +29,14 @@
                                 thiệu chung</h2>
                             <div data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
                                 data-aos="fade-right" class="aos-init aos-animate short">
-                                {!! $catepro->page->detail_vi !!}
+                                @if ($cate->page)
+                                    {!! $cate->page->detail_vi !!}
+                                @else
+                                    <h2>Nội dung đang cập nhập. Quý khách hàng vui lòng trở lại sau. </br>
+                                        Xin cảm ơn !</h2>
+                                    <h2><a href="{{ URL::route('home') }}"><i class="fa-solid fa-left-long"></i> Quay lại
+                                            trang chủ</a></h2>
+                                @endif
                             </div>
                         </div>
                         <div class="col-xl-6">

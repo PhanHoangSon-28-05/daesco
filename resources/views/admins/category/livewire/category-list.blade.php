@@ -1,5 +1,16 @@
 @push('style')
     <style>
+        i {
+            font-size: 10px;
+        }
+
+        .list-group-item {
+            transition: border 0.3s ease;
+        }
+
+        .list-group-item:hover {
+            border: 1px solid #007bff;
+        }
     </style>
 @endpush
 

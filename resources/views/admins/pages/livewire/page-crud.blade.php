@@ -100,8 +100,9 @@
                                                 <select class="form-control" wire:model.lazy="category_id">
                                                     <option value="0">---</option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name_vi }}
-                                                            ({{ $category->name_en }})
+                                                        <option value="{{ $category->id }}"> {{ $category->stt }}.
+                                                            {{ $category->name_en }}
+                                                            ({{ $category->name_vi }})
                                                         </option>
                                                         @include(
                                                             'admins.pages.livewire.partials.category-options',
@@ -199,7 +200,8 @@
                                                 <select class="form-control" wire:model.lazy="category_id">
                                                     <option value="0">---</option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name_en }}
+                                                        <option value="{{ $category->id }}"> {{ $category->stt }}.
+                                                            {{ $category->name_en }}
                                                             ({{ $category->name_vi }})
                                                         </option>
                                                         @include(

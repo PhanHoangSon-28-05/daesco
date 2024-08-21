@@ -20,5 +20,4 @@ interface CategoryRepositoryInterface extends RepositoryInterface
     public function getFieldOperation();
     public function getCateSlug($slug);
     public function getCateSlugtoPost($slug);
-    public function getCateSlugNoChill();
 }

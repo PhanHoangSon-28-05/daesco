@@ -54,8 +54,7 @@
                                                 <img src="{{ asset('storages/' . $cate->image) }}"
                                                     alt="{{ $cate->name_vi }}">
                                             @else
-                                                <img src="{{ asset('storage/image-erro.png') }}"
-                                                    alt="{{ $cate->name_vi }}">
+                                                <img src="{{ asset('storage/image-erro.png') }}" alt="{{ $cate->name_vi }}">
                                             @endif
 
                                         </figure>
@@ -65,7 +64,7 @@
                                             data-aos-duration="1200" data-aos="fade-up"
                                             class="aos-init aos-animate font-weight-bolder text-uppercase">
                                             {{ $cate->name_vi }}</h3>
-                                        <a href="{{ URL::route(\App\Models\View::PAGE_CATE_PRO, $cate->slug) }}"
+                                        <a href=""
                                             data-aos-anchor-placement="top-bottom" data-aos-delay="500"
                                             data-aos-duration="1200" data-aos="fade-up"
                                             class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
@@ -371,7 +370,7 @@
                                             data-aos-duration="1200" data-aos="fade-left"
                                             class="aos-init aos-animate col-md-6 b-item">
                                             <article class="blog">
-                                                <a href="{{ URL::route('datile.news', [$slugCate, $posts[$i]->slug]) }}">
+                                                <a href="{{ URL::route('datile.news', $posts[$i]->slug) }}">
                                                     <div class="img">
                                                         <figure>
                                                             <img src="@if (file_exists(public_path('storages/' . $posts[$i]->pic)) && $posts[$i]->pic) {{ asset('storages/' . $posts[$i]->pic) }}
@@ -393,7 +392,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ URL::route(\App\Models\View::PAGE_CATE_PRO, 'company-regulations-and-regulations') }}"
+                    <a href="{{ URL::route('company-regulations-and-regulations') }}"
                         data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
                         data-aos="fade-up" class="aos-init aos-animate showmore">Xem
                         thêm</a>

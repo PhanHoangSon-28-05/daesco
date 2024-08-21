@@ -41,17 +41,24 @@ use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
 /**
  * View Client
  */
-Route::get('/', [ViewController::class, 'index']);
-Route::get('/introduce', [ViewController::class, 'introduce'])->name('introduce');
-Route::get('/recruitment', [ViewController::class, 'recruitment'])->name('recruitment');
-Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
+Route::get('/', [ViewController::class, 'index'])->name('home');
+Route::get('/about-us', [ViewController::class, 'aboutus'])->name('about-us');
+Route::get('/bo-may-phat-trien', [ViewController::class, 'developmentApparatus'])->name('development-apparatus');
+Route::get('/phat-trien-ben-vung', [ViewController::class, 'sustainableDevelopment'])->name('sustainable-development');
+Route::get('/san-pham-mitshubishi', [ViewController::class, 'mitshubishi'])->name('mitshubishi');
+Route::get('/quan-he-co-dong', [ViewController::class, 'shareholders'])->name('shareholders');
+Route::get('/tuyen-dung-moi-thau', [ViewController::class, 'recruitment'])->name('recruitment');
+Route::get('/tin-tuc-su-kien', [ViewController::class, 'companyrRgulationsRegulations'])->name('company-regulations-and-regulations');
+Route::get('/tin-tuc-su-kien/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
+Route::get('/truyen-thong', [ViewController::class, 'library'])->name('library');
+Route::get('/lien-he', [ViewController::class, 'contact'])->name('contact');
 
 
 
-Route::group(['prefix' => '/category'], function () {
-    Route::get('/{slug}', [ViewController::class, 'page_category_product'])->name(View::PAGE_CATE_PRO);
-    Route::get('/{slug}/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
-});
+// Route::group(['prefix' => '/category'], function () {
+//     Route::get('/{slug}', [ViewController::class, 'page_category_product'])->name(View::PAGE_CATE_PRO);
+//     Route::get('/{slug}/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
+// });
 
 
 

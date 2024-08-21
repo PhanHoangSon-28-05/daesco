@@ -9,8 +9,5 @@
         <li>
             <a href="">{{ $childCategory->name_vi }}</a>
         </li>
-        @include('view.partials.category-child', [
-            'parentId' => $childCategory->id,
-        ])
     @endforeach
 </ul>

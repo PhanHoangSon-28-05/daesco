@@ -25,16 +25,6 @@
                     </div>
                     <div class="col-md-4">
                         <div class="sidebar">
-                            <div class="menu-sidebar">
-                                <ul>
-                                    @foreach ($catetypes as $catetype)
-                                        <li>
-                                            <a
-                                                href="{{ URL::route(\App\Models\View::PAGE_CATE_PRO, $catetype->slug) }}">{{ $catetype->name_vi }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
                             <div class="contact-bar mt-1 mb-2 bg-light border border-secondary">
                                 <div class="contact-header bg-danger text-white p-2">
                                     <i class="fas fa-clock"></i> LIÊN HỆ MUA HÀNG
@@ -46,12 +36,12 @@
                             </div>
                             <div class="list-bar">
                                 <h3>Bài viết mới nhất</h3>
-                                @foreach ($posttakes as $posttake)
+                                @foreach ($posts as $post)
                                     <div class="blog">
                                         <div class="item">
                                             <a href="" class="cate">Thông tin
                                                 công ty</a>
-                                            <h4><a href="">{{ $posttake->name_vi }}</a>
+                                            <h4><a href="{{ URL::route('datile.news', $post->slug) }}">{{ $post->name_vi }}</a>
                                             </h4>
                                         </div>
                                     </div>

@@ -118,14 +118,9 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
 
     // Views
 
-    public function getDESCIndex()
+    public function getPostCate($id)
     {
-        $posts = $this->model->where()->orderBy('created_at', 'DESC')->take(5)->get();
-        return $posts;
-    }
-    public function getDESC($type)
-    {
-        $posts = $this->model->orderBy('created_at', 'DESC')->take($type)->get();
+        $posts = $this->model->where('category_id', $id)->orderBy('created_at', 'ASC')->get();
         return $posts;
     }
     public function getSlug($slug)

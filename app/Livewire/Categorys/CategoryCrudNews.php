@@ -6,9 +6,11 @@ use App\Models\Category;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CategoryCrudNews extends Component
 {
+    use WithFileUploads;
     public $action,
         $category,
         $category_id,

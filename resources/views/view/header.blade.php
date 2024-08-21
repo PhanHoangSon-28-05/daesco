@@ -1,6 +1,7 @@
+<? use Illuminate\Support\Str;?>
 <header id="header" class="header">
     <div class="header-inner header-desktop">
-        <div class="container-fluid">
+        <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <h1 class="site-title"><a href="/" rel="home">
@@ -93,10 +94,25 @@
                                     <li class="link-lv-1 w-auto">
                                         <div class="m-link-1">
                                             @if (Route::has($cate->slug))
-                                                <a href="{{ URL::route($cate->slug) }}">{{ $cate->name_vi }}</a>
+                                                <a href="{{ URL::route($cate->slug) }}">{{ $cate->name_vi }} </a>
                                             @else
                                                 <a href="">{{ $cate->name_vi }}</a>
                                             @endif
+                                            {{-- @if (Route::has($cate->slug))
+                                                @if (Str::slug($cate->name_vi) == Str::slug('Sản phẩm Mitshubishi'))
+                                                    <a href="{{ URL::route($cate->slug) }}">Sản phẩm </br>
+                                                        Mitshubishi</a>
+                                                @else
+                                                    <a href="{{ URL::route($cate->slug) }}">{{ $cate->name_vi }}</a>
+                                                @endif
+                                            @else
+                                                @if (Str::slug($cate->name_vi) == Str::slug('Sản phẩm Mitshubishi'))
+                                                    <a href="">Sản phẩm </br>
+                                                        Mitshubishi</a>
+                                                @else
+                                                    <a href="">{{ $cate->name_vi }}</a>
+                                                @endif
+                                            @endif --}}
                                             @include('view.partials.category-check', [
                                                 'parentId' => $cate->id,
                                             ])

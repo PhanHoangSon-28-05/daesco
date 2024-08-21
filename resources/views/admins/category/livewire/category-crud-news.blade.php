@@ -103,7 +103,8 @@
                                     <select class="form-control" wire:model.lazy="parent_id">
                                         <option value="0">---</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name_vi }}
+                                            <option value="{{ $category->id }}">
+                                                {{ $category->stt }}. {{ $category->name_vi }}
                                                 @if (strlen($category->name_en) > 0)
                                                     ({{ $category->name_en }})
                                                 @endif
