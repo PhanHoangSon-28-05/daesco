@@ -6,7 +6,8 @@
 
 @section('style')
     <script src="{{ URL::asset('admins/global_assets/js/plugins/editors/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ URL::asset('admins/global_assets/js/demo_pages/editor_ckeditor_default.js') }}"></script>
+    <script src="{{ URL::asset('admins/global_assets/js/demo_posts/editor_ckeditor_default.js') }}"></script>
+    <script src="{{ asset('admins/assets/js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 @endsection
 
 @section('content')

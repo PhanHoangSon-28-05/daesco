@@ -160,7 +160,7 @@ class ProductCrud extends Component
 
     public function render(CategoryRepositoryInterface $categoryRepo)
     {
-        $categories = $categoryRepo->getCategoryType(2);
+        $categories = $categoryRepo->getAll();
         return view('admins.products.livewire.product-crud', [
             'categories' => $categories
         ]);

@@ -34,7 +34,8 @@ class PostCrud extends Component
     public $pic, $year_id;
 
     public function mount(CategoryRepositoryInterface $categoryRepo) {
-        $this->categories = $categoryRepo->getCategoryType(1);
+    //    $this->categories = $categoryRepo->getCategoryType(1);
+        $this->categories = $categoryRepo->getAll();
         $this->years = Year::orderBy('id', 'DESC')->get();
     }
 
@@ -138,6 +139,7 @@ class PostCrud extends Component
         } else {
             $cover_img = 'images/placeholder/placeholder.png';
         }
+
         return view('admins.posts.livewire.post-crud', [
             'cover_img' => $cover_img,
         ]);

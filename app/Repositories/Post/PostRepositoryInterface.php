@@ -34,6 +34,6 @@ interface PostRepositoryInterface extends RepositoryInterface
     public function deletePost($postModel);
 
     // View
-    public function getDESC($type);
+    public function getPostCate($id);
     public function getSlug($slug);
 }

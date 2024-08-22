@@ -14,5 +14,4 @@
     @livewire('categorys.category-list')
 
     @livewire('categorys.category-crud-news')
-    @livewire('categorys.category-crud-products')
 @endsection

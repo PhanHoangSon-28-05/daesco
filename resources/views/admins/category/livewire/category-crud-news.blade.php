@@ -67,6 +67,16 @@
                     @else
                         <div class="container-fluid">
                             <div class="row">
+                                <div class="d-flex flex-row bd-highlight text-center">
+                                    <label class="crud-label p-0 mt-0 mb-0 mr-2">Số thứ tự: </label>
+                                    <input class="p-0" type="text" class="form-control crud-input"
+                                        wire:model.lazy="stt">
+                                    @error('stt')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
                                 <label class="crud-label p-0 mt-2 mb-0">Tên loại</label>
                                 <div class="input-group">
                                     <div class="col-6 p-0">
@@ -93,17 +103,36 @@
                                     <select class="form-control" wire:model.lazy="parent_id">
                                         <option value="0">---</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name_vi }}
-                                                ({{ $category->name_en }})
+                                            <option value="{{ $category->id }}">
+                                                {{ $category->stt }}. {{ $category->name_vi }}
+                                                @if (strlen($category->name_en) > 0)
+                                                    ({{ $category->name_en }})
+                                                @endif
                                             </option>
                                             @include('admins.category.livewire.partials.category-options', [
                                                 'parentId' => $category->id,
-                                                'type' => $category->type,
-                                                'prefix' => 1,
+                                                'prefix' => '--',
                                             ])
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <input type="file" wire:model="pic">
+
+                                @if ($pic)
+                                    @if (gettype($pic) == 'string')
+                                        <img src="{{ asset('storage/' . $pic) }}" class="p-0 mr-2 mb-1 col-4"
+                                            id="image-preview">
+                                    @else
+                                        <img src="{{ asset($pic->temporaryUrl()) }}" class="p-0 mr-2 mb-1 col-4"
+                                            id="image-preview">
+                                    @endif
+                                @endif
+
+                                @error('pic')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
                             </div>
                             {{-- <span class="text-danger">{{ $message }}</span>
                             @enderror --}}

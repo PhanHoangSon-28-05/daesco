@@ -6,14 +6,18 @@ use App\Models\Category;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CategoryCrudNews extends Component
 {
+    use WithFileUploads;
     public $action,
         $category,
         $category_id,
         $parent_id,
         $type,
+        $pic,
+        $stt,
         $slug;
     public string $name_en;
 
@@ -27,7 +31,6 @@ class CategoryCrudNews extends Component
 
     public function setDefaultType()
     {
-        $this->type = 1;
         $this->parent_id = 0;
     }
 
@@ -54,6 +57,7 @@ class CategoryCrudNews extends Component
             $this->name_vi = $this->category->name_vi;
             $this->name_en = $this->category->name_en;
             $this->parent_id = $this->category->parent_id;
+            $this->stt = $this->category->stt;
         } else {
             $this->name_vi = '';
             $this->name_en = '';
@@ -65,7 +69,7 @@ class CategoryCrudNews extends Component
     {
         $this->validate();
 
-        $category = $categoryRepo->createCategory($this->parent_id, $this->type, $this->name_vi, $this->name_en);
+        $category = $categoryRepo->createCategory($this->parent_id, $this->name_vi, $this->name_en, $this->pic, $this->stt);
 
         $this->dispatch('refreshList')->to('categorys.category-list');
         $this->dispatch('closeCrudCategoryNews');
@@ -75,7 +79,7 @@ class CategoryCrudNews extends Component
     {
         $this->validate();
 
-        $category = $categoryRepo->updateCategory($this->category_id, $this->parent_id, $this->name_vi, $this->name_en);
+        $category = $categoryRepo->updateCategory($this->category_id, $this->parent_id, $this->name_vi, $this->name_en, $this->pic, $this->stt);
 
         $this->dispatch('refreshList')->to('categorys.category-list');
         $this->dispatch('closeCrudCategoryNews');
@@ -90,7 +94,7 @@ class CategoryCrudNews extends Component
     }
     public function render(CategoryRepositoryInterface $categoryRepo)
     {
-        $categories = $categoryRepo->getCategoryType(1);
+        $categories = $categoryRepo->getChildNew(0);
         return view('admins.category.livewire.category-crud-news', [
             'categories' => $categories
         ]);

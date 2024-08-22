@@ -97,7 +97,7 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">Thông tin chung</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.defer="general_specifications_vi" id="editor_general_specifications_vi"
+                                                <textarea class="form-control detail" wire:model.defer="general_specifications_vi" id="editor_general_specifications_vi"
                                                     placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('general_specifications_vi')
@@ -107,7 +107,7 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">Tính năng:</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.defer ="features_vi" id="editor_features_vi"
+                                                <textarea class="form-control detail" wire:model.defer ="features_vi" id="editor_features_vi"
                                                     placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('features_vi')
@@ -241,8 +241,8 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">General specifications</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.lazy="general_specifications_en" id="editor_general_specifications_en"
-                                                    placeholder="Required example textarea"></textarea>
+                                                <textarea class="form-control detail" wire:model.lazy="general_specifications_en"
+                                                    id="editor_general_specifications_en" placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('general_specifications_en')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -251,7 +251,7 @@
                                         <div class="row" wire:ignore>
                                             <label class="crud-label p-0 mt-2 mb-0">Features:</label>
                                             <div class="col-12 p-0">
-                                                <textarea class="form-control" wire:model.lazy="features_en" id="editor_features_en"
+                                                <textarea class="form-control detail" wire:model.lazy="features_en" id="editor_features_en"
                                                     placeholder="Required example textarea"></textarea>
                                             </div>
                                             @error('features_en')
@@ -345,6 +345,26 @@
 
 @push('script')
     <script>
+        var options = {
+            selector: ".detail",
+            theme: "modern",
+            width: 1000,
+            height: 500,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+                "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+            ],
+            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+            toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor | print preview code ",
+            image_advtab: true,
+
+            external_filemanager_path: "/admins/assets/js/responsive_filemanager/filemanager/",
+            filemanager_title: "Trình quản lý tệp",
+            external_plugins: {
+                "filemanager": "/admins/assets/js/responsive_filemanager/filemanager/plugin.min.js"
+            }
+        };
         $(document).ready(function() {
             $('#crudProductModal').on('show.bs.modal', function(e) {
                 var id = e.relatedTarget.getAttribute('data-product-id') ?? 0;
@@ -361,35 +381,36 @@
 
 
             $('#crudProductModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_general_specifications_vi');
-                CKEDITOR.instances.editor_general_specifications_vi.on('change', function() {
-                    @this.set('general_specifications_vi', CKEDITOR.instances
-                        .editor_general_specifications_vi.getData());
-                });
+                // CKEDITOR.replace('editor_general_specifications_vi');
+                // CKEDITOR.instances.editor_general_specifications_vi.on('change', function() {
+                //     @this.set('general_specifications_vi', CKEDITOR.instances
+                //         .editor_general_specifications_vi.getData());
+                // });
+                tinymce.init(options);
             });
 
-            $('#crudProductModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_features_vi');
-                CKEDITOR.instances.editor_features_vi.on('change', function() {
-                    @this.set('features_vi', CKEDITOR.instances
-                        .editor_features_vi.getData());
-                });
-            });
-            $('#crudProductModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_general_specifications_en');
-                CKEDITOR.instances.editor_general_specifications_en.on('change', function() {
-                    @this.set('general_specifications_en', CKEDITOR.instances
-                        .editor_general_specifications_en.getData());
-                });
-            });
+            // $('#crudProductModal').on('shown.bs.modal', function() {
+            //     CKEDITOR.replace('editor_features_vi');
+            //     CKEDITOR.instances.editor_features_vi.on('change', function() {
+            //         @this.set('features_vi', CKEDITOR.instances
+            //             .editor_features_vi.getData());
+            //     });
+            // });
+            // $('#crudProductModal').on('shown.bs.modal', function() {
+            //     CKEDITOR.replace('editor_general_specifications_en');
+            //     CKEDITOR.instances.editor_general_specifications_en.on('change', function() {
+            //         @this.set('general_specifications_en', CKEDITOR.instances
+            //             .editor_general_specifications_en.getData());
+            //     });
+            // });
 
-            $('#crudProductModal').on('shown.bs.modal', function() {
-                CKEDITOR.replace('editor_features_en');
-                CKEDITOR.instances.editor_features_en.on('change', function() {
-                    @this.set('features_en', CKEDITOR.instances
-                        .editor_features_en.getData());
-                });
-            });
+            // $('#crudProductModal').on('shown.bs.modal', function() {
+            //     CKEDITOR.replace('editor_features_en');
+            //     CKEDITOR.instances.editor_features_en.on('change', function() {
+            //         @this.set('features_en', CKEDITOR.instances
+            //             .editor_features_en.getData());
+            //     });
+            // });
 
             $('#crudProductModal').on('hidden.bs.modal', function() {
                 for (instance in CKEDITOR.instances) {

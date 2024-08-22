@@ -10,11 +10,7 @@
 @inject('categoryRepo', 'App\Repositories\Categorys\CategoryRepositoryInterface')
 
 @php
-    if ($type == 1) {
-        $childCategories = $categoryRepo->getChildNew($parentId);
-    } else {
-        $childCategories = $categoryRepo->getChildPro($parentId);
-    }
+    $childCategories = $categoryRepo->getChildNew($parentId);
 @endphp
 
 @foreach ($childCategories as $childCategory)
@@ -34,25 +30,14 @@
         </div>
 
         <div class="col-2 p-0">
-            @if ($childCategory->type == 1)
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                    data-target="#crudCategoryNewsModal" data-category-id="{{ $childCategory->id }}">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                    data-target="#crudCategoryNewsModal" data-category-id="{{ -$childCategory->id }}">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            @elseif ($childCategory->type == 2)
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                    data-target="#crudCategoryProductsModal" data-category-id="{{ $childCategory->id }}">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                    data-target="#crudCategoryProductsModal" data-category-id="{{ -$childCategory->id }}">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            @endif
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#crudCategoryNewsModal"
+                data-category-id="{{ $childCategory->id }}">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                data-target="#crudCategoryNewsModal" data-category-id="{{ -$childCategory->id }}">
+                <i class="fa-solid fa-trash"></i>
+            </button>
         </div>
     </li>
     @include('admins.category.livewire.partials.category-list', [
