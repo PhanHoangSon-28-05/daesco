@@ -1,5 +1,5 @@
 @extends('view.index')
-@section('title', 'Tin tức và sự kiện')
+@section('title', 'Bộ máy phát triển')
 @section('content')
     <!-- Content -->
     <main id="content-wrapper" class="main-v2">
@@ -18,229 +18,54 @@
                 <div class="content">
                     <h2>QUÁ TRÌNH HÌNH THÀNH & PHÁT TRIỂN</h2>
                     <div class="pv__chart">
-                        <div class="item">
-                            <div class="title">
-                                <strong>03/03/1956</strong>
-                                <p>Quyết định thành lập Tổng Công ty Xuất nhập khẩu Máy</p>
+                        @foreach ($developments as $development)
+                            <div class="item">
+                                <div class="title">
+                                    <strong>{{ $development->date }}</strong>
+                                    <p>{{ $development->description }}</p>
+                                </div>
+                                <div class="line-middle"><span></span></div>
+                                <div class="img">
+                                    <picture><img src="{{ URL::asset('storages/' . $development->pic) }}" alt="chart image">
+                                    </picture>
+                                </div>
                             </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/03-3-1956.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>03/03/1960</strong>
-                                <p> Quyết định thành lập Tổng Công ty Thiết bị Phụ tùng</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/03-3-1960.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>02/3/1992</strong>
-                                <p>Hợp nhất thành Tổng Công ty Máy và Phụ tùng theo Quyết định số 163/ TMDL-TCCB của Bộ
-                                    Thương mại và Du lịch.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/02-3-1992.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>17/04/1995</strong>
-                                <p>Tổng Công Ty Máy và Phụ tùng được thành lập lại theo Quyết định số 225/QĐ-TTg của Thủ
-                                    tướng Chính phủ, trở thành Tổng Công ty 90 trực thuộc Bộ Thương mại.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/17-4-1995.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>13/06/2003</strong>
-                                <p>Công ty Máy và Phụ tùng thành lập trên cơ sở sắp xếp lại Văn phòng Tổng Công ty và các
-                                    đơn vị hạch toán phụ thuộc Văn phòng Tổng Công ty theo Quyết định số 0713/2003/QĐ-BTM
-                                    của Bộ Thương mại.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/02/ab-8-1.png"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>11/08/2003</strong>
-                                <p>Công ty Máy và Phụ tùng được Sở kế hoạch và Đầu tư Hà Nội cấp Giấy chứng nhận đăng ký
-                                    kinh doanh số 113655, đăng ký lần đầu. </p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/11-8-2003.png"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>Tháng 11/2007</strong>
-                                <p>Công ty Máy và Phụ tùng chuyển về làm đơn vị thành viên của Tập đoàn Dầu khí Việt Nam
-                                    theo quyết định số 673/QĐ-DKVN của Tập đoàn Dầu khí VN, đổi tên thành Công ty Cổ phần
-                                    Máy – Thiết bị dầu khí</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/thang-11-2007.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>10/03/2009</strong>
-                                <p>Là thành viên của Tổng công ty Điện lực Dầu khí Việt Nam.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/10-3-2009.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>01/03/2010</strong>
-                                <p>CT chính thức hoạt động theo mô hình CTCP với VĐL 386,386,000,000 đồng.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/01-3-2010.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>Tháng 6/2010</strong>
-                                <p>Là thành viên của Tổng công ty CPXL dầu khí Việt Nam.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/Thang-6-2010.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>Tháng 6/2011</strong>
-                                <p>Là thành viên của Tổng công ty công nghệ năng lượng dầu khí Việt Nam.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/02/ab-5.png"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>Tháng 11/2014</strong>
-                                <p>Là thành viên của Tổng công ty Điện lực Dầu khí Việt Nam. Các cổ đông có vốn nhà nước
-                                    thoái vốn.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/thang-11-2014.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="title">
-                                <strong>Tháng 3/2021</strong>
-                                <p>PVMACHINO chính thức không còn phần vốn nhà nước chi phối.</p>
-                            </div>
-                            <div class="line-middle"><span></span></div>
-                            <div class="img">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/08/thang-3-2021.jpg"
-                                        alt="chart image"></picture>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </section>
-        <section id="about3" class="pv__about--9">
+        <section id="activity-4b" class="pv__activity--4 activity-4v2">
             <div class="container">
                 <div class="content">
-                    <div class="row">
-                        <div class="col-xl-6 col-left">
-                            <div class="title">
-                                <h2 data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
-                                    data-aos="fade-up" class="aos-init aos-animate">Đơn vị thành viên</h2>
-                                <div data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
-                                    data-aos="fade-up" class="aos-init aos-animate" class="short">
-                                    <p>
-                                    <p>Quan hệ hợp tác chất lượng là một trong những điều PVMACHINO luôn ưu tiên hàng đầu.
-                                        Sau 67 năm hoạt động, PVMACHINO đã có 4 công ty thành viên trực thuộc và 1 công ty
-                                        liên doanh. Sự kết hợp này sẽ là bước đệm để công ty ngày càng lớn mạnh và phát
-                                        triển hơn nữa trong tương lai.</p>
-                                    </p>
-                                </div>
+                    <div class="title">
+                        <div class="row">
+                            <div class="col-md-2 col-xl-3"></div>
+                            <div class="col-md-8 col-xl-6 col-center">
+                                <h2>HỆ THỐNG ĐẠI LÝ MITSUBISHI MORTOR</h2>
                             </div>
+                            <div class="col-md-2 col-xl-3"></div>
                         </div>
-                        <div class="col-xl-6 col-right">
-                            <div class="partner">
-                                <div class="row part-row">
-                                    <div data-aos-anchor-placement="top-bottom" data-aos-delay="500"
-                                        data-aos-duration="1200" data-aos="fade-up"
-                                        class="aos-init aos-animate col-md-6 part-item">
-                                        <a href="http://daesco.vn/">
-                                            <figure><img src="https://pvmachino.vn/wp-content/uploads/2023/02/brand-2.png"
-                                                    alt="Công ty cổ phần Máy - Thiết bị dầu khí Đà Nẵng"></figure>
-                                        </a>
-                                    </div>
-                                    <div data-aos-anchor-placement="top-bottom" data-aos-delay="500"
-                                        data-aos-duration="1200" data-aos="fade-up"
-                                        class="aos-init aos-animate col-md-6 part-item">
-                                        <a href="#">
-                                            <figure><img
-                                                    src="https://pvmachino.vn/wp-content/uploads/2023/10/Artboard-31.png"
-                                                    alt="MACHINO Thành Đạt"></figure>
-                                        </a>
-                                    </div>
-                                    <div data-aos-anchor-placement="top-bottom" data-aos-delay="500"
-                                        data-aos-duration="1200" data-aos="fade-up"
-                                        class="aos-init aos-animate col-md-6 part-item">
-                                        <a href="Công ty cổ phần Machino Thành Đạt">
-                                            <figure><img
-                                                    src="https://pvmachino.vn/wp-content/uploads/2023/10/Artboard-31-copy.png"
-                                                    alt="MACHINO Phú Xuân"></figure>
-                                        </a>
-                                    </div>
-                                    <div data-aos-anchor-placement="top-bottom" data-aos-delay="500"
-                                        data-aos-duration="1200" data-aos="fade-up"
-                                        class="aos-init aos-animate col-md-6 part-item">
-                                        <a href="#">
-                                            <figure><img
-                                                    src="https://pvmachino.vn/wp-content/uploads/2023/10/Artboard-31-copy-2.png"
-                                                    alt="MACHINO An Phú"></figure>
-                                        </a>
-                                    </div>
-                                    <div data-aos-anchor-placement="top-bottom" data-aos-delay="500"
-                                        data-aos-duration="1200" data-aos="fade-up"
-                                        class="aos-init aos-animate col-md-6 part-item">
-                                        <a href="https://www.hitachiastemo.com/">
-                                            <figure><img
-                                                    src="https://pvmachino.vn/wp-content/uploads/2023/10/Artboard-31-copy-3.png"
-                                                    alt="Hitachi Astemo Hà Nội"></figure>
+                    </div>
+                    <div class="list-activity-blog">
+                        <div class="row">
+                            @foreach ($systems as $system)
+                                <div class="col-md-6 col-lg-4 ac-blog">
+                                    <div class="acb-item">
+                                        <a href="{{ $system->links }}">
+                                            <div class="img">
+                                                <figure><img src="{{ URL::asset('storages/' . $system->pic) }}"
+                                                        alt="blog">
+                                                </figure>
+                                            </div>
+                                            <div class="desc">
+                                                <h3>{{ $system->name }}</h3>
+                                                <button>Tìm hiểu thêm<i class="fa-solid fa-angle-right"></i></button>
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

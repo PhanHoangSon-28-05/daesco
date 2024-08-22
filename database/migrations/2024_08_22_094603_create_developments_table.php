@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->string('links')->after('slug_sections');
+        Schema::create('developments', function (Blueprint $table) {
+            $table->id();
+            $table->string('date')->nullable();
+            $table->string('description')->nullable();
+            $table->string('pic');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('services', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('developments');
     }
 };

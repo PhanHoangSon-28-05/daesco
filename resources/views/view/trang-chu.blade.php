@@ -64,10 +64,15 @@
                                             data-aos-duration="1200" data-aos="fade-up"
                                             class="aos-init aos-animate font-weight-bolder text-uppercase">
                                             {{ $cate->name_vi }}</h3>
-                                        <a href=""
-                                            data-aos-anchor-placement="top-bottom" data-aos-delay="500"
-                                            data-aos-duration="1200" data-aos="fade-up"
-                                            class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
+                                        @if (Route::has($cate->slug))
+                                            <a href=" {{ URL::route($cate->slug) }}" data-aos-anchor-placement="top-bottom"
+                                                data-aos-delay="500" data-aos-duration="1200" data-aos="fade-up"
+                                                class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
+                                        @else
+                                            <a href="" data-aos-anchor-placement="top-bottom" data-aos-delay="500"
+                                                data-aos-duration="1200" data-aos="fade-up"
+                                                class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -342,7 +347,7 @@
                             data-aos="fade-right" class="aos-init aos-animate col-md-6 big-item">
                             <div class="big-blog">
                                 <article class="blog">
-                                    <a href="{{ URL::route('datile.news', [$slugCate, $posts[0]->slug]) }}">
+                                    <a href="{{ URL::route('datile.news', $posts[0]->slug) }}">
                                         <div class="img">
                                             <figure>
                                                 <img src="@if (file_exists(public_path('storages/' . $posts[0]->pic)) && $posts[0]->pic) {{ asset('storages/' . $posts[0]->pic) }}

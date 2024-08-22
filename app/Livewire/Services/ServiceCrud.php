@@ -24,7 +24,7 @@ class ServiceCrud extends Component
     public string $detail_vi;
     // #[Validate('required|file|mimes:png,jpg,pdf', message: 'Chưa nhập ảnh')]
     public $pic;
-    public $links;
+    public $slug_sections;
 
     public function modalSetup($id)
     {
@@ -50,14 +50,14 @@ class ServiceCrud extends Component
             $this->name_en = $this->service->name_en;
             $this->detail_en = $this->service->detail_en;
             $this->pic = $this->service->pic;
-            $this->links = $this->service->links;
+            $this->slug_sections = $this->service->slug_sections;
         } else {
             $this->name_vi = '';
             $this->detail_vi = "";
             $this->name_en = '';
             $this->detail_en = "";
             $this->pic = '';
-            $this->links = '';
+            $this->slug_sections = '';
         }
 
         $this->resetErrorBag();
@@ -73,7 +73,7 @@ class ServiceCrud extends Component
             $this->detail_vi,
             $this->detail_en,
             $this->pic,
-            $this->links,
+            $this->slug_sections,
         );
         $this->dispatch('refreshList')->to('services.service-list');
         $this->dispatch('closeCrudService');
@@ -90,7 +90,7 @@ class ServiceCrud extends Component
             $this->detail_vi,
             $this->detail_en,
             $this->pic,
-            $this->links,
+            $this->slug_sections,
         );
         $this->dispatch('refreshList')->to('services.service-list');
         $this->dispatch('closeCrudService');
