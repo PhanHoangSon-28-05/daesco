@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admins\AdsController;
 use App\Http\Controllers\Admins\CategoryController;
+use App\Http\Controllers\Admins\DevelopmentController;
 use App\Http\Controllers\Admins\FooterController;
 use App\Http\Controllers\Admins\LoginController;
 use App\Http\Controllers\Admins\LogoutController;
@@ -16,11 +17,13 @@ use App\Http\Controllers\Admins\InfoProductController;
 use App\Http\Controllers\Admins\PageController;
 use App\Http\Controllers\Admins\PostController;
 use App\Http\Controllers\Admins\ServiceController;
+use App\Http\Controllers\Admins\SystemController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\Image\ImageController;
 use App\Http\Controllers\Views\ViewController;
 use App\Models\Ads;
 use App\Models\Category;
+use App\Models\Development;
 use App\Models\Info;
 use App\Models\Page;
 use App\Models\Post;
@@ -28,6 +31,7 @@ use App\Models\Product;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\Slider;
+use App\Models\System;
 use App\Models\User;
 use App\Models\View;
 use App\Models\Year;
@@ -46,6 +50,7 @@ Route::get('/about-us', [ViewController::class, 'aboutus'])->name('about-us');
 Route::get('/bo-may-phat-trien', [ViewController::class, 'developmentApparatus'])->name('development-apparatus');
 Route::get('/phat-trien-ben-vung', [ViewController::class, 'sustainableDevelopment'])->name('sustainable-development');
 Route::get('/san-pham-mitshubishi', [ViewController::class, 'mitshubishi'])->name('mitshubishi');
+Route::get('/dich-vu-bai', [ViewController::class, 'warehouse'])->name('warehouse-business');
 Route::get('/quan-he-co-dong', [ViewController::class, 'shareholders'])->name('shareholders');
 Route::get('/tuyen-dung-moi-thau', [ViewController::class, 'recruitment'])->name('recruitment');
 Route::get('/tin-tuc-su-kien', [ViewController::class, 'companyrRgulationsRegulations'])->name('company-regulations-and-regulations');
@@ -92,6 +97,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('posts', [PostController::class, 'index'])->name(Post::INDEX);
     Route::get('/posts/filter', [PostController::class, 'filter'])->name('posts.filter');
     Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
+    Route::get('developments', [DevelopmentController::class, 'index'])->name(Development::INDEX);
+    Route::get('systems', [SystemController::class, 'index'])->name(System::INDEX);
 
     Route::get('filemanager?', function () {
         return view('admins.layouts.filemanager');

@@ -20,6 +20,6 @@ class Service extends Model
         'detail_vi',
         'detail_en',
         'pic',
-        'links',
+        'slug_sections',
     ];
 }

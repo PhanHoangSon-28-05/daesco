@@ -85,17 +85,31 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+                                        <div class="row mb-1" wire:ignore>
+                                            <label class="crud-label p-0 mt-2 mb-0">Dịch vụ</label>
+                                            <div class="input-group">
+                                                <select class="form-control" wire:model.lazy="slug_sections">
+                                                    <option value="0">---</option>
+                                                    <option value="dich-vu-san-pham">Sản phẩm (Product)</option>
+                                                    <option value="dich-vu-bai">Bãi đổ xe (Parking lot)</option>
+                                                </select>
+                                            </div>
+                                            @error('slug_sections')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                         <div class="row">
                                             <input type="file" wire:model="pic">
 
-                                            @php
-                                                $src =
-                                                    $pic && method_exists($pic, 'temporaryUrl')
-                                                        ? $pic->temporaryUrl()
-                                                        : $pic;
-                                            @endphp
-                                            <img src="{{ $src }}" class="p-0 mr-2 mb-1 col-4">
-
+                                            @if ($pic)
+                                                @if (gettype($pic) == 'string')
+                                                    <img src="{{ asset('storage/' . $pic) }}"
+                                                        class="p-0 mr-2 mb-1 col-4" id="image-preview">
+                                                @else
+                                                    <img src="{{ asset($pic->temporaryUrl()) }}"
+                                                        class="p-0 mr-2 mb-1 col-4" id="image-preview">
+                                                @endif
+                                            @endif
                                             @error('pic')
                                                 <span class="error">{{ $message }}</span>
                                             @enderror
@@ -155,8 +169,19 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-
-
+                                        <div class="row" wire:ignore>
+                                            <label class="crud-label p-0 mt-2 mb-0">Service</label>
+                                            <div class="input-group">
+                                                <select class="form-control" wire:model.lazy="slug_sections">
+                                                    <option value="0">---</option>
+                                                    <option value="dich-vu-san-pham">Sản phẩm (Product)</option>
+                                                    <option value="dich-vu-bai">Bãi đổ xe (Parking lot)</option>
+                                                </select>
+                                            </div>
+                                            @error('slug_sections')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                         <div class="row">
                                             <input type="file" wire:model="pic">
 

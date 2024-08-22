@@ -35,11 +35,15 @@ class SliderRepository extends BaseRepository implements SliderRepositoryInterfa
     public function updateSlider($sliderModel, $stt, $pic)
     {
         if ($pic != $sliderModel->pic) {
-            Storage::disk('public')->delete($sliderModel->pic);
+            try {
+                Storage::disk('public')->delete($sliderModel->pic);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
             $extension = $pic->getClientOriginalName();
             $filename = time() . '_' . $extension;
 
-            $path =  $pic->storeAs('pages', $filename, 'public');
+            $path =  $pic->storeAs('sliders', $filename, 'public');
         } else {
             $path = $sliderModel->pic;
         }

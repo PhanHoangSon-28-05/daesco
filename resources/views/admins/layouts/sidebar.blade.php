@@ -93,6 +93,18 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route(\App\Models\Development::INDEX) }}" class="nav-link">
+                    <i class="fa-solid fa-up-long"></i>
+                    Quản lý quá trình phát triển
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route(\App\Models\System::INDEX) }}" class="nav-link">
+                    <i class="fa-solid fa-house-flag"></i>
+                    Quản lý hệ thống
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route(\App\Models\Slider::INDEX) }}" class="nav-link">
                     <i class="fa-solid fa-image"></i>
                     Quản lý slider

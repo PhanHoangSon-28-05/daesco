@@ -14,7 +14,7 @@ interface ServiceRepositoryInterface extends RepositoryInterface
         $detail_vi,
         $detail_en,
         $pic,
-        $links,
+        $slug_sections,
     );
     public function updateService(
         $serviceModel,
@@ -23,7 +23,9 @@ interface ServiceRepositoryInterface extends RepositoryInterface
         $detail_vi,
         $detail_en,
         $pic,
-        $links,
+        $slug_sections,
     );
     public function deleteService($serviceModel);
+
+    public function getSlugSv($slug);
 }

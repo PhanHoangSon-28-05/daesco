@@ -30,8 +30,11 @@
                                     <i class="fas fa-clock"></i> LIÊN HỆ MUA HÀNG
                                 </div>
                                 <div class="contact-body p-2">
-                                    <p class="mb-1"><strong>Trần Hữu Thành</strong></p>
-                                    <p><i class="fas fa-phone"></i> <span class="text-danger">0903525526</span></p>
+                                    @foreach ($hotlines as $hotline)
+                                        <p class="mb-1"><strong>{{ $hotline->name_vi }}</strong></p>
+                                        <p><i class="fas fa-phone"></i> <span
+                                                class="text-danger">{{ $hotline->phone }}</span></p>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="list-bar">
@@ -41,7 +44,8 @@
                                         <div class="item">
                                             <a href="" class="cate">Thông tin
                                                 công ty</a>
-                                            <h4><a href="{{ URL::route('datile.news', $post->slug) }}">{{ $post->name_vi }}</a>
+                                            <h4><a
+                                                    href="{{ URL::route('datile.news', $post->slug) }}">{{ $post->name_vi }}</a>
                                             </h4>
                                         </div>
                                     </div>

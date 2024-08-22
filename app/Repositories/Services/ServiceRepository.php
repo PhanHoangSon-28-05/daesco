@@ -26,7 +26,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         $detail_vi,
         $detail_en,
         $pic,
-        $links,
+        $slug_sections,
     ) {
         if ($pic) {
             $extension = $pic->getClientOriginalName();
@@ -43,7 +43,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
             'detail_vi' => trim($detail_vi),
             'detail_en' => trim($detail_en),
             'pic' => $path,
-            'links' => $links,
+            'slug_sections' => $slug_sections,
         ];
 
         if ($name_en) {
@@ -64,7 +64,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         $detail_vi,
         $detail_en,
         $pic,
-        $links,
+        $slug_sections,
     ) {
         if ($pic != $serviceModel->pic) {
             Storage::disk('public')->delete($serviceModel->pic);
@@ -82,7 +82,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
             'detail_vi' => trim($detail_vi),
             'detail_en' => trim($detail_en),
             'pic' => $path,
-            'links' => $links,
+            'slug_sections' => $slug_sections,
         ];
         if ($name_en) {
             $serviceData['slug'] = Str::slug($name_en);
@@ -99,5 +99,10 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         Storage::disk('public')->delete($serviceModel->pic);
 
         return $serviceModel->delete();
+    }
+
+    public function getSlugSv($slug)
+    {
+        return $this->model->where('slug_sections', $slug)->get();
     }
 }

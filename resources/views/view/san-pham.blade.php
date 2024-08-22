@@ -13,11 +13,20 @@
     <main id="content-wrapper" class="main-v2">
         <section class="pv__about--1" style="background-image: url('{{ URL::asset('storages/' . $cate->image) }}');">
             <div class="container">
-                <div class="title">
-                    <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Sản phẩm</span></span>
+                @if (isset($products))
+                    <div class="title">
+                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Sản phẩm</span></span>
+                        </div>
+                        <h1>Sản Phẩm</h1>
                     </div>
-                    <h1>Sản Phẩm</h1>
-                </div>
+                @else
+                    <div class="title">
+                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Dịch vũ
+                                    bãi</span></span>
+                        </div>
+                        <h1>Dịch vũ bãi</h1>
+                    </div>
+                @endif
             </div>
         </section>
         <section id="product" class="pv-about-new--1">
@@ -31,10 +40,12 @@
                                 <div class="bg-danger px-3 py-2 text-white ">
                                     <h5 class=""><i class="fa-solid fa-clock-rotate-left"></i> Liên hệ mua hàng</h5>
                                 </div>
-                                <div class="px-3 pt-2 ">
-                                    <p>Trần Hữu Thành</p>
-                                    <p><i class="fas fa-phone"></i> 0903525526</p>
-                                </div>
+                                @foreach ($hotlines as $hotline)
+                                    <div class="px-3 pt-2 ">
+                                        <p>{{ $hotline->name_vi }}</p>
+                                        <p><i class="fas fa-phone"></i> {{ $hotline->phone }}</p>
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="contact-box mb-4 border border-secondary rounded">
                                 <div class="bg-danger px-3 py-2 text-white ">
@@ -50,7 +61,9 @@
                                                         TRITON</a></li>
                                             </ul>
                                         </li>
-                                        <li class="list-group-item">Dịch vụ cho thuê kho bãi</li>
+                                        <li class="list-group-item"><a href="{{ URL::route('warehouse-business') }}">Dịch vụ cho
+                                                thuê kho
+                                                bãi</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,33 +71,39 @@
 
                         <!-- Main Content -->
                         <div class="col-md-8">
-                            <div class="">
-                                <h4 class="mb-4">Sản phẩm mới nhất</h4>
-                                <div class="row product-list">
-                                    @foreach ($products as $value)
-                                        <div class="col-md-4 product-item">
-                                            <a href="{{ $value->links }}">
-                                                <img src="{{ URL::asset('storages/' . $value->pic) }}" alt="XPANDER CROSS">
-                                                <h6>{{ $value->title_vi }}</h6>
-                                                <p>{{ number_format($value->price, 0, ',', '.') }} (VAT)</p>
-                                            </a>
-                                        </div>
-                                    @endforeach
+                            @if (isset($products))
+                                <div class="">
+                                    <h4 class="mb-4">Sản phẩm mới nhất</h4>
+                                    <div class="row product-list">
+                                        @foreach ($products as $value)
+                                            <div class="col-md-4 product-item">
+                                                <a href="{{ $value->links }}">
+                                                    <img src="{{ URL::asset('storages/' . $value->pic) }}"
+                                                        alt="XPANDER CROSS">
+                                                    <h6>{{ $value->title_vi }}</h6>
+                                                    <p>{{ number_format($value->price, 0, ',', '.') }} (VAT)</p>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="">
-                                <h4 class="mb-4">Dịch vụ</h4>
-                                <div class="row product-list">
-                                    @foreach ($services as $value)
-                                        <div class="col-md-4 product-item">
-                                            <a href="">
-                                                <img src="{{ URL::asset('storages/' . $value->pic) }}" alt="XPANDER CROSS">
-                                                <h6>{{ $value->name_vi }}</h6>
-                                            </a>
-                                        </div>
-                                    @endforeach
+                            @endif
+                            @if (isset($service))
+                                <div class="">
+                                    <h4 class="mb-4">Dịch vụ</h4>
+                                    <div class="row product-list">
+                                        @foreach ($services as $value)
+                                            <div class="col-md-4 product-item">
+                                                <a href="">
+                                                    <img src="{{ URL::asset('storages/' . $value->pic) }}"
+                                                        alt="XPANDER CROSS">
+                                                    <h6>{{ $value->name_vi }}</h6>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -94,7 +94,12 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
                     $cateData['image'] = $path;
                 } catch (\Throwable $th) {
-                    // continue;
+                    $extension = $image->getClientOriginalName();
+                    $filename = time() . '_' . $extension;
+
+                    $path =  $image->storeAs('category', $filename, 'public');
+
+                    $cateData['image'] = $path;
                 }
             } else {
                 $path = $category->image;
