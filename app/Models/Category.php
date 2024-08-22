@@ -40,4 +40,14 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, 'category_id');
     }
+
+    public function parent_category(): BelongsTo 
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function child_categories(): HasMany
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
 }

@@ -20,9 +20,11 @@ class PostCrud extends Component
         $name_en,
         $detail_en,
         $description_en,
-        $category_id;
+        $category_id,
+        $categories,
+        $years;
 
-    #[Rule('required|string|max:255', message: 'Chưa tiêu đề')]
+    #[Rule('required|string|max:255', message: 'Chưa nhập tiêu đề')]
     public string $name_vi;
     #[Validate('required|string', message: 'Chưa nhập mô tả')]
     public string $description_vi;
@@ -30,6 +32,11 @@ class PostCrud extends Component
     public string $detail_vi;
     // #[Validate('required|file|mimes:png,jpg,pdf', message: 'Chưa nhập ảnh')]
     public $pic, $year_id;
+
+    public function mount(CategoryRepositoryInterface $categoryRepo) {
+        $this->categories = $categoryRepo->getCategoryType(1);
+        $this->years = Year::orderBy('id', 'DESC')->get();
+    }
 
     public function modalSetup($id)
     {
@@ -71,6 +78,7 @@ class PostCrud extends Component
             $this->year_id = '';
         }
 
+        $this->dispatch('setDetailEditorContent');
         $this->resetErrorBag();
     }
 
@@ -119,13 +127,19 @@ class PostCrud extends Component
         $this->dispatch('refreshList')->to('posts.post-list');
         $this->dispatch('closeCrudPost');
     }
-    public function render(CategoryRepositoryInterface $categoryRepo)
+    public function render()
     {
-        $categories = $categoryRepo->getCategoryType(1);
-        $years = Year::orderBy('id', 'DESC')->get();
+        if ($this->pic) {
+            if (gettype($this->pic) == 'string') {
+                $cover_img = 'storage/' . $this->pic;
+            } else {
+                $cover_img = $this->pic->temporaryUrl();
+            }
+        } else {
+            $cover_img = 'images/placeholder/placeholder.png';
+        }
         return view('admins.posts.livewire.post-crud', [
-            'categories' => $categories,
-            'years' => $years
+            'cover_img' => $cover_img,
         ]);
     }
 }
