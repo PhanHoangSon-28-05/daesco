@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers\Views;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Info;
 use App\Models\Footer;
 use App\Models\Header;
-use App\Models\Info;
-use App\Models\Service;
 use App\Models\Slider;
-use App\Repositories\Categorys\CategoryRepositoryInterface;
-use App\Repositories\Developments\DevelopmentRepositoryInterface;
+use App\Models\Service;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
 use App\Repositories\Post\PostRepositoryInterface;
-use App\Repositories\Product\ProductRepositoryInterface;
-use App\Repositories\Services\ServiceRepositoryInterface;
+use App\Repositories\Years\YearRepositoryInterface;
 use App\Repositories\Sliders\SliderRepositoryInterface;
 use App\Repositories\Systems\SystemRepositoryInterface;
-use Illuminate\Http\Request;
+use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Services\ServiceRepositoryInterface;
+use App\Repositories\Categorys\CategoryRepositoryInterface;
+use App\Repositories\Documents\DocumentRepositoryInterface;
+use App\Repositories\Developments\DevelopmentRepositoryInterface;
 
 class ViewController extends Controller
 {
@@ -27,6 +31,8 @@ class ViewController extends Controller
     protected $sliderRepo;
     protected $developmentRepo;
     protected $systemRepo;
+    protected $documentRepo;
+    protected $yearRepo;
 
     public function __construct(
         CategoryRepositoryInterface $cateRepo,
@@ -36,6 +42,8 @@ class ViewController extends Controller
         SliderRepositoryInterface $sliderRepo,
         DevelopmentRepositoryInterface $developmentRepo,
         SystemRepositoryInterface $systemRepo,
+        DocumentRepositoryInterface $documentRepo,
+        YearRepositoryInterface $yearRepo,
     ) {
         $this->cateRepo = $cateRepo;
         $this->serviceRepo = $serviceRepo;
@@ -44,6 +52,8 @@ class ViewController extends Controller
         $this->sliderRepo = $sliderRepo;
         $this->developmentRepo = $developmentRepo;
         $this->systemRepo = $systemRepo;
+        $this->documentRepo = $documentRepo;
+        $this->yearRepo = $yearRepo;
     }
 
     public function get()
@@ -157,9 +167,26 @@ class ViewController extends Controller
         );
     }
 
-    public function shareholders()
+    public function shareholders(Request $request, ?string $subCate = '')
     {
-        $result = array_merge($this->get());
+        $selected_year = $request->input('nam_ph');
+        $categories = $this->cateRepo->getChildNew(3);
+        $years = $this->yearRepo->getAll()->sortByDesc('name');
+        $category = $this->cateRepo->getCateSlug($subCate);
+        $params = [
+            'category_id' => $category->id ?? '',
+            'year' => $selected_year,
+        ];
+        $documents = $this->documentRepo->getPaginatedListDocumentsByParams($params, 10, 'desc');
+
+        $attributes['categories'] = $categories;
+        $attributes['years'] = $years;
+        $attributes['selected_year'] = $selected_year;
+        $attributes['documents'] = $documents;
+
+        Session::put('shareholders', $subCate);
+
+        $result = array_merge($attributes, $this->get());
         return view(
             'view.quan-he-co-dong',
             $result
@@ -204,7 +231,8 @@ class ViewController extends Controller
     public function recruitment()
     {
         return view(
-            'view.tuyen-dung',
+            // 'view.tuyen-dung',
+            'view.erro',
             $this->get()
         );
     }

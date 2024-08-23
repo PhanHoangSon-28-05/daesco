@@ -24,6 +24,10 @@
         href='{{ URL::asset('view/style/themes/wecangroup-child/dist/css/style.css') }}' media='all' />
     <link rel='stylesheet' id='wecangroup-style-css'
         href='{{ URL::asset('view/style/themes/wecangroup-child/style.css') }}' media='all' />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+        type="text/css">
+    <link href="{{ URL::asset('admins/global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet"
+        type="text/css">
     <script src='{{ URL::asset('view/style/js/jquery/jquery.min.js') }}' id='jquery-core-js'></script>
     <script src='{{ URL::asset('view/style/js/jquery/jquery-migrate.min.js') }}' id='jquery-migrate-js'></script>
     <script src='{{ URL::asset('view/style/themes/wecangroup-child/dist/lib/slick/slick.min.js') }}' id='slick-js'></script>
@@ -66,7 +70,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
         </script>
- @yield('script')
+    @yield('script')
+    @stack('script')
 </body>
 
 </html>
