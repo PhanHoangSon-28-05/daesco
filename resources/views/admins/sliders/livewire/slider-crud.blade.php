@@ -76,14 +76,14 @@
 
                                     @if ($pic)
                                         @if (gettype($pic) == 'string')
-                                            <img src="{{ asset('storage/' . $pic) }}" class="p-0 mr-2 mb-1 col-4"
+                                            <img src="{{ asset('storages/' . $pic) }}" class="p-0 mr-2 mb-1 col-4"
                                                 id="image-preview">
                                         @else
                                             <img src="{{ asset($pic->temporaryUrl()) }}" class="p-0 mr-2 mb-1 col-4"
                                                 id="image-preview">
                                         @endif
                                     @endif
-                                    
+
                                     @error('pic')
                                         <span class="error">{{ $message }}</span>
                                     @enderror

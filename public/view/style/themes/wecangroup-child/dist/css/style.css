@@ -538,8 +538,6 @@ body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-l
     position: absolute;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 100%;
-    left: 0;
     min-height: 308px;
     border-radius: 0 0 10px 10px;
     opacity: 0;

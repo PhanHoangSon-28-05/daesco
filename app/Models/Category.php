@@ -23,7 +23,7 @@ class Category extends Model
         'name_en',
         'slug',
         'image',
-        'stt'
+        'stt',
     ];
 
     public function prod(): HasMany
@@ -41,7 +41,7 @@ class Category extends Model
         return $this->hasMany(Post::class, 'category_id');
     }
 
-    public function parent_category(): BelongsTo 
+    public function parent_category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }

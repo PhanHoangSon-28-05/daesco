@@ -58,10 +58,12 @@ class CategoryCrudNews extends Component
             $this->name_en = $this->category->name_en;
             $this->parent_id = $this->category->parent_id;
             $this->stt = $this->category->stt;
+            $this->pic = $this->category->image;
         } else {
             $this->name_vi = '';
             $this->name_en = '';
             $this->parent_id = 0;
+            $this->pic = '';
         }
     }
 

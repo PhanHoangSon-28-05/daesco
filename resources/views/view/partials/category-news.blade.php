@@ -5,7 +5,14 @@
 @endphp
 
 @foreach ($childCateNews as $value)
-    <div class="col-md-3 link-item">
+    <div
+        class="
+     @if ($count == 2) col-md-6
+@elseif ($count == 3)
+     col-md-4
+@elseif ($count > 4)
+    col-md-3 @endif
+    link-item">
         @if (Route::has($value->slug))
             <h3><a href="{{ URL::route($value->slug) }}">{{ $value->name_vi }}</a></h3>
         @else

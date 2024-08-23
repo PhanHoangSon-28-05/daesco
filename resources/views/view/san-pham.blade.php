@@ -61,7 +61,8 @@
                                                         TRITON</a></li>
                                             </ul>
                                         </li>
-                                        <li class="list-group-item"><a href="{{ URL::route('warehouse-business') }}">Dịch vụ cho
+                                        <li class="list-group-item"><a href="{{ URL::route('warehouse-business') }}">Dịch vụ
+                                                cho
                                                 thuê kho
                                                 bãi</a></li>
                                     </ul>
@@ -88,7 +89,7 @@
                                     </div>
                                 </div>
                             @endif
-                            @if (isset($service))
+                            @if (count($services) >= 1)
                                 <div class="">
                                     <h4 class="mb-4">Dịch vụ</h4>
                                     <div class="row product-list">

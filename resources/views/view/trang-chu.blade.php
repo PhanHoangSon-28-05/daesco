@@ -21,7 +21,7 @@
                         <p style="text-align: justify;">Công ty Cổ Phần Máy - Thiết Bị Dầu Khí Đà Nẵng, tiền
                             thân là Công ty Thiết bị Phụ tùng Đà Nẵng, trước đây là Công ty thành viên của Tổng
                             Công ty Máy và Phụ tùng (MachinoImport) thuộc Bộ Thương mại. </span></p>
-                        <a href=""><button class="effect-bnt">Trang Giới
+                        <a href="/about-us"><button class="effect-bnt">Trang Giới
                                 thiệu</button></a>
                     </div>
                 </div>
