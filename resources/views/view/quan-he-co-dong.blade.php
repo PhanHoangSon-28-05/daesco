@@ -16,7 +16,7 @@
             </div>
         </section>
         <section class="pv__relation--2">
-            <div class="relation-sidebar">
+            {{-- <div class="relation-sidebar">
                 <h3>Quan hệ cổ đông</h3>
                 <ul>
                     <li>
@@ -178,7 +178,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+            @include('view.erro')
         </section>
     </main>
 @endsection

@@ -88,121 +88,41 @@
                 <div id="first-tab-group" class="ab-content-tab">
                     <div id="tab1" class="ab-item-tab">
                         <div class="item-inner">
-                            <div class="item">
-                                <picture><img
-                                        src="https://pvmachino.vn/wp-content/themes/wecangroup-child/dist/images/featured.jpg"
-                                        alt="Ông Đặng Văn Thân" /></picture>
-                                <div class="description">
-                                    <h4>Ông Đặng Văn Thân</h4>
-                                    <p>Chủ tịch HĐQT</p>
+                            @for ($i = 1; $i < 5; $i++)
+                                <div class="item">
+                                    <picture><img src="{{ asset('storage/image-erro.png') }}" alt="" /></picture>
+                                    <div class="description">
+                                        <h4>Tên ?</h4>
+                                        <p>Chức vụ</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/09/TGD-scaled.jpg"
-                                        alt="Ông Phạm Văn Hiệp"></picture>
-                                <div class="description">
-                                    <h4>Ông Phạm Văn Hiệp</h4>
-                                    <p>Thành viên HĐQT, Tổng Giám đốc</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/09/thanh-vien-scaled.jpg"
-                                        alt="Ông Nguyễn Minh Tuấn"></picture>
-                                <div class="description">
-                                    <h4>Ông Nguyễn Minh Tuấn</h4>
-                                    <p>Thành viên HĐQT</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/10/A-Thang-scaled.jpg"
-                                        alt="Ông Vương Hoàng Thăng"></picture>
-                                <div class="description">
-                                    <h4>Ông Vương Hoàng Thăng</h4>
-                                    <p>Thành viên HĐQT</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/10/Chi-Diep-scaled.jpg"
-                                        alt="Bà Tống Thị Điệp"></picture>
-                                <div class="description">
-                                    <h4>Bà Tống Thị Điệp</h4>
-                                    <p>Thành viên HĐQT</p>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                     </div>
                     <div id="tab2" class="ab-item-tab">
                         <div class="item-inner">
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/09/TGD-scaled.jpg"
-                                        alt="Ông Phạm Văn Hiệp"></picture>
-                                <div class="description">
-                                    <h4>Ông Phạm Văn Hiệp</h4>
-                                    <p>Tổng Giám đốc</p>
+                            @for ($i = 1; $i < 5; $i++)
+                                <div class="item">
+                                    <picture><img src="{{ asset('storage/image-erro.png') }}" alt="" /></picture>
+                                    <div class="description">
+                                        <h4>Tên ?</h4>
+                                        <p>Chức vụ</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/09/2-scaled.jpg"
-                                        alt="Ông Phan Trung Nghĩa"></picture>
-                                <div class="description">
-                                    <h4>Ông Phan Trung Nghĩa</h4>
-                                    <p>Phó Tổng Giám đốc</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/09/1-scaled.jpg"
-                                        alt="Ông Nguyễn Hồng Hà"></picture>
-                                <div class="description">
-                                    <h4>Ông Nguyễn Hồng Hà</h4>
-                                    <p>Phó Tổng Giám đốc</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/09/3-scaled.jpg"
-                                        alt="Ông Chu Thành Nam"></picture>
-                                <div class="description">
-                                    <h4>Ông Chu Thành Nam</h4>
-                                    <p>Phó Tổng Giám đốc</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <picture><img
-                                        src="https://pvmachino.vn/wp-content/themes/wecangroup-child/dist/images/featured.jpg"
-                                        alt="Bà Phạm Thị Mỹ Hường" /></picture>
-                                <div class="description">
-                                    <h4>Bà Phạm Thị Mỹ Hường</h4>
-                                    <p>Phó Tổng Giám đốc</p>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                     </div>
                     <div id="tab3" class="ab-item-tab">
                         <div class="item-inner">
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/07/pvmachino14494.png"
-                                        alt="Bà Lê Thị Kiều Vân"></picture>
-                                <div class="description">
-                                    <h4>Bà Lê Thị Kiều Vân</h4>
-                                    <p>Trưởng BKS</p>
+                            @for ($i = 1; $i < 5; $i++)
+                                <div class="item">
+                                    <picture><img src="{{ asset('storage/image-erro.png') }}" alt="" /></picture>
+                                    <div class="description">
+                                        <h4>Tên ?</h4>
+                                        <p>Chức vụ</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <picture><img
-                                        src="https://pvmachino.vn/wp-content/uploads/2023/07/pvmachino14561-e1695804200276.png"
-                                        alt="Bà Phạm Thị Hải An"></picture>
-                                <div class="description">
-                                    <h4>Bà Phạm Thị Hải An</h4>
-                                    <p>Thành viên ban BKS</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <picture><img src="https://pvmachino.vn/wp-content/uploads/2023/07/pvmachino14603.png"
-                                        alt="Bà Hà Thị Thanh Hậu"></picture>
-                                <div class="description">
-                                    <h4>Bà Hà Thị Thanh Hậu</h4>
-                                    <p>Thành viên ban BKS</p>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                     </div>
                 </div>
@@ -210,12 +130,11 @@
         </section>
         <section id="about5" class="pv__about-8">
             <div class="container">
-                <h2 data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
-                    data-aos="fade-up" class="aos-init aos-animate">Sơ đồ tổ chức</h2>
+                <h2 data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200" data-aos="fade-up"
+                    class="aos-init aos-animate">Sơ đồ tổ chức</h2>
                 <picture data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
                     data-aos="fade-up" class="aos-init aos-animate"><img
-                        src="https://pvmachino.vn/wp-content/uploads/2023/09/z4626022372463_402ae7392f5f2fd895a2dc77f2f25add.jpg"
-                        alt="chart image"></picture>
+                        src="{{ URL::asset('images/tmp/so-do-to-chuc.png') }}" alt="chart image"></picture>
             </div>
         </section>
     </main>

@@ -18,7 +18,7 @@
         <section class="pv__recruitment--1">
             <div class="container">
                 <div class="content">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-8 col-xl-9 col-left">
                             <div class="list-recuit">
                                 <div class="re-item">
@@ -113,7 +113,8 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+                    @include('view.erro')
                 </div>
             </div>
         </section>

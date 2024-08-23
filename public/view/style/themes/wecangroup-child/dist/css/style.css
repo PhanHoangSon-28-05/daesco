@@ -28,9 +28,9 @@
     --f-extra-bold: Inter-ExtraBold;
     --white: #fff;
     --black: #1b1b1f;
-    --orange: #c72c27;
+    --orange: #7aff83;
     --blue: #224085;
-    --gradient: linear-gradient(89.84deg, #d02e2b 0.14%, #db9528 99.86%);
+    --gradient: linear-gradient(89.84deg, #10BD67 0.14%, #64f2ab 99.86%);
     --gradient-70: linear-gradient(89.84deg, #204286b3 0.14%, #c62c29b3 99.86%);
     --gradient-50: linear-gradient(89.84deg, #20428680, #c62c2980);
     /*langdingpage*/
@@ -38,7 +38,7 @@
     --f-ld-bold: Lora-Bold;
     --ld-green: #074432;
     --ld-yellow: #f6f0da;
-    --ld-gradient: linear-gradient(180deg, #e5a330 0%, #f7c975 100%);
+    --ld-gradient: linear-gradient(180deg, #10BD67 0%, #64f2ab 100%);
     --ld-gradient-1: linear-gradient(180deg, #0000 0%, #00000080 100%);
     /*end*/
 }
@@ -589,7 +589,7 @@ body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-l
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1 .drop-lv-2 .drop-lv-2--inner .col-left .list-item-link-2 .link-item ul li a:hover {
-    color: #d66929;
+    color: #10BD67;
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1 .drop-lv-2 .drop-lv-2--inner .col-right .img {
@@ -616,11 +616,11 @@ body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-l
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1:hover .m-link-1 a {
-    color: #d66929;
+    color: #10BD67;
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1:hover .m-link-1 i {
-    color: #d66929;
+    color: #10BD67;
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1:hover .drop-lv-2 {
@@ -2038,7 +2038,7 @@ body .pv__newroom--homepage .content .list-event .big-blog .blog a .info span {
     line-height: 20px;
     font-family: var(--f-bold);
     font-weight: 700;
-    color: #d66929;
+    color: #10BD67;
     margin: 0 0 15px 0;
 }
 
@@ -2805,7 +2805,7 @@ body .popup-inline .popup-wrapper .top button i {
 
 body .popup-inline .popup-wrapper .top h4 {
     display: block;
-    color: #d66929;
+    color: #10BD67;
     font-family: var(--f-bold);
     font-size: 1.5625rem;
     font-weight: 700;
@@ -3981,7 +3981,7 @@ body .pv-sustainablity-new--1 .content .list-news .col-new .item .info .cate {
 
 body .pv-sustainablity-new--1 .content .list-news .col-new .item .info .cate a {
     display: block;
-    color: #d66929;
+    color: #10BD67;
     font-size: 13px;
     line-height: 20px;
     font-family: var(--f-bold);
@@ -5249,7 +5249,7 @@ body .pv__about--7 .ab-content-tab .ab-item-tab.hidden-tab {
 }
 
 body .pv__about-8 {
-    margin: 120px auto 95px;
+    margin: 120px auto 0px;
     text-align: center;
 }
 
@@ -5268,7 +5268,7 @@ body .pv__about-8 h2 {
     color: rgba(0, 0, 0, 0);
     background: var(--gradient);
     -webkit-background-clip: text;
-    margin: 0 auto 50px;
+    margin: 0 auto 0px;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -6071,7 +6071,7 @@ body .pv__newroom--2 .content .list .item .v-card {
 body .pv__newroom--2 .content .list .item .v-card .cate {
     font-size: 13px;
     line-height: 20px;
-    color: #d66929;
+    color: #10BD67;
     font-family: var(--f-bold);
     margin: 0;
     display: block;
@@ -6263,7 +6263,7 @@ body .pv__newroom--2 .content .tab-blog .content-tab .item .blog .desc .v-card {
 body .pv__newroom--2 .content .tab-blog .content-tab .item .blog .desc .v-card .cate {
     font-size: 13px;
     line-height: 20px;
-    color: #d66929;
+    color: #10BD67;
     font-family: var(--f-bold);
     margin: 0;
     display: block;
@@ -6365,7 +6365,7 @@ body .pv__newroom--2 .content .tab-blog .content-tab .item .big-blog .desc {
 body .pv__newroom--2 .content .tab-blog .content-tab .item .big-blog .desc .cate {
     font-size: 13px;
     line-height: 20px;
-    color: #d66929;
+    color: #10BD67;
     font-family: var(--f-bold);
     margin-bottom: 5px;
     display: block;
@@ -6798,7 +6798,7 @@ body .pv__newroom--3 .content .list-blog .blog .description .v-card {
 body .pv__newroom--3 .content .list-blog .blog .description .v-card .cate {
     font-size: 13px;
     line-height: 20px;
-    color: #d66929;
+    color: #10BD67;
     font-family: var(--f-bold);
     margin: 0;
     display: block;
@@ -7898,7 +7898,7 @@ body .single-relate .content .related-content-wrapper .col-blog .blog .desc {
 body .single-relate .content .related-content-wrapper .col-blog .blog .desc .cate {
     display: block;
     margin-bottom: 10px;
-    color: #d66929;
+    color: #10BD67;
     font-size: 13px;
     line-height: 20px;
     font-family: var(--f-bold);
@@ -12407,7 +12407,7 @@ body .pv__activity--3 .content .list-relate .re-item .r-item a .desc {
 
 body .pv__activity--3 .content .list-relate .re-item .r-item a .desc span {
     display: block;
-    color: #d66929;
+    color: #10BD67;
     font-size: 13px;
     line-height: 20px;
     font-family: var(--f-bold);
@@ -12817,7 +12817,7 @@ body .pv__activity--6 .content .activity-slide .ac-item .text .text-content .col
     line-height: 24px;
     font-family: var(--f-bold);
     font-weight: 700;
-    color: #d66929;
+    color: #10BD67;
     margin: 0 0 5px 0;
 }
 
@@ -13190,7 +13190,7 @@ body .pv__activity--8 .content .list-item .i-item .item a .desc span {
     line-height: 20px;
     font-family: var(--f-bold);
     font-weight: 700;
-    color: #d66929;
+    color: #10BD67;
     margin: 0 0 10px 0;
 }
 
@@ -13348,7 +13348,7 @@ body .pv__activity--9 .content .activity-slide .ac-item .text .text-content .col
     line-height: 24px;
     font-family: var(--f-semi-bold);
     font-weight: 600;
-    color: #d66929;
+    color: #10BD67;
     margin: 0;
 }
 
@@ -13358,7 +13358,7 @@ body .pv__activity--9 .content .activity-slide .ac-item .text .text-content .col
     line-height: 20px;
     font-family: var(--f-bold);
     font-weight: 700;
-    color: #d66929;
+    color: #10BD67;
     margin: 0 0 5px 0;
 }
 
@@ -13983,7 +13983,7 @@ body .pv__news--1 .content .list-relate-new .big-blog .blog a .info span {
     line-height: 22px;
     font-family: var(--f-bold);
     font-weight: 700;
-    color: #d66929;
+    color: #10BD67;
     margin: 0 0 20px 0;
 }
 
@@ -14097,7 +14097,7 @@ body .pv__news--1 .content .list-relate-new .list-news .b-item .blog a .info spa
     line-height: 22px;
     font-family: var(--f-bold);
     font-weight: 700;
-    color: #d66929;
+    color: #10BD67;
     margin: 0 0 10px 0;
 }
 
