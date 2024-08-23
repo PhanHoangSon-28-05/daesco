@@ -75,6 +75,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route(\App\Models\Document::INDEX) }}" class="nav-link">
+                    <i class="fa-regular fa-file-lines"></i>
+                    Quản lý tài liệu
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route(\App\Models\Page::INDEX) }}" class="nav-link">
                     <i class="fa-regular fa-paste"></i>
                     Quản lý trang

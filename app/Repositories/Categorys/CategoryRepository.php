@@ -138,7 +138,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     public function getFieldOperation()
     {
         $get = $this->model->where('slug', 'field-operation')->get()->first();
-        $cate = $this->model->where('parent_id', $get->id)->get();
+        $cate = $this->model->where('parent_id', $get->id ?? -1)->get();
 
         return $cate;
     }
@@ -152,9 +152,14 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         return $cate;
     }
 
-    public function getCateSlugtoPost($slug)
+    public function getCateSlugtoPost($slug, $paginate = 6)
     {
-        $posts = $this->getCateSlug($slug)->posts()->orderBy('created_at', 'DESC')->paginate(6);
+        $posts = $this->getCateSlug($slug)->posts()->orderBy('created_at', 'DESC')->paginate($paginate);
         return $posts;
+    }
+
+    public function getCateWithChilds($id = 0) 
+    {
+        return $this->model->where('id', $id)->orWhere('parent_id', $id)->get();
     }
 }
