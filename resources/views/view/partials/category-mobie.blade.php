@@ -11,7 +11,13 @@
         <li>
             @foreach ($childCateNews as $value)
                 {{-- {{ URL::route(\App\Models\View::PAGE_CATE_PRO, $value->slug) }} --}}
-                <a href="">{{ $value->name_vi }}</a>
+                @if (Route::has($value->slug))
+                <a href="{{ URL::route($value->slug) }}">{{ $value->name_vi }}</a>
+                @elseif ($parentId == 3)
+                    <a href="{{ URL::route('shareholders', ['subCate' => $value->slug]) }}">{{ $value->name_vi }}</a>
+                @else
+                    {{ $value->name_vi }}
+                @endif
             @endforeach
         </li>
     </ul>

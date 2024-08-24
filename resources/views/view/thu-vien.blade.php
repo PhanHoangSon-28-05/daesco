@@ -11,7 +11,7 @@
     <!-- Content -->
     <main id="content-wrapper" class="main-v2">
         <section class="archive-library-1"
-            style="background-image: url('https://pvmachino.vn/wp-content/uploads/2023/07/LEE_0060-scaled.jpg');">
+            style="background-image: url('{{URL::asset('storages/'.$cate->image)}}');">
             <div class="container">
                 <div class="content">
                     <div class="title">

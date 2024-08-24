@@ -28,40 +28,46 @@
                     <div class="col-md-6">
                         <div class="f-menu">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="item">
-                                        <ul>
-                                            <li><a href="">Trang chủ</a></li>
-                                            <li><a href="">Quan hệ cổ đồng</a></li>
-                                            <li><a href="">Liên hệ</a></li>
+                                @php
+                                    $count = 0;
+                                @endphp
+                                @foreach ($cates as $cate)
+                                    @if ($count % 3 == 0)
+                                        <div class="col-md-6">
+                                            <div class="item">
+                                                <ul>
+                                    @endif
+                                    @if (Route::has($cate->slug))
+                                    <li> <a href="{{ URL::route($cate->slug) }}">{{ $cate->name_vi }} </a></li>
+                                    @else
+                                    <li><a href="">{{ $cate->name_vi}} </a></li>
+                                            @endif
+
+                                    @php
+                            $count += 1;
+                            @endphp
+                            @if ($count % 3 == 0)
                                         </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="item">
-                                        <ul>
-                                            <li><a href="">Giới thiệu</a></li>
-                                            <li><a href="">Tuyển dụng, Mời thầu</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        @endif
+                    @endforeach
             </div>
-            <div class="footer-bottom">
-                <div class="row">
-                    <div class="col-xl-7">
-                    </div>
-                    <div class="col-xl-5">
-                        <div class="right">
-                            <span>Copyright (c) 2018 Công ty Cổ Phần Máy &#8211; Thiết Bị Dầu Khí Đà Nẵng</span>
-                        </div>
-                    </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="row">
+            <div class="col-xl-7">
+            </div>
+            <div class="col-xl-5">
+                <div class="right">
+                    <span>Copyright (c) 2018 Công ty Cổ Phần Máy &#8211; Thiết Bị Dầu Khí Đà Nẵng</span>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </footer>

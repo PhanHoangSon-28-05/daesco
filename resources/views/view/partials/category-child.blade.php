@@ -6,8 +6,15 @@
 
 <ul>
     @foreach ($childCategories as $childCategory)
-        <li>
-            <a href="">{{ $childCategory->name_vi }}</a>
-        </li>
+        @if ($parentId == 57)
+            <li>
+                <a
+                    href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
+            </li>
+        @else
+            <li>
+                <a href="">{{ $childCategory->name_vi }}</a>
+            </li>
+        @endif
     @endforeach
 </ul>

@@ -10,7 +10,7 @@
     <!-- Content -->
     <main id="content-wrapper" class="activity main-v2">
         <section id="activity-1" class="pv__activity--1"
-            style="background-image: url('{{ URL::asset('view/style/images/o-to-MITSUBISHI/daesco-2.png') }}');">
+            style="background-image: url('{{URL::asset('storages/'.$cate->image)}}');">
             <div class="container">
                 <div class="content">
                     <div class="title">

@@ -10,15 +10,12 @@
     </div>
     <div class="drop-lv-2"
         style="background-image: url('{{ URL::asset('view/style/themes/wecangroup-child/dist/images/bg-menu.png') }}');
-       @if ($count == 2) width: 50%;
-    left: auto;
-@elseif ($count == 3)
+       @if ($parentId == 58)
+    left: 0;
     width: 75%;
-    left: 0;
-@elseif ($count > 4)
-   width: 100%;
-    left: 0;
-    @elseif ($count > 4) @endif
+    @else
+   width: 25%;
+    left: auto; @endif
         ">
         <div class="drop-lv-2--inner">
             <div class="row">

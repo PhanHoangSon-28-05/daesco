@@ -150,8 +150,11 @@
                 <ul class="menu-mobi">
                     @foreach ($cates as $cate)
                         <li class="">
-                            <a href="
-                                 ">{{ $cate->name_vi }}
+                              @if (Route::has($cate->slug))
+                                                <a href="{{ URL::route($cate->slug) }}">{{ $cate->name_vi }}
+                                            @else
+                                                <a href="">{{ $cate->name_vi }}
+                                            @endif
                                 @include('view.partials.category-mobie', [
                                     'parentId' => $cate->id,
                                 ])

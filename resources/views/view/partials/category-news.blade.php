@@ -5,16 +5,25 @@
 @endphp
 
 @foreach ($childCateNews as $value)
+    @php
+        $childCategories = $categoryRepo->getChildNew($value->id);
+    @endphp
     <div
         class="
-     @if ($count == 2) col-md-6
-@elseif ($count == 3)
-     col-md-4
-@elseif ($count > 4)
-    col-md-3 @endif
+        @if (count($childCategories) == 0 && $parentId != 58) col-md-12
+        @else
+            @if ($count == 2)
+            col-md-6
+            @elseif ($count == 3)
+            col-md-4
+            @elseif ($count > 4)
+            col-md-3 @endif
+        @endif
     link-item">
         @if (Route::has($value->slug))
             <h3><a href="{{ URL::route($value->slug) }}">{{ $value->name_vi }}</a></h3>
+        @elseif ($parentId == 3)
+            <h3><a href="{{ URL::route('shareholders', ['subCate' => $value->slug]) }}">{{ $value->name_vi }}</a></h3>
         @else
             <h3>{{ $value->name_vi }}</h3>
         @endif
