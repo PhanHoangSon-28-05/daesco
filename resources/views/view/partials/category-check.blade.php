@@ -9,13 +9,12 @@
     <i class="fas fa-caret-down"></i>
     </div>
     <div class="drop-lv-2"
-        style="background-image: url('{{ URL::asset('view/style/themes/wecangroup-child/dist/images/bg-menu.png') }}');
-       @if ($parentId == 58)
-    left: 0;
-    width: 75%;
+        style="background-color: #95f273ca; left: 15%;
+       @if ($parentId == 58) width: 75%;
     @else
    width: 25%;
-    left: auto; @endif
+    left: auto;
+    margin-left: -5% @endif
         ">
         <div class="drop-lv-2--inner">
             <div class="row">
