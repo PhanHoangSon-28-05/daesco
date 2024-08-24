@@ -8,7 +8,7 @@
     <div class="col-md-3 link-item">
         @if (Route::has($value->slug))
             <h3><a href="{{ URL::route($value->slug) }}">{{ $value->name_vi }}</a></h3>
-        @elseif ($parentId == 3)
+        @elseif (in_array($cate->slug, ['quan-he-co-dong', 'shareholders']))
             <h3><a href="{{ URL::route('shareholders', ['subCate' => $value->slug]) }}">{{ $value->name_vi }}</a></h3>
         @else
             <h3>{{ $value->name_vi }}</h3>

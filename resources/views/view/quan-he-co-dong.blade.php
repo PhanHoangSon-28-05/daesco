@@ -78,7 +78,8 @@ use Carbon\Carbon;
                                         </td>
                                         <td class="text-center">{{ $document->download_count ?? 0 }}</td>
                                         <td class="text-center">
-                                            <a class="download_tailieu" data-id="{{ $document->id }}" href="{{ Storage::url($document->file) }}">
+                                            {{-- <a class="download_tailieu" data-id="{{ $document->id }}" href="{{ Storage::url($document->file) }}"> --}}
+                                            <a class="download_tailieu" data-id="{{ $document->id }}" href="{{ URL::asset('storages/'.$document->file) }}">
                                             <i class="icon-download4"></i>Download</a>
                                         </td>
                                     </tr>

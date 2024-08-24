@@ -67,6 +67,7 @@ class PageCrud extends Component
             $this->pic = '';
         }
 
+        $this->dispatch('setDetailEditorContent');
         $this->resetErrorBag();
     }
 
@@ -117,7 +118,20 @@ class PageCrud extends Component
 
     public function render(CategoryRepositoryInterface $categoryRepo)
     {
+        if ($this->pic) {
+            if (gettype($this->pic) == 'string') {
+                $cover_img = 'storage/' . $this->pic;
+            } else {
+                $cover_img = $this->pic->temporaryUrl();
+            }
+        } else {
+            $cover_img = 'images/placeholder/placeholder.png';
+        }
+
         $categories = $categoryRepo->getChildNew(0);
-        return view('admins.pages.livewire.page-crud', ['categories' => $categories]);
+        return view('admins.pages.livewire.page-crud', [
+            'categories' => $categories,
+            'cover_img' => $cover_img,
+        ]);
     }
 }

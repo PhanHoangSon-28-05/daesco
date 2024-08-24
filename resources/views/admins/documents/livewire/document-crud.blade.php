@@ -86,7 +86,6 @@
                     @else
                     <button type="submit" class="btn btn-primary" form="documentCrudForm">Lưu</button>
                     @endif
-                    </button>
                 </div>
             </div>
         </div>

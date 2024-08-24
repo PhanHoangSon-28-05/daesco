@@ -81,6 +81,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route(\App\Models\Recruit::INDEX) }}" class="nav-link">
+                    <i class="fa-solid fa-user-tie"></i>
+                    Quản lý tuyển dụng
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route(\App\Models\Page::INDEX) }}" class="nav-link">
                     <i class="fa-regular fa-paste"></i>
                     Quản lý trang
