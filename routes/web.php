@@ -11,6 +11,7 @@ use App\Models\Year;
 use App\Models\Slider;
 use App\Models\System;
 use App\Models\Product;
+use App\Models\Recruit;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\Document;
@@ -32,6 +33,7 @@ use App\Http\Controllers\Admins\LogoutController;
 use App\Http\Controllers\Admins\SliderController;
 use App\Http\Controllers\Admins\SystemController;
 use App\Http\Controllers\Admins\ProductController;
+use App\Http\Controllers\Admins\RecruitController;
 use App\Http\Controllers\Admins\ServiceController;
 use App\Http\Controllers\Admins\CategoryController;
 use App\Http\Controllers\Admins\DocumentController;
@@ -55,6 +57,7 @@ Route::get('/san-pham-mitshubishi', [ViewController::class, 'mitshubishi'])->nam
 Route::get('/dich-vu-bai', [ViewController::class, 'warehouse'])->name('warehouse-business');
 Route::get('/quan-he-co-dong/{subCate?}', [ViewController::class, 'shareholders'])->name('shareholders');
 Route::get('/tuyen-dung-moi-thau', [ViewController::class, 'recruitment'])->name('recruitment');
+Route::get('/tuyen-dung-moi-thau/{slugDetail}', [ViewController::class, 'recruitmentDetail'])->name('recruitment.detail');
 Route::get('/tin-tuc-su-kien', [ViewController::class, 'companyrRgulationsRegulations'])->name('company-regulations-and-regulations');
 Route::get('/tin-tuc-su-kien/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
 Route::get('/truyen-thong', [ViewController::class, 'library'])->name('library');
@@ -102,6 +105,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('developments', [DevelopmentController::class, 'index'])->name(Development::INDEX);
     Route::get('systems', [SystemController::class, 'index'])->name(System::INDEX);
     Route::get('documents', [DocumentController::class, 'index'])->name(Document::INDEX);
+    Route::get('recruits', [RecruitController::class, 'index'])->name(Recruit::INDEX);
 
     Route::get('filemanager?', function () {
         return view('admins.layouts.filemanager');

@@ -77,6 +77,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Years\YearRepositoryInterface::class,
             \App\Repositories\Years\YearRepository::class
         );
+        $this->app->singleton(
+            \App\Repositories\Recruits\RecruitRepositoryInterface::class,
+            \App\Repositories\Recruits\RecruitRepository::class
+        );
     }
 
     /**

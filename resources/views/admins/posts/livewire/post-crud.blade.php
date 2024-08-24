@@ -2,7 +2,7 @@
 @endpush
 <!-- Modal -->
 <div class="">
-    <div class="modal fade" id="crudPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    <div class="modal fade" id="crudPostModal" data-focus="false" tabindex="-1" aria-hidden="true"
         wire:ignore.self>
         <div class="modal-dialog {{ $action != 'delete' ? 'modal-xl' : '' }} modal-dialog-scrollable" role="document">
             <div class="container py-4" wire:loading wire:target="modalSetup">
@@ -67,7 +67,8 @@
                                             <div class="row">
                                                 <label class="crud-label p-0 mt-2 mb-0">Mô tả:</label>
                                                 <div class="input-group">
-                                                    <textarea type="text" class="form-control crud-input" wire:model.lazy="description_vi"></textarea>
+                                                    <textarea type="text" class="form-control crud-input" rows="3" style="resize:none"
+                                                    wire:model.lazy="description_vi"></textarea>
                                                 </div>
                                                 @error('description_vi')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -151,7 +152,8 @@
                                             <div class="row">
                                                 <label class="crud-label p-0 mt-2 mb-0">Description:</label>
                                                 <div class="input-group">
-                                                    <textarea type="text" class="form-control crud-input" wire:model.lazy="description_en"></textarea>
+                                                    <textarea type="text" class="form-control crud-input" rows="3" style="resize:none"
+                                                    wire:model.lazy="description_en"></textarea>
                                                 </div>
                                                 @error('description_en')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -192,7 +194,7 @@
                                         <div class="col-1"></div>
                                         <div class="col-4">
                                             <div class="row">
-                                                <label class="crud-label p-0 mt-2 mb-0">Ảnh bìa:</label>
+                                                <label class="crud-label p-0 mt-2 mb-0">Cover Image:</label>
                                                 <div class="input-group">
                                                     <input type="file" wire:model="pic" hidden id="cover_img">
                                                     <label for="cover_img" class="w-100 border shadow mt-2">
