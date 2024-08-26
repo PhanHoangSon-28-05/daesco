@@ -30,8 +30,9 @@ class DocumentRepository extends BaseRepository implements DocumentRepositoryInt
         }
 
         if ($year != '') {
-            $documents->whereDate('created_at', '>=', "{$year}-1-1 00:00:00")
-            ->whereDate('created_at', '<=', "{$year}-12-31 23:59:59");
+            $documents->whereYear('created_at', $year);
+            // $documents->whereDate('created_at', '>=', "{$year}-1-1 00:00:00")
+            // ->whereDate('created_at', '<=', "{$year}-12-31 23:59:59");
         }
 
         return $documents->paginate($paginate);

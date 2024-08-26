@@ -7,8 +7,8 @@
         </button>
     </div>
     {{-- @livewire('search') --}}
-    <div class="d-flex justify-content-center">
-        <div class="col-sm-5 my-1">
+    <div class="row justify-content-end p-2 m-0">
+        <div class="col-sm-5">
             <label class="sr-only" for="myInput">Username</label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -17,6 +17,17 @@
                 </div>
                 <input type="text" class="form-control" id="myInput" wire:model.live="name"
                     placeholder="Search for names..">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row justify-content-end">
+                <div class="col-form-label"><i class="icon-filter3 mr-1"></i>Năm</div>
+                <select class="form-control w-auto ml-1" wire:model.lazy="selected_year">
+                    <option value="">Tất cả</option>
+                    @foreach ($years as $year)
+                    <option value="{{ $year->name }}">{{ $year->name }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
     </div>

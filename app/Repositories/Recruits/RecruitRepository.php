@@ -20,6 +20,7 @@ class RecruitRepository extends BaseRepository implements RecruitRepositoryInter
         $title_vi = $params['title_vi'] ?? '';
         $title_en = $params['title_en'] ?? '';
         $expired_at = $params['expired_at'] ?? '';
+        $year = $params['year'] ?? '';
 
         if ($title_vi != '') {
             $recruits->whereLike('title_vi', '%'.$title_vi.'%');
@@ -31,6 +32,10 @@ class RecruitRepository extends BaseRepository implements RecruitRepositoryInter
 
         if ($expired_at != '') {
             $recruits->whereDate('expired_at', '>=', $expired_at);
+        }
+
+        if ($year != '') {
+            $recruits->whereYear('created_at', $year);
         }
 
         return $recruits->paginate($paginate);

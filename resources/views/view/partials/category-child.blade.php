@@ -6,7 +6,7 @@
 @endphp
 
 <ul>
-    @if (in_array($subCate->slug, ['tong-quan', 'about-us']))
+    {{-- @if (in_array($subCate->slug, ['tong-quan', 'about-us']))
     <li>
         <a href="{{ URL::route('about-us', '#gt1') }}">Giới thiệu chung</a>
     </li>
@@ -27,23 +27,19 @@
         <a href="{{ URL::route('development-apparatus', '#about5') }}">Hệ thống đại lý</a>
     </li>
     @else
-    @foreach ($childCategories as $childCategory)
-<<<<<<< HEAD
-        @if ($parentId == 57)
-            <li>
-                <a
-                    href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
-            </li>
-        @else
-            <li>
-                <a href="">{{ $childCategory->name_vi }}</a>
-            </li>
-        @endif
-=======
     <li>
         <a href="#!">{{ $childCategory->name_vi }}</a>
     </li>
->>>>>>> 4b7772c76ffb598e79cb5b5c8e789360cf21d5ed
-    @endforeach
+    @endif --}}
+    @foreach ($childCategories as $childCategory)
+    @if (in_array($parentId, [57, 74]))
+    <li>
+        <a href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
+    </li>
+    @else
+    <li>
+        <a href="">{{ $childCategory->name_vi }}</a>
+    </li>
     @endif
+    @endforeach
 </ul>
