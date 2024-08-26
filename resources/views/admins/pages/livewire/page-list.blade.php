@@ -32,31 +32,31 @@
                 </tr>
             </thead>
             <tbody id="myTable">
-                @if ()
-                @foreach ($pages as $page)
-                <tr class="border border-secondary">
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $page->name_vi }}</td>
-                    <td>{{ $page->description_vi }}</td>
-                    <td class="w-50"><img src="{{ asset('storages/' . $page->pic) }}" class="w-25"
-                            alt=""></td>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                            data-target="#crudPageModal" data-page-id={{ $page->id }}><i
-                                class="fa-solid fa-pen"></i></button>
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                            data-target="#crudPageModal" data-page-id={{ -$page->id }}><i
-                                class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-                @endforeach    
+                @if ($pages)
+                    @foreach ($pages as $page)
+                        <tr class="border border-secondary">
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $page->name_vi }}</td>
+                            <td>{{ $page->description_vi }}</td>
+                            <td class="w-50"><img src="{{ asset('storages/' . $page->pic) }}" class="w-25"
+                                    alt=""></td>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#crudPageModal" data-page-id={{ $page->id }}><i
+                                        class="fa-solid fa-pen"></i></button>
+                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                    data-target="#crudPageModal" data-page-id={{ -$page->id }}><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    @endforeach
                 @else
-                <tr class="border border-secondary">
-                    <td class="text-center" colspan="5">(Không tìm thấy trang)</td>
-                </tr>
+                    <tr class="border border-secondary">
+                        <td class="text-center" colspan="5">(Không tìm thấy trang)</td>
+                    </tr>
                 @endif
-                
+
             </tbody>
         </table>
     </div>
