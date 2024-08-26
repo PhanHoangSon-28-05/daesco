@@ -63,11 +63,11 @@
                 </tr>
                 @endforeach    
                 @else
-                <tr class="border border-secondary">
-                    <td class="text-center" colspan="5">(Không tìm thấy trang)</td>
-                </tr>
+                    <tr class="border border-secondary">
+                        <td class="text-center" colspan="5">(Không tìm thấy trang)</td>
+                    </tr>
                 @endif
-                
+
             </tbody>
         </table>
     </div>
