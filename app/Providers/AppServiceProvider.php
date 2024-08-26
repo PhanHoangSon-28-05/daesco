@@ -81,6 +81,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Organizational\OrganizationalRepositoryInterface::class,
             \App\Repositories\Organizational\OrganizationalRepository::class
         );
+        $this->app->singleton(
+            \App\Repositories\Recruits\RecruitRepositoryInterface::class,
+            \App\Repositories\Recruits\RecruitRepository::class
+        );
     }
 
     /**

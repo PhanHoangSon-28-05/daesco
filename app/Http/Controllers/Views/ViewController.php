@@ -18,6 +18,7 @@ use App\Repositories\Years\YearRepositoryInterface;
 use App\Repositories\Sliders\SliderRepositoryInterface;
 use App\Repositories\Systems\SystemRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Recruits\RecruitRepositoryInterface;
 use App\Repositories\Services\ServiceRepositoryInterface;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use App\Repositories\Documents\DocumentRepositoryInterface;
@@ -36,6 +37,7 @@ class ViewController extends Controller
     protected $documentRepo;
     protected $yearRepo;
     protected $organizationaRepo;
+    protected $recruitRepo;
 
     public function __construct(
         CategoryRepositoryInterface $cateRepo,
@@ -47,7 +49,8 @@ class ViewController extends Controller
         SystemRepositoryInterface $systemRepo,
         DocumentRepositoryInterface $documentRepo,
         YearRepositoryInterface $yearRepo,
-        OrganizationalRepositoryInterface $organizationaRepo
+        OrganizationalRepositoryInterface $organizationaRepo,
+        RecruitRepositoryInterface $recruitRepo,
     ) {
         $this->cateRepo = $cateRepo;
         $this->serviceRepo = $serviceRepo;
@@ -59,6 +62,7 @@ class ViewController extends Controller
         $this->documentRepo = $documentRepo;
         $this->yearRepo = $yearRepo;
         $this->organizationaRepo = $organizationaRepo;
+        $this->recruitRepo = $recruitRepo;
     }
 
     public function get()
@@ -255,11 +259,28 @@ class ViewController extends Controller
 
     public function recruitment()
     {
+        $params = ['expired_at' => today()->format('Y-m-d')];
+        $recruits = $this->recruitRepo->getPaginatedListRecruitsByParams($params, 2, 'desc');
+
+        $attributes['recruits'] = $recruits;
+
+        $result = array_merge($attributes, $this->get());
         return view(
-            // 'view.tuyen-dung',
-            'view.erro',
-            $this->get()
+            'view.tuyen-dung',
+            $result
         );
+    }
+
+    public function recruitmentDetail($slugDetail)
+    {
+        $recruit = $this->recruitRepo->getRecruitBySlug($slugDetail);
+        if (!$recruit) return abort(404);
+
+        $attributes['recruit'] = $recruit;
+
+        $result = array_merge($attributes, $this->get());
+
+        return view('view.chi-tiet-tuyen-dung', $result);
     }
 
     public function contact()

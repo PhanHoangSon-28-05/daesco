@@ -60,6 +60,7 @@ class ServiceCrud extends Component
             $this->slug_sections = '';
         }
 
+        $this->dispatch('setDetailEditorContent');
         $this->resetErrorBag();
     }
 
@@ -105,6 +106,16 @@ class ServiceCrud extends Component
 
     public function render()
     {
-        return view('admins.services.livewire.service-crud');
+        if ($this->pic) {
+            if (gettype($this->pic) == 'string') {
+                $cover_img = 'storage/' . $this->pic;
+            } else {
+                $cover_img = $this->pic->temporaryUrl();
+            }
+        } else {
+            $cover_img = 'images/placeholder/placeholder.png';
+        }
+
+        return view('admins.services.livewire.service-crud', ['cover_img' => $cover_img]);
     }
 }

@@ -18,22 +18,26 @@
         <section class="pv__recruitment--1">
             <div class="container">
                 <div class="content">
-                    {{-- <div class="row">
-                        <div class="col-lg-8 col-xl-9 col-left">
+                    <div class="row">
+                        <div class="col-lg-8 col-left">
+                            @if ($recruits->count() > 0)
+                            @foreach ($recruits as $recruit)
                             <div class="list-recuit">
                                 <div class="re-item">
                                     <div class="re-top">
                                         <div class="top-left">
-                                            <h3>Tuyển dụng Nhân viên hành chính nhân sự</h3>
-                                            <p>Nơi làm việc: Đà Nẵng</p>
-                                            <p>Vị trí: Nhân viên hành chính nhân sự</p>
-                                            <p>Số lượng tuyển: 1</p>
+                                            <h3>{{ $recruit->title_vi ?? '' }}</h3>
+                                            <p>Nơi làm việc: {{ $recruit->workplace_vi ?? '' }}</p>
+                                            <p>Vị trí: {{ $recruit->position_vi ?? '' }}</p>
+                                            <p>Số lượng tuyển: {{ $recruit->amount }}</p>
                                             <p>Ứng viên đủ điều kiện và quan tâm đến vị trí tuyển dụng gửi hồ sơ
-                                                scan qua email: <a
-                                                    href="mailto:hoaithuongdl194@gmail.com">hoaithuongdl194@gmail.com</a>
-                                                <strong><em>trước ngày 20/4/2024</em></strong>. Sau khi kiểm tra
-                                                hồ sơ đạt yêu cầu, Công ty sẽ liên hệ phỏng vấn. Thời gian đi
-                                                làm ngay sau khi được tuyển dụng.
+                                                scan qua email: 
+                                                <a href="{{ $recruit->email ?? '#!' }}">{{ $recruit->email }}</a>
+                                                <strong><em>trước ngày 
+                                                {{ Carbon\Carbon::parse($recruit->expired_at ?? '1-1-1999')->format('d/m/Y') }}
+                                                </em></strong>. 
+                                                Sau khi kiểm tra hồ sơ đạt yêu cầu, Công ty sẽ liên hệ phỏng vấn. 
+                                                Thời gian đi làm ngay sau khi được tuyển dụng.
                                             </p>
                                         </div>
                                         <div class="top-right">
@@ -42,79 +46,57 @@
                                     </div>
                                     <div class="re-bottom">
                                         <div class="bottom-left">
-                                            <button>Ngày hết hạn: 20/04/2024</button>
+                                            <button>
+                                                Ngày hết hạn: 
+                                                {{ Carbon\Carbon::parse($recruit->expired_at ?? '1-1-1999')->format('d/m/Y') }}
+                                            </button>
                                         </div>
                                         <div class="bottom-right">
-                                            <a href="tuyen-dung.html7665/"><button>Chi
-                                                    tiết</button></a>
+                                            <a href="{{ URL::route('recruitment.detail', ['slugDetail' => $recruit->slug]) }}">
+                                                <button>Chi tiết</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="list-recuit">
-                                <div class="re-item">
-                                    <div class="re-top">
-                                        <div class="top-left">
-                                            <h3>Tuyển dụng Trưởng Phòng dịch vụ ô tô</h3>
-                                            <p>Nơi làm việc: Đà Nẵng</p>
-                                            <p>Vị trí : Trưởng Phòng dịch vụ ô tô</p>
-                                            <p>Số lượng tuyển: 1</p>
-                                            <p>Ứng viên đủ điều kiện và quan tâm đến vị trí tuyển dụng gửi hồ sơ
-                                                scan qua email: <a
-                                                    href="mailto:hoaithuongdl194@gmail.com">hoaithuongdl194@gmail.com</a>
-                                                <strong><em>trước ngày 20/08/2018</em></strong>. Sau khi kiểm
-                                                tra
-                                                hồ sơ đạt yêu cầu, Công ty sẽ liên hệ phỏng vấn. Thời gian đi
-                                                làm ngay sau khi được tuyển dụng.
-                                            </p>
-                                        </div>
-                                        <div class="top-right">
-                                            <span>Đang tuyển</span>
-                                        </div>
-                                    </div>
-                                    <div class="re-bottom">
-                                        <div class="bottom-left">
-                                            <button>Ngày hết hạn: 20/08/2018</button>
-                                        </div>
-                                        <div class="bottom-right">
-                                            <a href="tuyen-dung.htmltuyen-dung-truong-kenh-du-an-chu-dau-tu/"><button>Chi
-                                                    tiết</button></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            @endforeach
+                            @else
+                            <div class="row">
+                                <h1 class="w-100 text-center">(Không tìm thấy bài viết)</h1>
                             </div>
+                            @endif
+                            {!! $recruits->links() !!}
                         </div>
-                        <div class="col-lg-4 col-xl-3 col-right">
+                        <div class="col-lg-4 col-right">
                             <div class="right-item nav-right">
+                                @php($info = App\Models\Footer::first())
                                 <h2>Thông tin</h2>
                                 <ul>
                                     <li>
                                         <a href="#">
                                             <figure><img src="{{ URL::asset('view/style/uploads/2023/07/phone-1.png') }}"
                                                     alt="icon contact"></figure>
-                                            <span>(84-236) 3821637 - 3823487</span>
+                                            <span>{{ $info->hotline }}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="mailto:thanhpvmdaesco@gmail.com">
                                             <figure><img src="{{ URL::asset('view/style/uploads/2023/07/mail-1.png') }}"
                                                     alt="icon contact"></figure>
-                                            <span>thanhpvmdaesco@gmail.com</span>
+                                            <span>{{ $info->email }}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
                                             <figure><img src="{{ URL::asset('view/style/uploads/2023/07/map-4.png') }}"
                                                     alt="icon contact"></figure>
-                                            <span>51 Phan Đăng Lưu, Hòa Cường Nam, Quận Hải Châu, TP. Đà
-                                                Nẵng.</span>
+                                            <span>{{ $info->address }}</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    </div> --}}
-                    @include('view.erro')
+                    </div>
                 </div>
             </div>
         </section>
