@@ -146,4 +146,22 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
         return $modelProduct->delete();
     }
+    
+    public function getListProductsByParams($params, $sort = 'asc')
+    {
+        $products = $this->model->orderBy('created_at', $sort);
+
+        $title = $params['title'] ?? '';
+        $year = $params['year'] ?? '';
+
+        if ($title != '') {
+            $products->whereLike('title_vi', '%'.$title.'%');
+        }
+
+        if ($year != '') {
+            $products->whereYear('created_at', $year);
+        }
+
+        return $products->get();
+    }
 }

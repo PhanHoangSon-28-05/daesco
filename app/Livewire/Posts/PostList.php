@@ -2,15 +2,18 @@
 
 namespace App\Livewire\Posts;
 
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\Year;
 use Livewire\Component;
+use App\Models\Category;
 use Livewire\WithPagination;
 
 class PostList extends Component
 {
     use WithPagination;
 
+    public $years;
+    public $selected_year;
     public $cates;
     public $name;
     public $category_id;
@@ -21,14 +24,11 @@ class PostList extends Component
 
     public function mount() {
         $this->cates = Category::where('parent_id', '<>', 0)->get();
+        $this->years = Year::orderBy('name', 'desc')->get();
     }
 
-    public function updatedName() {
-        $this->resetPage();
-    }
-
-    public function updatedCategoryId() {
-        $this->resetPage();
+    public function updated($field) {
+        if (in_array($field, ['name', 'category_id', 'selected_year'])) $this->resetPage();
     }
 
     public function getListPost() {
@@ -40,6 +40,10 @@ class PostList extends Component
 
         if (isset($this->category_id) && $this->category_id != '') {
             $posts->where('category_id', $this->category_id);
+        }
+
+        if (isset($this->selected_year) && $this->selected_year != '') {
+            $posts->whereYear('created_at', $this->selected_year);
         }
 
         return $posts->paginate(10);
