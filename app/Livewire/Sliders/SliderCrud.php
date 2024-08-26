@@ -61,7 +61,7 @@ class SliderCrud extends Component
     {
         $this->validate();
 
-        $sliderRepo->updateslider($this->slider, $this->stt, $this->pic);
+        $sliderRepo->updateSlider($this->slider, $this->stt, $this->pic);
 
         $this->dispatch('refreshList')->to('sliders.slider-list');
         $this->dispatch('closeCrudSlider');

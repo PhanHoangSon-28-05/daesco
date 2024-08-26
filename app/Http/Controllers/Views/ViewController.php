@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\MenuOrganizational;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Post\PostRepositoryInterface;
@@ -21,6 +22,7 @@ use App\Repositories\Services\ServiceRepositoryInterface;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use App\Repositories\Documents\DocumentRepositoryInterface;
 use App\Repositories\Developments\DevelopmentRepositoryInterface;
+use App\Repositories\Organizational\OrganizationalRepositoryInterface;
 
 class ViewController extends Controller
 {
@@ -33,6 +35,7 @@ class ViewController extends Controller
     protected $systemRepo;
     protected $documentRepo;
     protected $yearRepo;
+    protected $organizationaRepo;
 
     public function __construct(
         CategoryRepositoryInterface $cateRepo,
@@ -44,6 +47,7 @@ class ViewController extends Controller
         SystemRepositoryInterface $systemRepo,
         DocumentRepositoryInterface $documentRepo,
         YearRepositoryInterface $yearRepo,
+        OrganizationalRepositoryInterface $organizationaRepo
     ) {
         $this->cateRepo = $cateRepo;
         $this->serviceRepo = $serviceRepo;
@@ -54,6 +58,7 @@ class ViewController extends Controller
         $this->systemRepo = $systemRepo;
         $this->documentRepo = $documentRepo;
         $this->yearRepo = $yearRepo;
+        $this->organizationaRepo = $organizationaRepo;
     }
 
     public function get()
@@ -120,8 +125,16 @@ class ViewController extends Controller
         $developments = $this->developmentRepo->getAsc();
         $systems = $this->systemRepo->getAll();
 
+        $menuOrgan = MenuOrganizational::all();
+
+        foreach ($menuOrgan as $value) {
+            $organizational[$value->id] = $this->organizationaRepo->parentID($value->id);
+            $attributes['organizational' . $value->id] = $organizational[$value->id];
+        }
+
         $attributes['developments'] = $developments;
         $attributes['systems'] = $systems;
+        $attributes['menuOrgan'] = $menuOrgan;
         $result = array_merge($attributes, $this->get());
         return view(
             'view.bo-may-phat-trien',

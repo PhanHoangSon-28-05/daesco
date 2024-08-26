@@ -116,14 +116,6 @@
                 $('#crudSliderModal').modal('hide')
             })
 
-            let input = document.getElementById('file-input');
-            input.addEventListener('change', (e) => {
-                let image = document.getElementById('img-preview');
-                if (e.target.files.length) {
-                    let src = URL.createObjectURL(e.target.files[0]);
-                    image.src = src;
-                }
-            });
         })
     </script>
 @endpush

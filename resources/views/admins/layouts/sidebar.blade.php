@@ -105,6 +105,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route(\App\Models\Organizational::INDEX) }}" class="nav-link">
+                    <i class="fa-solid fa-sitemap"></i>
+                    Quản lý cơ cấu tổ chức
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route(\App\Models\System::INDEX) }}" class="nav-link">
                     <i class="fa-solid fa-house-flag"></i>
                     Quản lý hệ thống

@@ -587,7 +587,7 @@ body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-l
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1 .drop-lv-2 .drop-lv-2--inner .col-left .list-item-link-2 .link-item ul li a:hover {
-    color: #10BD67;
+    color: #0021f5 ;
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1 .drop-lv-2 .drop-lv-2--inner .col-right .img {
@@ -12454,7 +12454,8 @@ body .pv__activity--4 .content .title h2 {
     line-height: 52px;
     font-family: var(--f-bold);
     font-weight: 700;
-    background: linear-gradient(89.84deg, #d02e2b 0.14%, #db9528 99.86%);
+    /* background: linear-gradient(89.84deg, #d02e2b 0.14%, #db9528 99.86%); */
+    background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

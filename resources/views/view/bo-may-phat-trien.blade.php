@@ -79,14 +79,44 @@
                     <div data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
                         data-aos="fade-up" class="aos-init aos-animate ab-title-tab">
                         <ul class="tabs-partner clearfix" data-tabgroup="first-tab-group">
-                            <li rel="#tab1" class="active-tab">HỘI ĐỒNG QUẢN TRỊ</li>
-                            <li rel="#tab2">BAN TỔNG GIÁM ĐỐC</li>
-                            <li rel="#tab3">BAN KIỂM SOÁT</li>
+                            @php
+                                $count = 0;
+                            @endphp
+                            @foreach ($menuOrgan as $value)
+                                <li rel="#tab{{ $value->id }}" class="{{ $count == 0 ? 'active-tab' : '' }}">
+                                    {{ $value->name_vi }}</li>
+                                @php
+                                    $count += 1;
+                                @endphp
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div id="first-tab-group" class="ab-content-tab">
-                    <div id="tab1" class="ab-item-tab">
+                    @foreach ($menuOrgan as $value)
+                        <div id="tab{{ $value->id }}" class="ab-item-tab">
+                            <div class="item-inner">
+                                @foreach ($value->organizationals as $organizational)
+                                    <div class="item">
+                                        <picture>
+                                            @if ($organizational->pic)
+                                                <img src="{{ URL::asset('storages/' . $organizational->pic) }}"
+                                                    alt="{{ $organizational->name_vi }}">
+                                            @else
+                                                <img src="{{ asset('storage/image-erro.png') }}"
+                                                    alt="{{ $organizational->name_vi }}">
+                                            @endif
+                                        </picture>
+                                        <div class="description">
+                                            <h4>{{ $organizational->name_vi }}</h4>
+                                            <p>{{ $organizational->position_vi }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- <div id="tab1" class="ab-item-tab">
                         <div class="item-inner">
                             @for ($i = 1; $i < 5; $i++)
                                 <div class="item">
@@ -124,7 +154,7 @@
                                 </div>
                             @endfor
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>

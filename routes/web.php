@@ -38,6 +38,8 @@ use App\Http\Controllers\Admins\DocumentController;
 use App\Http\Controllers\Admins\RegisterController;
 use App\Http\Controllers\Admins\DevelopmentController;
 use App\Http\Controllers\Admins\InfoProductController;
+use App\Http\Controllers\Admins\OrganizationalController;
+use App\Models\Organizational;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
 
@@ -102,6 +104,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('developments', [DevelopmentController::class, 'index'])->name(Development::INDEX);
     Route::get('systems', [SystemController::class, 'index'])->name(System::INDEX);
     Route::get('documents', [DocumentController::class, 'index'])->name(Document::INDEX);
+    Route::get('organizationals', [OrganizationalController::class, 'index'])->name(Organizational::INDEX);
 
     Route::get('filemanager?', function () {
         return view('admins.layouts.filemanager');

@@ -77,6 +77,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Years\YearRepositoryInterface::class,
             \App\Repositories\Years\YearRepository::class
         );
+        $this->app->singleton(
+            \App\Repositories\Organizational\OrganizationalRepositoryInterface::class,
+            \App\Repositories\Organizational\OrganizationalRepository::class
+        );
     }
 
     /**
@@ -84,7 +88,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-         // \URL::forceScheme('https');
+        // \URL::forceScheme('https');
         Paginator::useBootstrap();
     }
 }

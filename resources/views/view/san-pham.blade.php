@@ -79,8 +79,13 @@
                                         @foreach ($products as $value)
                                             <div class="col-md-4 product-item">
                                                 <a href="{{ $value->links }}">
-                                                    <img src="{{ URL::asset('storages/' . $value->pic) }}"
-                                                        alt="XPANDER CROSS">
+                                                    @if ($value->pic)
+                                                        <img src="{{ URL::asset('storages/' . $value->pic) }}"
+                                                            alt="{{ $value->name_vi }}">
+                                                    @else
+                                                        <img src="{{ asset('storage/image-erro.png') }}"
+                                                            alt="{{ $value->name_vi }}">
+                                                    @endif
                                                     <h6>{{ $value->title_vi }}</h6>
                                                     <p>{{ number_format($value->price, 0, ',', '.') }} (VAT)</p>
                                                 </a>
@@ -96,8 +101,14 @@
                                         @foreach ($services as $value)
                                             <div class="col-md-4 product-item">
                                                 <a href="">
-                                                    <img src="{{ URL::asset('storages/' . $value->pic) }}"
-                                                        alt="XPANDER CROSS">
+                                                    @if ($value->pic)
+                                                        <img src="{{ URL::asset('storages/' . $value->pic) }}"
+                                                            alt="XPANDER CROSS">
+                                                    @else
+                                                        <img src="{{ asset('storage/image-erro.png') }}"
+                                                            alt="{{ $value->name_vi }}">
+                                                    @endif
+
                                                     <h6>{{ $value->name_vi }}</h6>
                                                 </a>
                                             </div>
