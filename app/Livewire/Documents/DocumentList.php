@@ -3,12 +3,15 @@
 namespace App\Livewire\Documents;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Repositories\Years\YearRepositoryInterface;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use App\Repositories\Documents\DocumentRepositoryInterface;
 
 class DocumentList extends Component
 {
+    use WithPagination;
+
     protected $cateRepos;
     protected $documentRepos;
     protected $yearRepos;
