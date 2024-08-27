@@ -9,7 +9,7 @@
     <i class="fas fa-caret-down"></i>
     </div>
     <div class="drop-lv-2"
-        style="background-color: #95f273ca; left: 15%;
+        style="background-color: #ffffffc7; left: 15%;
        @if ($parentId == 58) width: 75%;
     @else
    width: 25%;

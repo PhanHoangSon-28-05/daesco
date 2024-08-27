@@ -587,7 +587,7 @@ body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-l
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1 .drop-lv-2 .drop-lv-2--inner .col-left .list-item-link-2 .link-item ul li a:hover {
-    color: #0021f5 ;
+    color: #0021f5;
 }
 
 body .header .header-inner .header-content .nav-right .bottom .mega-menu .drop-lv-1 .link-lv-1 .drop-lv-2 .drop-lv-2--inner .col-right .img {
@@ -4122,7 +4122,7 @@ body .pv__about--1 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 650px;
+    height: 350px;
 }
 
 @media only screen and (max-width: 1280px) {

@@ -11,7 +11,7 @@ use Carbon\Carbon;
 @section('content')
     <!-- Content -->
     <main id="content-wrapper" class="relation main-v2">
-        <section class="pv__activity--1 pv__relation--1"
+        <section class="pv__about--1"
             style="background-image: url('{{URL::asset('storages/'.$cate->image)}}')">
             <div class="container">
                 <div class="content">

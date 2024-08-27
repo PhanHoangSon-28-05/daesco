@@ -14,7 +14,8 @@ class DocumentRepository extends BaseRepository implements DocumentRepositoryInt
         return \App\Models\Document::class;
     }
 
-    public function getPaginatedListDocumentsByParams($params = [], $paginate = 10, $sort = 'asc') {
+    public function getPaginatedListDocumentsByParams($params = [], $paginate = 10, $sort = 'asc')
+    {
         $documents = $this->model->orderBy('created_at', $sort);
 
         $title = $params['title'] ?? '';
@@ -22,7 +23,7 @@ class DocumentRepository extends BaseRepository implements DocumentRepositoryInt
         $year = $params['year'] ?? '';
 
         if ($title != '') {
-            $documents->whereLike('title', '%'.$title.'%');
+            $documents->whereLike('title', '%' . $title . '%');
         }
 
         if ($category_id != '') {
