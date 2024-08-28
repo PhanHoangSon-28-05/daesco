@@ -19,7 +19,7 @@
                 </div>
             </div>
         </section>
-        <section id="gt1" class="pv-about-new--1">
+        <section id="introduce" class="pv-about-new--1">
             <div class="container">
                 <div class="content">
                     <div class="row">

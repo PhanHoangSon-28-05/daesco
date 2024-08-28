@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Admins;
 
-use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        Session::put('menu', 'posts');
+    }
+
     public function search(Request $request)
     {
         $search = $request->input('search');

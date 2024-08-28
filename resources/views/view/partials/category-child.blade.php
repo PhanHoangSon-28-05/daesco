@@ -32,7 +32,11 @@
     </li>
     @endif --}}
     @foreach ($childCategories as $childCategory)
-    @if (in_array($parentId, [57, 74]))
+    @if ($parentId == 74)
+    <li>
+        <a href="{{ URL::route('about-us', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
+    </li>
+    @elseif ($parentId == 57)
     <li>
         <a href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
     </li>
