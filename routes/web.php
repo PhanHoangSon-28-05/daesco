@@ -16,7 +16,9 @@ use App\Models\Service;
 use App\Models\Category;
 use App\Models\Document;
 use App\Models\Development;
+use App\Models\Organizational;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Admins\AdsController;
 use App\Http\Controllers\Views\ViewController;
 use App\Http\Controllers\Admins\InfoController;
@@ -41,7 +43,6 @@ use App\Http\Controllers\Admins\RegisterController;
 use App\Http\Controllers\Admins\DevelopmentController;
 use App\Http\Controllers\Admins\InfoProductController;
 use App\Http\Controllers\Admins\OrganizationalController;
-use App\Models\Organizational;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
 
@@ -86,6 +87,7 @@ Route::get('admin/logout', [LogoutController::class, 'perform'])->name('logout.p
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
+        Session::put('menu', 'dashboard');
         return view('admins.layouts.master');
     })->name('admin.dashboard');
     Route::get('roles', [RoleController::class, 'index'])->name(Role::INDEX);

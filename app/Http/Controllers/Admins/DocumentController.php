@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\Repositories\Documents\DocumentRepositoryInterface;
 
 class DocumentController extends Controller
@@ -15,6 +16,8 @@ class DocumentController extends Controller
     )
     {
         $this->documentRepos = $documentRepos;
+
+        Session::put('menu', 'documents');
     }
 
     public function index() {
