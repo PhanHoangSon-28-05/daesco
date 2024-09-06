@@ -146,7 +146,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
         return $modelProduct->delete();
     }
-    
+
     public function getListProductsByParams($params, $sort = 'asc')
     {
         $products = $this->model->orderBy('created_at', $sort);
@@ -155,7 +155,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $year = $params['year'] ?? '';
 
         if ($title != '') {
-            $products->whereLike('title_vi', '%'.$title.'%');
+            $products->whereLike('title_vi', '%' . $title . '%');
         }
 
         if ($year != '') {
@@ -163,5 +163,14 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         }
 
         return $products->get();
+    }
+
+    // View
+
+    public function  getSlug($slug)
+    {
+        $product = $this->model->where('slug', $slug)->get()->first();
+
+        return $product;
     }
 }

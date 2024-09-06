@@ -8,8 +8,6 @@
             <div class="container">
                 <div class="content">
                     <div class="title">
-                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Liên
-                                    hệ</span></span></div>
                         <h1>Liên hệ với chúng tôi</h1>
                     </div>
                 </div>

@@ -175,6 +175,20 @@ class ViewController extends Controller
         );
     }
 
+    public function detailmitshubishi($slug)
+    {
+        $productDetail = $this->prodRepo->getSlug($slug);
+
+        $products =  $this->prodRepo->getAll();
+
+        $attributes['products'] = $products;
+        $attributes['productDetail'] = $productDetail;
+
+        $result = array_merge($attributes, $this->get());
+
+        return view('view.chi-tiet-san-pham', $result);
+    }
+
     public function warehouse()
     {
         $cate = $this->cateRepo->getCateSlug("warehouse-business");

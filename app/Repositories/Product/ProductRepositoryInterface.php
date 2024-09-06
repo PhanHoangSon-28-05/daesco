@@ -14,4 +14,7 @@ interface ProductRepositoryInterface extends RepositoryInterface
     public function selectProduct($idPro, $image);
     public function deleteProduct($modelProduct);
     public function getListProductsByParams($params, $sort);
+
+    // View
+    public function  getSlug($slug);
 }

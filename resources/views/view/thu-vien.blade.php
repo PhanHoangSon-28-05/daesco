@@ -15,8 +15,6 @@
             <div class="container">
                 <div class="content">
                     <div class="title">
-                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Thư viện</span></span>
-                        </div>
                         <h1>Thư viện</h1>
                     </div>
                 </div>

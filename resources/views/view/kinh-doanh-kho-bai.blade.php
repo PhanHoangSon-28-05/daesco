@@ -14,8 +14,6 @@
             <div class="container">
                 <div class="content">
                     <div class="title">
-                        <div class="link-title"><span><span class="breadcrumb_last"
-                                    aria-current="page">{{ $catepros->name_vi }}</span></span></div>
                         <h1>{{ $catepros->name_vi }}</h1>
                     </div>
                 </div>

@@ -13,8 +13,6 @@
         <section class="pv__about--1" style="background-image: url('{{URL::asset('storages/'.$cate->image)}}');">
             <div class="container">
                 <div class="title">
-                    <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Tổng
-                                quan</span></span></div>
                     <h1>Tổng quan</h1>
                 </div>
             </div>

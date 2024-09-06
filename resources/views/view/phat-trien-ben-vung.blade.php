@@ -13,8 +13,6 @@
         <section class="pv__sustainability--1" style="background-image: url('{{ URL::asset('storages/' . $cate->image) }}');">
             <div class="container">
                 <div class="title">
-                    <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Phát triển bền
-                                vững</span></span></div>
                     <h1>Phát triển bền vững</h1>
                 </div>
             </div>

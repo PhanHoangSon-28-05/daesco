@@ -7,8 +7,6 @@
             style="background-image: url('{{ URL::asset('view/style/uploads/2023/08/corporate-business-handshake-partners-scaled.jpg') }}');">
             <div class="container">
                 <div class="title">
-                    <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Truyền
-                                thông</span></span></div>
                     <h1>Truyền thông</h1>
                 </div>
             </div>

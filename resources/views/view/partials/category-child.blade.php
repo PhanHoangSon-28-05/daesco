@@ -32,18 +32,25 @@
     </li>
     @endif --}}
     @foreach ($childCategories as $childCategory)
-    @if ($parentId == 74)
-    <li>
-        <a href="{{ URL::route('about-us', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
-    </li>
-    @elseif ($parentId == 57)
-    <li>
-        <a href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
-    </li>
-    @else
-    <li>
-        <a href="">{{ $childCategory->name_vi }}</a>
-    </li>
-    @endif
+        @if ($parentId == 74)
+            @if ($childCategory->id == 66)
+                <li>
+                    <a href="{{ URL::route('home', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
+                </li>
+            @else
+                <li>
+                    <a href="{{ URL::route('about-us', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
+                </li>
+            @endif
+        @elseif ($parentId == 57)
+            <li>
+                <a
+                    href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
+            </li>
+        @else
+            <li>
+                <a href="">{{ $childCategory->name_vi }}</a>
+            </li>
+        @endif
     @endforeach
 </ul>

@@ -57,6 +57,7 @@ Route::get('/about-us', [ViewController::class, 'aboutus'])->name('about-us');
 Route::get('/bo-may-phat-trien/{subCate?}', [ViewController::class, 'developmentApparatus'])->name('development-apparatus');
 Route::get('/phat-trien-ben-vung', [ViewController::class, 'sustainableDevelopment'])->name('sustainable-development');
 Route::get('/san-pham-mitshubishi', [ViewController::class, 'mitshubishi'])->name('mitshubishi');
+Route::get('/san-pham-mitshubishi/{slug}',[ViewController::class, 'detailmitshubishi'])->name('datile.mitshubishi');
 Route::get('/dich-vu-bai', [ViewController::class, 'warehouse'])->name('warehouse-business');
 Route::get('/quan-he-co-dong/{subCate?}', [ViewController::class, 'shareholders'])->name('shareholders');
 Route::get('/tuyen-dung-moi-thau', [ViewController::class, 'recruitment'])->name('recruitment');

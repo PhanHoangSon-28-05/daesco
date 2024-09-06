@@ -8,8 +8,6 @@
             <div class="container">
                 <div class="content">
                     <div class="title">
-                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Tuyển
-                                    dụng</span></span></div>
                         <h1>Tuyển dụng</h1>
                     </div>
                 </div>

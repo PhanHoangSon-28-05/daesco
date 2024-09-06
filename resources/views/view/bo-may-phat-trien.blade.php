@@ -7,8 +7,6 @@
             style="background-image: url('{{ URL::asset('storages/' . $cate->image) }}');">
             <div class="container">
                 <div class="title">
-                    <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Quá trình hình thành &#038;
-                                Phát triển</span></span></div>
                     <h1>Quá trình hình thành & phát triển</h1>
                 </div>
             </div>
@@ -21,7 +19,7 @@
                         @foreach ($developments as $development)
                             <div class="item">
                                 <div class="title">
-                                    <strong>{{ $development->date }}</strong>
+                                    <strong>{{ date('Y', strtotime($development->date)) }}</strong>
                                     <p>{{ $development->description }}</p>
                                 </div>
                                 <div class="line-middle"><span></span></div>
@@ -83,7 +81,8 @@
                                 $count = 0;
                             @endphp
                             @foreach ($menuOrgan as $value)
-                                <li rel="#tab{{ $value->id }}" class="{{ $count == 0 ? 'active-tab' : '' }}">
+                                <li rel="#tab{{ $value->id }}"
+                                    class="{{ $count == 0 ? 'active-tab' : '' }} font-weight-bolder">
                                     {{ $value->name_vi }}</li>
                                 @php
                                     $count += 1;

@@ -15,15 +15,10 @@
             <div class="container">
                 @if (isset($products))
                     <div class="title">
-                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Sản phẩm</span></span>
-                        </div>
                         <h1>Sản Phẩm</h1>
                     </div>
                 @else
                     <div class="title">
-                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Dịch vũ
-                                    bãi</span></span>
-                        </div>
                         <h1>Dịch vũ bãi</h1>
                     </div>
                 @endif
@@ -78,7 +73,8 @@
                                     <div class="row product-list">
                                         @foreach ($products as $value)
                                             <div class="col-md-4 product-item">
-                                                <a href="{{ $value->links }}">
+                                                {{-- <a href="{{  $value->links }}"> --}}
+                                                <a href="{{ route('datile.mitshubishi', $value->slug) }}">
                                                     @if ($value->pic)
                                                         <img src="{{ URL::asset('storages/' . $value->pic) }}"
                                                             alt="{{ $value->name_vi }}">

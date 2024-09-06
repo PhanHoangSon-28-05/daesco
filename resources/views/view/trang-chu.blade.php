@@ -27,7 +27,7 @@
                 </div>
             </div>
         </section>
-        <section class="pv__operation--homepage"
+        <section id="field-operation" class="pv__operation--homepage"
             style="background-image: url('{{ URL::asset('view/style/image/detail-op.png') }}')">
             <div class="container">
                 <div data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200" data-aos="fade-up"

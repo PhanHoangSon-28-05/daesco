@@ -9,8 +9,6 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="title">
-                            <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">Tin tức & Sự
-                                        kiện</span></span></div>
                             <h2>Tin tức & Sự kiện</h2>
                         </div>
                         <div class="content">

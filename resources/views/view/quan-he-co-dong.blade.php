@@ -17,7 +17,6 @@ use Carbon\Carbon;
                 <div class="content">
                     <div class="title">
                         @php($title = $categoryRepos->getCateSlug(Session::get('shareholders'))->name_vi ?? 'Quan hệ cổ đông')
-                        <div class="link-title"><span><span class="breadcrumb_last" aria-current="page">{{ $title }}</span></span></div>
                         <h1>{{ $title }}</h1>
                     </div>
                 </div>
