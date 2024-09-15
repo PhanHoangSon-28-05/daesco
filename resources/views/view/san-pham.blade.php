@@ -72,7 +72,7 @@
                                     <h4 class="mb-4">Sản phẩm mới nhất</h4>
                                     <div class="row product-list">
                                         @foreach ($products as $value)
-                                            <div class="col-md-4 product-item">
+                                            <div class="col-md-4 product-item ">
                                                 {{-- <a href="{{  $value->links }}"> --}}
                                                 <a href="{{ route('datile.mitshubishi', $value->slug) }}">
                                                     @if ($value->pic)

@@ -40,6 +40,7 @@
                     <th>Tiêu đề</th>
                     <th>File</th>
                     <th>Lượt tải xuống</th>
+                    <th>Thời gian đăng</th>
                     <th>
                         <div class="btn-group dropright">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"

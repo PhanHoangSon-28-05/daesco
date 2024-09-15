@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="sidebar">
-                            <div class="contact-bar mt-1 mb-2 bg-light border border-secondary">
+                            {{-- <div class="contact-bar mt-1 mb-2 bg-light border border-secondary">
                                 <div class="contact-header bg-danger text-white p-2">
                                     <i class="fas fa-clock"></i> LIÊN HỆ MUA HÀNG
                                 </div>
@@ -54,7 +54,7 @@
                                     <p class="mb-1"><strong>Trần Hữu Thành</strong></p>
                                     <p><i class="fas fa-phone"></i> <span class="text-danger">0903525526</span></p>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="list-bar">
                                 <h3>Bài viết mới nhất</h3>
                                 @foreach ($posts as $post)
