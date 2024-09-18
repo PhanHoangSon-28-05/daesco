@@ -17,6 +17,7 @@ class Document extends Model
         'title',
         'file',
         'download_count',
+        'published_year',
     ];
 
     public function category(): BelongsTo

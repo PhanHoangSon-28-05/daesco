@@ -73,7 +73,11 @@ use Carbon\Carbon;
                                     <tr>
                                         <td><i class="icon-file-download"></i>{{ $document->title ?? 0 }}</td>
                                         <td class="text-center">
+                                            @if (isset($document->published_year) && $document->published_year <= 2018)
+                                            {{ $document->published_year }}
+                                            @else
                                             {{ Carbon::parse($document->created_at ?? '1-1-1999')->format('d/m/Y') }}
+                                            @endif
                                         </td>
                                         <td class="text-center">{{ $document->download_count ?? 0 }}</td>
                                         <td class="text-center">
