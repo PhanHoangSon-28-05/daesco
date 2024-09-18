@@ -58,6 +58,19 @@
                                 @enderror
                             </div>
                             <div class="row">
+                                <label class="label">Năm phát hành:</label>
+                                <div class="input-group">
+                                    <select class="form-control custom-select" wire:model="published_year">
+                                        @foreach ($years as $year)
+                                        <option value="{{ $year->name }}">{{ $year->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('year')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="row">
                                 <label class="label">File:</label>
                                 <div class="input-group">
                                     <input type="file" class="custom-file-input" id="documentFile" accept=".pdf,.docx,.doc" wire:model.lazy="file">

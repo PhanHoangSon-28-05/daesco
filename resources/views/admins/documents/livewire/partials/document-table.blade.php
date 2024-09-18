@@ -5,7 +5,13 @@
             <td>{{ $document->title ?? '' }}</td>
             <td>{{ trim($document->file ?? '', 'documents/') }}</td>
             <td>{{ $document->download_count ?? 0 }}</td>
-            <td>{{ date('d/m/Y', strtotime($document->created_at)) }}</td>
+            <td>
+                @if (isset($document->published_year) && $document->published_year <= 2018)
+                {{ $document->published_year }}
+                @else
+                {{ date('d/m/Y', strtotime($document->created_at)) }}
+                @endif
+            </td>
             <td>{{ $document->category->name_vi ?? '' }}
                 @if (isset($document->category->name_en))
                     ({{ $document->category->name_en ?? '' }})

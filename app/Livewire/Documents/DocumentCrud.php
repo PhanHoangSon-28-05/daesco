@@ -7,6 +7,7 @@ use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Storage;
+use App\Repositories\Years\YearRepositoryInterface;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use App\Repositories\Documents\DocumentRepositoryInterface;
 
@@ -16,11 +17,14 @@ class DocumentCrud extends Component
 
     protected $cateRepos;
     protected $documentRepos;
+    protected $yearRepos;
 
     public $action;
     public $document;
     public $categories;
     public $category_id;
+    public $years;
+    public $published_year;
 
     #[Rule('required', message: 'Chưa nhập tiêu đề')]
     public string $title;
@@ -30,16 +34,19 @@ class DocumentCrud extends Component
     public function boot(
         CategoryRepositoryInterface $cateRepos,
         DocumentRepositoryInterface $documentRepos,
+        YearRepositoryInterface $yearRepos,
     )
     {
         $this->cateRepos = $cateRepos;
         $this->documentRepos = $documentRepos;
+        $this->yearRepos = $yearRepos;
     }
 
     public function mount() 
     {
         // $this->categories = $this->cateRepos->getCateWithChilds(3);
         $this->categories = $this->cateRepos->getChildNew(3);
+        $this->years = $this->yearRepos->getAll()->sortByDesc('name');
     }
 
     public function modalSetup($id)
@@ -61,6 +68,7 @@ class DocumentCrud extends Component
     {
         $this->title = $this->document->title ?? '';
         $this->category_id = $this->document->category_id ?? $this->categories->first()->id;
+        $this->published_year = $this->document->published_year ?? $this->years->first()->name;
         $this->file = $this->document->file ?? '';
     }
 
@@ -74,6 +82,7 @@ class DocumentCrud extends Component
             'category_id' => $this->category_id,
             'title' => trim($this->title),
             'file' => $path,
+            'published_year' => $this->published_year,
         ]);
         $this->dispatch('refreshList')->to('documents.document-list');
         $this->dispatch('closeCrudDocument');
@@ -93,6 +102,7 @@ class DocumentCrud extends Component
             'category_id' => $this->category_id,
             'title' => trim($this->title),
             'file' => $path,
+            'published_year' => $this->published_year,
         ]);
         $this->dispatch('refreshList')->to('documents.document-list');
         $this->dispatch('closeCrudDocument');
