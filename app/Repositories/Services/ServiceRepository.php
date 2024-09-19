@@ -105,4 +105,11 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
     {
         return $this->model->where('slug_sections', $slug)->get();
     }
+
+    public function  getSlug($slug)
+    {
+        $service = $this->model->where('slug', $slug)->get()->first();
+
+        return $service;
+    }
 }

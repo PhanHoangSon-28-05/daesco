@@ -19,7 +19,7 @@
                     </div>
                 @else
                     <div class="title">
-                        <h1>Dịch vũ bãi</h1>
+                        <h1>Dịch vụ bãi</h1>
                     </div>
                 @endif
             </div>
@@ -49,12 +49,14 @@
                                 <div class="pt-2">
                                     <ul class="list-group list-group-flush" style="margin-left: 0px">
                                         <li class="list-group-item">
-                                            <a href="#" id="toggleMenu" class="d-block text-dark">Ô tô
+                                            <a href="{{ URL::route('mitshubishi') }}">Ô tô
+                                                Mitsubishi</a>
+                                            {{-- <a href="#" id="toggleMenu" class="d-block text-dark">Ô tô
                                                 Mitsubishi</a>
                                             <ul class="sub-menu">
                                                 <li class="border-bottom border-secondary text-dark"><a href="">NEW
                                                         TRITON</a></li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
                                         <li class="list-group-item"><a href="{{ URL::route('warehouse-business') }}">Dịch vụ
                                                 cho
@@ -96,7 +98,7 @@
                                     <div class="row product-list">
                                         @foreach ($services as $value)
                                             <div class="col-md-4 product-item">
-                                                <a href="">
+                                                <a href="{{ URL::route('detail.warehouse-business', $value->slug) }}">
                                                     @if ($value->pic)
                                                         <img src="{{ URL::asset('storages/' . $value->pic) }}"
                                                             alt="XPANDER CROSS">
