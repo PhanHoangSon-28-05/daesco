@@ -132,6 +132,7 @@
                 parentEl: '.content-inner',
                 singleDatePicker: true,
                 autoUpdateInput: false,
+                showDropdowns: true,
                 locale: {
                     applyLabel: 'OK',
                     cancelLabel: 'Xóa',
