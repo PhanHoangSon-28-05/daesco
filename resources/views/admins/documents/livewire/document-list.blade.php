@@ -15,7 +15,7 @@
                     <div class="input-group-text bg-secondary text-white"><i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" id="myInput" wire:model.live="name"
+                <input type="text" class="form-control" id="myInput" wire:model.live="title"
                     placeholder="Search for names..">
             </div>
         </div>

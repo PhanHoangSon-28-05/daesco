@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Documents;
 
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
@@ -25,6 +26,7 @@ class DocumentCrud extends Component
     public $category_id;
     public $years;
     public $published_year;
+    public $published_date;
 
     #[Rule('required', message: 'Chưa nhập tiêu đề')]
     public string $title;
@@ -68,8 +70,14 @@ class DocumentCrud extends Component
     {
         $this->title = $this->document->title ?? '';
         $this->category_id = $this->document->category_id ?? $this->categories->first()->id;
-        $this->published_year = $this->document->published_year ?? $this->years->first()->name;
+        // $this->published_year = $this->document->published_year ?? $this->years->first()->name;
+        $this->published_date = ($this->document->published_date ?? today())->format('d/m/Y');
         $this->file = $this->document->file ?? '';
+
+        $this->dispatch('set-datepicker', [
+            'picker_id' => 'published_date', 
+            'value' => $this->published_date,
+        ]);
     }
 
     public function create() 
@@ -82,7 +90,7 @@ class DocumentCrud extends Component
             'category_id' => $this->category_id,
             'title' => trim($this->title),
             'file' => $path,
-            'published_year' => $this->published_year,
+            'published_date' => Carbon::createFromFormat('d/m/Y', $this->published_date)->format('Y-m-d'),
         ]);
         $this->dispatch('refreshList')->to('documents.document-list');
         $this->dispatch('closeCrudDocument');
@@ -102,7 +110,7 @@ class DocumentCrud extends Component
             'category_id' => $this->category_id,
             'title' => trim($this->title),
             'file' => $path,
-            'published_year' => $this->published_year,
+            'published_date' => Carbon::createFromFormat('d/m/Y', $this->published_date)->format('Y-m-d'),
         ]);
         $this->dispatch('refreshList')->to('documents.document-list');
         $this->dispatch('closeCrudDocument');

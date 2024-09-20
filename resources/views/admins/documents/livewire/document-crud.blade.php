@@ -57,7 +57,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <label class="label">Năm phát hành:</label>
                                 <div class="input-group">
                                     <select class="form-control custom-select" wire:model="published_year">
@@ -67,6 +67,16 @@
                                     </select>
                                 </div>
                                 @error('year')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div> --}}
+                            <div class="row">
+                                <label class="label">Ngày phát hành:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control datepicker" readonly
+                                    id="published_date" wire:model.lazy="published_date">
+                                </div>
+                                @error('published_date')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -117,6 +127,36 @@
             $(document).on('closeCrudDocument', function() {
                 $('#crudDocumentModal').modal('hide');
             });
+
+            $('.datepicker').daterangepicker({
+                parentEl: '.content-inner',
+                singleDatePicker: true,
+                autoUpdateInput: false,
+                locale: {
+                    applyLabel: 'OK',
+                    cancelLabel: 'Xóa',
+                    daysOfWeek: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7','CN'],
+                    monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    firstDay: 1,
+                    format: 'DD/MM/YYYY',
+                }
+            }).on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            }).on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY'));
+                let param = ev.currentTarget.id;
+                @this.set(param, picker.startDate.format('DD/MM/YYYY'));
+            });
+
+            $(document).on('set-datepicker', function(e) {
+                let id = e.detail[0]['picker_id'];
+                let value = e.detail[0]['value'];
+                $('.datepicker#'+id).data('daterangepicker').setStartDate(value);
+            })
+
+            $(document).on('reset-datepicker', function(e) {
+                $('.datepicker').daterangepicker().val('');
+            })
         });
     </script>
 @endpush
