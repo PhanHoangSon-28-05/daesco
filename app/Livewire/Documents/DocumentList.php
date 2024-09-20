@@ -54,7 +54,7 @@ class DocumentList extends Component
             'category_id' => $this->category_id,
             'year' => $this->selected_year,
         ];
-        $documents = $this->documentRepos->getPaginatedListDocumentsByParams($params, 10);
+        $documents = $this->documentRepos->getPaginatedListDocumentsByParams($params, 10, 'desc');
 
         return view('admins.documents.livewire.document-list', [
             'documents' => $documents,
