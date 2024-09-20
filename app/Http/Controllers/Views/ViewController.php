@@ -204,6 +204,20 @@ class ViewController extends Controller
         );
     }
 
+    public function detailwarehouse($slug)
+    {
+        $serviceDetail = $this->serviceRepo->getSlug($slug);
+
+        $services =  $this->serviceRepo->getAll();
+
+        $attributes['services'] = $services;
+        $attributes['serviceDetail'] = $serviceDetail;
+
+        $result = array_merge($attributes, $this->get());
+
+        return view('view.chi-tiet-dich-vu', $result);
+    }
+
     public function shareholders(Request $request, ?string $subCate = '')
     {
         $cate = $this->cateRepo->getCateSlug("shareholders");

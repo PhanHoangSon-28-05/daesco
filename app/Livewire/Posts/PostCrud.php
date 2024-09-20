@@ -35,7 +35,8 @@ class PostCrud extends Component
 
     public function mount(CategoryRepositoryInterface $categoryRepo) {
     //    $this->categories = $categoryRepo->getCategoryType(1);
-        $this->categories = $categoryRepo->getAll();
+        // $this->categories = $categoryRepo->getAll();
+        $this->categories = $categoryRepo->getCate();
         $this->years = Year::orderBy('id', 'DESC')->get();
     }
 
