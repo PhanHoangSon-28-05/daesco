@@ -151,7 +151,9 @@
             $(document).on('set-datepicker', function(e) {
                 let id = e.detail[0]['picker_id'];
                 let value = e.detail[0]['value'];
-                $('.datepicker#'+id).data('daterangepicker').setStartDate(value);
+                let picker = $('.datepicker#'+id);
+                picker.data('daterangepicker').setStartDate(value);
+                picker.data('daterangepicker').setEndDate(value);
             })
 
             $(document).on('reset-datepicker', function(e) {

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
 class DocumentRepository extends BaseRepository implements DocumentRepositoryInterface
 {
@@ -31,8 +32,8 @@ class DocumentRepository extends BaseRepository implements DocumentRepositoryInt
         }
 
         if ($year != '') {
-            $documents->where('published_year', $year);
-            // $documents->whereYear('created_at', $year);
+            // $documents->where('published_year', $year);
+            $documents->whereYear('created_at', $year);
             // $documents->whereDate('created_at', '>=', "{$year}-1-1 00:00:00")
             // ->whereDate('created_at', '<=', "{$year}-12-31 23:59:59");
         }

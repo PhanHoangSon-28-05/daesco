@@ -11,7 +11,7 @@
                 @else
                 {{ date('d/m/Y', strtotime($document->created_at)) }}
                 @endif --}}
-                {{ Carbon\Carbon::parse($document->published_date ?? $document->created_at)->format('d/m/y') }}
+                {{ $document->created_at->format('d/m/Y') }}
             </td>
             <td>{{ $document->category->name_vi ?? '' }}
                 @if (isset($document->category->name_en))

@@ -71,7 +71,7 @@ class DocumentCrud extends Component
         $this->title = $this->document->title ?? '';
         $this->category_id = $this->document->category_id ?? $this->categories->first()->id;
         // $this->published_year = $this->document->published_year ?? $this->years->first()->name;
-        $this->published_date = ($this->document->published_date ?? today())->format('d/m/Y');
+        $this->published_date = ($this->document->created_at ?? today())->format('d/m/Y');
         $this->file = $this->document->file ?? '';
 
         $this->dispatch('set-datepicker', [
@@ -90,7 +90,7 @@ class DocumentCrud extends Component
             'category_id' => $this->category_id,
             'title' => trim($this->title),
             'file' => $path,
-            'published_date' => Carbon::createFromFormat('d/m/Y', $this->published_date)->format('Y-m-d'),
+            'created_at' => Carbon::createFromFormat('d/m/Y', $this->published_date)->format('Y-m-d'),
         ]);
         $this->dispatch('refreshList')->to('documents.document-list');
         $this->dispatch('closeCrudDocument');
@@ -110,7 +110,7 @@ class DocumentCrud extends Component
             'category_id' => $this->category_id,
             'title' => trim($this->title),
             'file' => $path,
-            'published_date' => Carbon::createFromFormat('d/m/Y', $this->published_date)->format('Y-m-d'),
+            'created_at' => Carbon::createFromFormat('d/m/Y', $this->published_date)->format('Y-m-d'),
         ]);
         $this->dispatch('refreshList')->to('documents.document-list');
         $this->dispatch('closeCrudDocument');
