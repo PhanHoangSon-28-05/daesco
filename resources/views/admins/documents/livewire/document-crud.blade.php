@@ -88,7 +88,8 @@
                                         @if (!$file)
                                         Chọn file
                                         @elseif (gettype($file) == 'string')
-                                        {{ trim($file, 'documents/') }}
+                                        {{-- {{ trim($file, 'documents/') }} --}}
+                                        {{ str_replace('documents/', '', $file) }}
                                         @else
                                         {{ $file->getClientOriginalName() }}
                                         @endif
