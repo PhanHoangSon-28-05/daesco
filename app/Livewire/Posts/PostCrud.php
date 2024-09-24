@@ -131,9 +131,10 @@ class PostCrud extends Component
     }
     public function render()
     {
+        // file_exists(public_path('storages/' . $this->pic));
         if ($this->pic) {
             if (gettype($this->pic) == 'string') {
-                $cover_img = 'storage/' . $this->pic;
+                $cover_img = 'storages/' . $this->pic;
             } else {
                 $cover_img = $this->pic->temporaryUrl();
             }

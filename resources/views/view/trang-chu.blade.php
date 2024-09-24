@@ -358,10 +358,12 @@
                                     <a href="{{ URL::route('datile.news', $posts[0]->slug) }}">
                                         <div class="img">
                                             <figure>
-                                                <img src="@if (file_exists(public_path('storages/' . $posts[0]->pic)) && $posts[0]->pic) {{ asset('storages/' . $posts[0]->pic) }}
-                                                            @else
-                                                            {{ URL::asset('view/style/images/post/daesco-tải xuống.jpg') }} @endif"
-                                                    alt="{{ $posts[0]->name_vi }}" />
+                                                @if ($posts[0]->pic)
+                                                <img src="{{ asset('storages/' . $posts[0]->pic) }}" alt="{{ $posts[0]->name_vi }}" />
+                                                @else
+                                                {{-- <img src="{{ asset('view/style/images/post/daesco-tải xuống.jpg') }}" alt="{{ $posts[0]->name_vi }}" /> --}}
+                                                <img src="{{ asset('images/placeholder/placeholder.png') }}" alt="{{ $posts[0]->name_vi }}" />
+                                                @endif
                                             </figure>
                                         </div>
                                         <div class="info">
@@ -386,14 +388,17 @@
                                                 <a href="{{ URL::route('datile.news', $posts[$i]->slug) }}">
                                                     <div class="img">
                                                         <figure>
-                                                            <img src="@if (file_exists(public_path('storages/' . $posts[$i]->pic)) && $posts[$i]->pic) {{ asset('storages/' . $posts[$i]->pic) }}
+                                                            @if ($posts[$i]->pic)
+                                                            <img src="{{ asset('storages/' . $posts[$i]->pic) }}" alt="{{ $posts[$i]->name_vi }}" />
                                                             @else
-                                                            {{ URL::asset('view/style/images/post/daesco-tải xuống.jpg') }} @endif"
-                                                                alt="{{ $posts[$i]->name_vi }}" />
+                                                            {{-- <img src="{{ asset('view/style/images/post/daesco-tải xuống.jpg') }}" alt="{{ $posts[$i]->name_vi }}" /> --}}
+                                                            <img src="{{ asset('images/placeholder/placeholder.png') }}" alt="{{ $posts[$i]->name_vi }}" />
+                                                            @endif
                                                         </figure>
                                                     </div>
                                                     <div class="info">
-                                                        <h3>Trưởng Phòng dịch vụ ô tô</h3>
+                                                        {{-- <h3>Trưởng Phòng dịch vụ ô tô</h3> --}}
+                                                        <h3>{{ $posts[$i]->name_vi }}</h3>
                                                         <span>{{ Carbon::parse($posts[$i]->created_at)->toDateString() }}</span>
                                                         <p>{{ $posts[$i]->description_vi }}</p>
                                                     </div>
