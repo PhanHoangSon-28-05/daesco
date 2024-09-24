@@ -3,7 +3,8 @@
         <tr class="border border-secondary">
             <td>{{ $loop->iteration }}</td>
             <td>{{ $document->title ?? '' }}</td>
-            <td>{{ trim($document->file ?? '', 'documents/') }}</td>
+            {{-- <td>{{ trim($document->file ?? '', 'documents/') }}</td> --}}
+            <td>{{ str_replace('documents/', '', $document->file ?? '') }}</td>
             <td>{{ $document->download_count ?? 0 }}</td>
             <td>
                 {{-- @if (isset($document->published_year) && $document->published_year <= 2018)
