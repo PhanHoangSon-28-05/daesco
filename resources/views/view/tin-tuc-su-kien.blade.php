@@ -17,16 +17,18 @@
                                     <div class="col-md-6 p-10">
                                         <div class="blog">
                                             <a href="{{ URL::route('datile.news', $post->slug) }}" class="img">
-                                                <picture><img
-                                                        src="@if (file_exists(public_path('storage/' . $post->pic)) && $post->pic) {{ asset('storage/' . $post->pic) }}
-                                                            @else
-                                                            {{ URL::asset('view/style/images/post/daesco-tải xuống.jpg') }} @endif"
-                                                        alt="{{ $post->name_vi }}" />
+                                                <picture>
+                                                    @if ($post->pic)
+                                                    <img src="{{ asset('storages/' . $post->pic) }}" alt="{{ $post->name_vi }}" />
+                                                    @else
+                                                    {{-- <img src="{{ asset('view/style/images/post/daesco-tải xuống.jpg') }}" alt="{{ $post->name_vi }}" /> --}}
+                                                    <img src="{{ asset('images/placeholder/placeholder.png') }}" alt="{{ $post->name_vi }}" />
+                                                    @endif
                                                 </picture>
 
                                                 <div class="desc">
-                                                    <a href="" class="cate">Thông
-                                                        tin công ty</a>
+                                                    {{-- <a href="" class="cate">Thông
+                                                        tin công ty</a> --}}
                                                     <h4><a
                                                             href="{{ URL::route('datile.news', $post->slug) }}">{{ $post->name_vi }}</a>
                                                     </h4>
@@ -60,8 +62,8 @@
                                 @foreach ($posts as $post)
                                     <div class="blog">
                                         <div class="item">
-                                            <a href="" class="cate">Thông tin
-                                                công ty</a>
+                                            {{-- <a href="" class="cate">Thông tin
+                                                công ty</a> --}}
                                             <h4><a
                                                     href="{{ URL::route('datile.news', $post->slug) }}">{{ $post->name_vi }}</a>
                                             </h4>

@@ -367,7 +367,7 @@
                                             </figure>
                                         </div>
                                         <div class="info">
-                                            <span>Trưởng Phòng dịch vụ ô tô</span>
+                                            {{-- <span>Trưởng Phòng dịch vụ ô tô</span> --}}
                                             <h3>{{ $posts[0]->name_vi }}</h3>
                                             <time><img
                                                     src="{{ URL::asset('view/style//themes/wecangroup-child/dist/images/time.svg') }}"
