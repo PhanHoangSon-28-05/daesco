@@ -19,7 +19,7 @@
                     </div>
                 @else
                     <div class="title">
-                        <h1>Dịch vụ bãi</h1>
+                        <h1>Dịch vụ bảo dưỡng & sửa chữa ô tô</h1>
                     </div>
                 @endif
             </div>
