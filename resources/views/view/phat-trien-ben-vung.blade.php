@@ -10,7 +10,8 @@
 @section('content')
     <!-- Content -->
     <main id="content-wrapper" class="main-v2">
-        <section class="pv__sustainability--1" style="background-image: url('{{ URL::asset('storages/' . $cate->image) }}');">
+        <section class="pv__sustainability--1" style="background-color:lightgray;
+        background-image: url('{{ URL::asset('storages/' . $cate->image) }}');">
             <div class="container">
                 <div class="title">
                     <h1>Phát triển bền vững</h1>
@@ -18,6 +19,40 @@
             </div>
         </section>
         <section class="pv__sustainability--2">
+            <div class="container">
+                <span>PVMachino luôn đặt mục tiêu kinh doanh song hành cùng bảo vệ môi trường và lợi ích cho các bên liên
+                    quan, coi đó là kim chỉ nam định hướng mọi hoạt động để thực hiện phát triển bền vững
+                </span>
+                <div class="list-sus">
+                    <div class="row row-10">
+                        @foreach ($posts as $post)
+                        <div class="col-md-4 p-10">
+                            <div class="item">
+                                <a href="{{ route('detail.sustainable-development', $post->slug) }}" class="img">
+                                    <picture>
+                                        @if ($post->pic)
+                                            <img src="{{ asset('storages/' . $post->pic) }}" alt="{{ $post->name_vi }}">
+                                        @else
+                                            <img src="{{ asset('images/placeholder/placeholder.png') }}" alt="{{ $post->name_vi }}">
+                                        @endif
+                                    </picture>
+                                </a>
+                                <div class="description">
+                                    <h4>
+                                        <a href="{{ route('detail.sustainable-development', $post->slug) }}">
+                                            {{ $post->name_vi }}
+                                        </a>
+                                    </h4>
+                                    <p>{{ $post->description_vi }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{-- <section class="pv__sustainability--2">
             <div class="container">
                 <span>PVMachino luôn đặt mục tiêu kinh doanh song hành cùng bảo vệ môi trường và lợi ích cho các bên liên
                     quan, coi đó là kim chỉ nam định hướng mọi hoạt động để thực hiện phát triển bền vững
@@ -93,7 +128,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </main>
 
 @endsection

@@ -26,7 +26,8 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         $detail_vi,
         $detail_en,
         $pic,
-        $slug_sections,
+        // $slug_sections,
+        $service_type_id,
     ) {
         if ($pic) {
             $extension = $pic->getClientOriginalName();
@@ -43,7 +44,8 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
             'detail_vi' => trim($detail_vi),
             'detail_en' => trim($detail_en),
             'pic' => $path,
-            'slug_sections' => $slug_sections,
+            // 'slug_sections' => $slug_sections,
+            'service_type_id' => $service_type_id,
         ];
 
         if ($name_en) {
@@ -64,7 +66,8 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         $detail_vi,
         $detail_en,
         $pic,
-        $slug_sections,
+        // $slug_sections,
+        $service_type_id,
     ) {
         if ($pic != $serviceModel->pic) {
             Storage::disk('public')->delete($serviceModel->pic);
@@ -82,7 +85,8 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
             'detail_vi' => trim($detail_vi),
             'detail_en' => trim($detail_en),
             'pic' => $path,
-            'slug_sections' => $slug_sections,
+            // 'slug_sections' => $slug_sections,
+            'service_type_id' => $service_type_id,
         ];
         if ($name_en) {
             $serviceData['slug'] = Str::slug($name_en);
@@ -111,5 +115,10 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         $service = $this->model->where('slug', $slug)->get()->first();
 
         return $service;
+    }
+
+    public function getByServiceTypeId($id)
+    {
+        return $this->model->where('service_type_id', $id)->get();
     }
 }

@@ -67,10 +67,15 @@
                                             <div class="row">
                                                 <label class="crud-label p-0 mt-2 mb-0">Dịch vụ</label>
                                                 <div class="input-group">
-                                                    <select class="form-control" wire:model.lazy="slug_sections">
+                                                    {{-- <select class="form-control" wire:model.lazy="slug_sections">
                                                         <option value="0">---</option>
                                                         <option value="dich-vu-san-pham">Sản phẩm (Product)</option>
                                                         <option value="dich-vu-bai">Bãi đổ xe (Parking lot)</option>
+                                                    </select> --}}
+                                                    <select class="form-control" wire:model.lazy="service_type_id">
+                                                        @foreach ($service_types as $service_type)
+                                                        <option value="{{ $service_type->id }}">{{ $service_type->title_vi }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>

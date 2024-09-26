@@ -3,10 +3,11 @@
 namespace App\Livewire\Services;
 
 use App\Models\Service;
-use App\Repositories\Services\ServiceRepositoryInterface;
+use Livewire\Component;
+use App\Models\ServiceType;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
-use Livewire\Component;
+use App\Repositories\Services\ServiceRepositoryInterface;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 class ServiceCrud extends Component
@@ -16,7 +17,9 @@ class ServiceCrud extends Component
         $service,
         $name_en,
         $detail_en,
-        $category_id;
+        $category_id,
+        $service_types,
+        $service_type_id;
 
     #[Rule('required|string|max:255', message: 'Chưa tiêu đề')]
     public string $name_vi;
@@ -25,6 +28,11 @@ class ServiceCrud extends Component
     // #[Validate('required|file|mimes:png,jpg,pdf', message: 'Chưa nhập ảnh')]
     public $pic;
     public $slug_sections;
+
+    public function mount()
+    {
+        $this->service_types = ServiceType::all();
+    }
 
     public function modalSetup($id)
     {
@@ -50,14 +58,16 @@ class ServiceCrud extends Component
             $this->name_en = $this->service->name_en;
             $this->detail_en = $this->service->detail_en;
             $this->pic = $this->service->pic;
-            $this->slug_sections = $this->service->slug_sections;
+            // $this->slug_sections = $this->service->slug_sections;
+            $this->service_type_id = $this->service->service_type_id ?? $this->service_types->first()->id;
         } else {
             $this->name_vi = '';
             $this->detail_vi = "";
             $this->name_en = '';
             $this->detail_en = "";
             $this->pic = '';
-            $this->slug_sections = '';
+            // $this->slug_sections = '';
+            $this->service_type_id = $this->service_types->first()->id;
         }
 
         $this->dispatch('setDetailEditorContent');
@@ -74,7 +84,8 @@ class ServiceCrud extends Component
             $this->detail_vi,
             $this->detail_en,
             $this->pic,
-            $this->slug_sections,
+            // $this->slug_sections,
+            $this->service_type_id,
         );
         $this->dispatch('refreshList')->to('services.service-list');
         $this->dispatch('closeCrudService');
@@ -91,7 +102,8 @@ class ServiceCrud extends Component
             $this->detail_vi,
             $this->detail_en,
             $this->pic,
-            $this->slug_sections,
+            // $this->slug_sections,
+            $this->service_type_id,
         );
         $this->dispatch('refreshList')->to('services.service-list');
         $this->dispatch('closeCrudService');
@@ -108,7 +120,7 @@ class ServiceCrud extends Component
     {
         if ($this->pic) {
             if (gettype($this->pic) == 'string') {
-                $cover_img = 'storage/' . $this->pic;
+                $cover_img = 'storages/' . $this->pic;
             } else {
                 $cover_img = $this->pic->temporaryUrl();
             }

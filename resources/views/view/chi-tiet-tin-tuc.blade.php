@@ -42,8 +42,7 @@
                                 @foreach ($posts as $post)
                                     <div class="blog">
                                         <div class="item">
-                                            <a href="" class="cate">Thông tin
-                                                công ty</a>
+                                            {{-- <a href="" class="cate">Thông tin công ty</a> --}}
                                             <h4><a
                                                     href="{{ URL::route('datile.news', $post->slug) }}">{{ $post->name_vi }}</a>
                                             </h4>
