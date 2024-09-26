@@ -65,7 +65,7 @@
                                             class="aos-init aos-animate font-weight-bolder text-uppercase">
                                             {{ $cate->name_vi }}</h3>
                                         @if ($cate->slug == 'mitsubishi-automobile-business')
-                                            <a href=" {{ URL::route('development-apparatus', '#agent-system') }}"
+                                            <a href=" {{ URL::route('mitshubishi') }}"
                                                 data-aos-anchor-placement="top-bottom" data-aos-delay="500"
                                                 data-aos-duration="1200" data-aos="fade-up"
                                                 class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
@@ -76,7 +76,7 @@
                                                     data-aos-duration="1200" data-aos="fade-up"
                                                     class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
                                             @else
-                                                <a href="" data-aos-anchor-placement="top-bottom"
+                                                <a href="#!" data-aos-anchor-placement="top-bottom"
                                                     data-aos-delay="500" data-aos-duration="1200" data-aos="fade-up"
                                                     class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
                                             @endif
