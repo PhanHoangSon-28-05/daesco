@@ -69,7 +69,7 @@
         @include('view.footer')
 
         <!-- Social Cetwork -->
-        @include('view.social-cerwork')
+        {{-- @include('view.social-cerwork') --}}
 
 
         <script src='{{ URL::asset('view/style/plugins/contact-form-7/includes/swv/js/index.js') }}' id='swv-js'></script>
