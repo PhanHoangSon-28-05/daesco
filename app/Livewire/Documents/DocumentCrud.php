@@ -49,6 +49,8 @@ class DocumentCrud extends Component
         // $this->categories = $this->cateRepos->getCateWithChilds(3);
         $this->categories = $this->cateRepos->getChildNew(3);
         $this->years = $this->yearRepos->getAll()->sortByDesc('name');
+        $this->published_date = today()->format('d/m/Y');
+        $this->category_id = $this->categories->first()->id;
     }
 
     public function modalSetup($id)
@@ -69,10 +71,15 @@ class DocumentCrud extends Component
     public function getData() 
     {
         $this->title = $this->document->title ?? '';
-        $this->category_id = $this->document->category_id ?? $this->categories->first()->id;
+        // $this->category_id = $this->document->category_id ?? $this->categories->first()->id;
         // $this->published_year = $this->document->published_year ?? $this->years->first()->name;
-        $this->published_date = ($this->document->created_at ?? today())->format('d/m/Y');
+        // $this->published_date = ($this->document->created_at ?? today())->format('d/m/Y');
         $this->file = $this->document->file ?? '';
+
+        if ($this->document) {
+            $this->category_id = $this->document->category_id;
+            $this->published_date = $this->document->created_at->format('d/m/Y');
+        }
 
         $this->dispatch('set-datepicker', [
             'picker_id' => 'published_date', 
