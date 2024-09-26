@@ -8,9 +8,10 @@ use App\Models\Header;
 use App\Models\Slider;
 use App\Models\Service;
 use App\Models\Category;
+use App\Models\ServiceType;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\MenuOrganizational;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Post\PostRepositoryInterface;
@@ -92,7 +93,8 @@ class ViewController extends Controller
         $slugCate = 'company-regulations-and-regulations';
         $sliders = $this->sliderRepo->getSlider();
         $cateFieldOperation = $this->cateRepo->getFieldOperation();
-        $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
+        // $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
+        $posttakes = $this->postRepo->getMainPage()->take(5);
         $getIntroduce = $this->cateRepo->getIntroduce();
 
 
@@ -150,12 +152,27 @@ class ViewController extends Controller
     {
         $cate = $this->cateRepo->getCateSlug("sustainable-development");
         $attributes['cate'] = $cate;
+        $attributes['posts'] = $this->postRepo->getPostCate($cate->id);
 
         $result = array_merge($attributes, $this->get());
         return view(
             'view.phat-trien-ben-vung',
             $result
         );
+    }
+
+    public function detailSustainableDevelopment($slugDetail)
+    {
+        $postDetail = $this->postRepo->getSlug($slugDetail);
+
+        $posts = $this->cateRepo->getCateSlugtoPost('sustainable-development');
+
+        $attributes['posts'] = $posts;
+        $attributes['postDetail'] = $postDetail;
+
+        $result = array_merge($attributes, $this->get());
+
+        return view('view.chi-tiet-tin-tuc', $result);
     }
 
     public function mitshubishi()
@@ -321,5 +338,43 @@ class ViewController extends Controller
             'view.lien-he',
             $result
         );
+    }
+
+    public function warehouseService()
+    {
+        $serviceType = ServiceType::find(1);
+        $services = $this->serviceRepo->getByServiceTypeId(1);
+
+        $attributes['services'] = $services;
+        $attributes['serviceType'] = $serviceType;
+
+        $result = array_merge($attributes, $this->get());
+        return view('view.dich-vu')->with($result);
+    }
+
+    public function maintenanceService()
+    {
+        $serviceType = ServiceType::find(2);
+        $services = $this->serviceRepo->getByServiceTypeId(2);
+
+        $attributes['services'] = $services;
+        $attributes['serviceType'] = $serviceType;
+
+        $result = array_merge($attributes, $this->get());
+        return view('view.dich-vu')->with($result);
+    }
+
+    public function serviceDetail($slug)
+    {
+        $serviceDetail = $this->serviceRepo->getSlug($slug);
+
+        $services =  $this->serviceRepo->getAll();
+
+        $attributes['services'] = $services;
+        $attributes['serviceDetail'] = $serviceDetail;
+
+        $result = array_merge($attributes, $this->get());
+
+        return view('view.chi-tiet-dich-vu', $result);
     }
 }

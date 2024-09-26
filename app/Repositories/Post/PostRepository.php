@@ -128,4 +128,9 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
         $posts = $this->model->where('slug', $slug)->get()->first();
         return $posts;
     }
+
+    public function getMainPage()
+    {
+        return $this->model->whereIn('category_id', [])->get();
+    }
 }

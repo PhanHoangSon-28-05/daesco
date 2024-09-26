@@ -44,7 +44,7 @@
                                         @foreach ($services as $value)
                                             <div class="blog">
                                                 <div class="item">
-                                                    <a href="{{ route('detail.warehouse-business', $value->slug) }}">
+                                                    <a href="{{ route('service.detail', $value->slug) }}">
                                                         <div class="d-flex flex-row bd-highlight mb-3">
                                                             <div class="w-50">
                                                                 @if ($value->pic)
