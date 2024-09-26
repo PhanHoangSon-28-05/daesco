@@ -58,10 +58,9 @@
                                                         TRITON</a></li>
                                             </ul> --}}
                                         </li>
-                                        <li class="list-group-item"><a href="{{ URL::route('warehouse-business') }}">Dịch vụ
-                                                cho
-                                                thuê kho
-                                                bãi</a></li>
+                                        <li class="list-group-item">
+                                            <a href="{{ URL::route('warehouse-business') }}">Dịch vụ bảo dưỡng & sửa chữa ô tô</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
