@@ -31,7 +31,7 @@ class ServiceCrud extends Component
 
     public function mount()
     {
-        $this->service_types = ServiceType::all();
+        $this->service_types = ServiceType::where('parent_id', '>', 0)->where('type', 'service')->get();
     }
 
     public function modalSetup($id)

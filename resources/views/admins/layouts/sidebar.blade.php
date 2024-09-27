@@ -93,6 +93,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route(\App\Models\ServiceType::INDEX) }}" class="nav-link service-types">
+                    <i class="fa-solid fa-bars"></i>
+                    Quản lý danh mục
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route(\App\Models\Service::INDEX) }}" class="nav-link services">
                     <i class="fa-solid fa-note-sticky"></i>
                     Quản lý dịch vụ

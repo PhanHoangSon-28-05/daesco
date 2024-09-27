@@ -37,6 +37,7 @@
                 <tr class="bg-secondary text-white">
                     <th>STT</th>
                     <th>Tiêu đề</th>
+                    <th>Danh mục</th>
                     <th>Hình Ảnh</th>
                     <th>Thao tác</th>
                 </tr>
@@ -47,6 +48,7 @@
                 <tr class="border border-secondary">
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $service->name_vi }}</td>
+                    <td>{{ $service->service_type->title_vi ?? '' }}</td>
                     <td class="w-50"><img src="{{ asset('storages/' . $service->pic) }}" class="w-25"
                             alt=""></td>
                     </td>
