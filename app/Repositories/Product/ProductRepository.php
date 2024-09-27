@@ -35,6 +35,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $features_en,
         $price,
         $links,
+        $service_type_id,
     ) {
         $productData = [
             'category_id' => $category_id,
@@ -51,6 +52,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             'price' => $price,
             'links' => $links,
             'pic' => '',
+            'service_type_id' => $service_type_id,
         ];
 
         if ($title_en) {
@@ -80,7 +82,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $general_specifications_en,
         $features_en,
         $price,
-        $links
+        $links,
+        $service_type_id,
     ) {
         $productData = [
             'category_id' => $category_id,
@@ -96,6 +99,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             'features_en' => $features_en,
             'price' => $price,
             'links' => $links,
+            'service_type_id' => $service_type_id,
         ];
 
         if ($title_en) {

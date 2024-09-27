@@ -129,6 +129,19 @@
                                         <div class="row">
                                             <label class="crud-label p-0 mt-2 mb-0">Danh mục</label>
                                             <div class="input-group">
+                                                <select class="form-control" wire:model.lazy="service_type_id">
+                                                    @foreach ($service_types as $service_type)
+                                                    <option value="{{ $service_type->id }}">{{ $service_type->title_vi }}
+                                                        ({{ $service_type->title_en }})
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        {{-- <div class="row">
+                                            <label class="crud-label p-0 mt-2 mb-0">Danh mục</label>
+                                            <div class="input-group">
                                                 <select class="form-control" wire:model.lazy="category_id">
                                                     <option value="0">---</option>
                                                     @foreach ($categories as $category)
@@ -142,7 +155,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         @if ($action == 'create')
                                             <div class="row">

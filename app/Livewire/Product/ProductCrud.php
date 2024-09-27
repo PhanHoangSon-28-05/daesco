@@ -2,15 +2,16 @@
 
 namespace App\Livewire\Product;
 
-use App\Models\ImageProduct;
 use App\Models\Product;
-use App\Repositories\Categorys\CategoryRepositoryInterface;
-use App\Repositories\Product\ProductRepositoryInterface;
-use Laravel\Prompts\Prompt;
-use Livewire\Attributes\Rule;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
+use App\Models\ServiceType;
+use Laravel\Prompts\Prompt;
+use App\Models\ImageProduct;
+use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Validate;
+use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Categorys\CategoryRepositoryInterface;
 
 class ProductCrud extends Component
 {
@@ -26,6 +27,9 @@ class ProductCrud extends Component
         $general_specifications_en,
         $features_en,
         $links;
+        
+    public $service_types;
+    public $service_type_id;
 
     //Request
     #[Validate('required|string|max:255', message: 'Chưa tiêu đề')]
@@ -46,6 +50,11 @@ class ProductCrud extends Component
     #[Validate(['images.*' => 'required|file|mimes:png,jpg,pdf'], message: 'Chưa nhập nội dung')]
     public $images = [];
 
+    public function mount()
+    {
+        $this->category_id = 0;
+        $this->service_types = ServiceType::where('parent_id', '>', 0)->where('type', 'product')->get();
+    }
 
     public function modalSetup($id)
     {
@@ -78,6 +87,7 @@ class ProductCrud extends Component
             $this->features_en = $this->product->features_en;
             $this->price = $this->product->price;
             $this->links = $this->product->links;
+            $this->service_type_id = $this->product->service_type_id ?? $this->service_types->first()->id;
         } else {
             $this->category_id = 0;
             $this->title_vi = '';
@@ -93,6 +103,7 @@ class ProductCrud extends Component
             $this->price = '';
             $this->images = [];
             $this->links = '';
+            $this->service_type_id = $this->service_types->first()->id;
         }
 
         $this->resetErrorBag();
@@ -115,7 +126,8 @@ class ProductCrud extends Component
             $this->general_specifications_en,
             $this->features_en,
             $this->price,
-            $this->links
+            $this->links,
+            $this->service_type_id,
         );
 
         $productImage = $productRepo->UploadImageProduct($product->id, $this->images);
@@ -142,7 +154,8 @@ class ProductCrud extends Component
             $this->general_specifications_en,
             $this->features_en,
             $this->price,
-            $this->links
+            $this->links,
+            $this->service_type_id,
         );
 
         $this->dispatch('refreshList')->to('product.product-list');

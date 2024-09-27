@@ -31,7 +31,7 @@ class ServiceCrud extends Component
 
     public function mount()
     {
-        $this->service_types = ServiceType::all();
+        $this->service_types = ServiceType::where('parent_id', '>', 0)->where('type', 'service')->get();
     }
 
     public function modalSetup($id)
@@ -58,7 +58,7 @@ class ServiceCrud extends Component
             $this->name_en = $this->service->name_en;
             $this->detail_en = $this->service->detail_en;
             $this->pic = $this->service->pic;
-            // $this->slug_sections = $this->service->slug_sections;
+            $this->slug_sections = $this->service->slug_sections;
             $this->service_type_id = $this->service->service_type_id ?? $this->service_types->first()->id;
         } else {
             $this->name_vi = '';
@@ -66,7 +66,7 @@ class ServiceCrud extends Component
             $this->name_en = '';
             $this->detail_en = "";
             $this->pic = '';
-            // $this->slug_sections = '';
+            $this->slug_sections = '';
             $this->service_type_id = $this->service_types->first()->id;
         }
 
@@ -84,7 +84,7 @@ class ServiceCrud extends Component
             $this->detail_vi,
             $this->detail_en,
             $this->pic,
-            // $this->slug_sections,
+            $this->slug_sections,
             $this->service_type_id,
         );
         $this->dispatch('refreshList')->to('services.service-list');
@@ -102,7 +102,7 @@ class ServiceCrud extends Component
             $this->detail_vi,
             $this->detail_en,
             $this->pic,
-            // $this->slug_sections,
+            $this->slug_sections,
             $this->service_type_id,
         );
         $this->dispatch('refreshList')->to('services.service-list');

@@ -1,5 +1,5 @@
 @extends('view.index')
-@section('title', 'Sản phẩm Mitshubishi')
+@section('title', $serviceType->title_vi)
 @section('style')
     <style>
         .sub-menu {
@@ -11,9 +11,10 @@
 @endsection
 @section('content')
     <main id="content-wrapper" class="main-v2">
-        <section class="pv__about--1" style="background-image: url('{{ URL::asset('storages/' . $cate->image) }}');">
+        <section class="pv__about--1" style="background-image: url('{{ URL::asset('storages/' . $serviceType->pic) }}');
+        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);">
             <div class="container">
-                @if (isset($products))
+                {{-- @if (isset($products))
                     <div class="title">
                         <h1>Sản Phẩm</h1>
                     </div>
@@ -21,7 +22,10 @@
                     <div class="title">
                         <h1>Dịch vụ bảo dưỡng & sửa chữa ô tô</h1>
                     </div>
-                @endif
+                @endif --}}
+                <div class="title">
+                    <h1>{{ $serviceType->title_vi }}</h1>
+                </div>
             </div>
         </section>
         <section id="product" class="pv-about-new--1">
@@ -42,28 +46,55 @@
                                     </div>
                                 @endforeach
                             </div>
+                            @foreach ($serviceTypes as $serviceType)
                             <div class="contact-box mb-4 border border-secondary rounded">
+                                <div class="bg-danger px-3 py-2 text-white ">
+                                    <h5 class=""><i class="fas fa-car mr-1"></i>{{ $serviceType->title_vi }}</h5>
+                                </div>
+                                <div class="pt-2">
+                                    <ul class="list-group list-group-flush" style="margin-left: 0px">
+                                        @foreach ($serviceType->childs as $childServiceType)
+                                        <li class="list-group-item">
+                                            <span class="d-flex align-items-center justify-content-between">
+                                                <a class="text-dark" href="{{ route("{$serviceType->type}.list", $childServiceType->slug) }}">
+                                                    {{ $childServiceType->title_vi }}
+                                                </a>
+                                                <i class="fa-solid fa-circle-chevron-down" type="button" 
+                                                data-toggle="collapse" data-target="#{{ $childServiceType->slug }}"></i>
+                                            </span>
+                                            @if ($serviceType->type == 'product')
+                                            @php ($productServices = $childServiceType->products)
+                                            @elseif ($serviceType->type == 'service')
+                                            @php ($productServices = $childServiceType->services)
+                                            @endif
+                                            <ul class="collapse m-0" id="{{ $childServiceType->slug }}">
+                                                @foreach ($productServices as $productService)
+                                                <li class="border-bottom border-secondary text-dark">
+                                                    <a href="#!">{{ $productService->name_vi ?? $productService->title_vi }}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            @endforeach
+                            {{-- <div class="contact-box mb-4 border border-secondary rounded">
                                 <div class="bg-danger px-3 py-2 text-white ">
                                     <h5 class=""><i class="fas fa-car"></i> Sản phẩm</h5>
                                 </div>
                                 <div class="pt-2">
                                     <ul class="list-group list-group-flush" style="margin-left: 0px">
                                         <li class="list-group-item">
-                                            <a href="{{ URL::route('mitshubishi') }}">Ô tô
-                                                Mitsubishi</a>
-                                            {{-- <a href="#" id="toggleMenu" class="d-block text-dark">Ô tô
-                                                Mitsubishi</a>
-                                            <ul class="sub-menu">
-                                                <li class="border-bottom border-secondary text-dark"><a href="">NEW
-                                                        TRITON</a></li>
-                                            </ul> --}}
+                                            <a href="{{ URL::route('mitshubishi') }}">Ô tô Mitsubishi</a>
                                         </li>
                                         <li class="list-group-item">
                                             <a href="{{ URL::route('maintenance-service') }}">Dịch vụ bảo dưỡng & sửa chữa ô tô</a>
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <!-- Main Content -->
@@ -75,7 +106,7 @@
                                         @foreach ($products as $value)
                                             <div class="col-md-4 product-item ">
                                                 {{-- <a href="{{  $value->links }}"> --}}
-                                                <a href="{{ route('datile.mitshubishi', $value->slug) }}">
+                                                <a href="{{ route('product.detail', $value->slug) }}">
                                                     @if ($value->pic)
                                                         <img src="{{ URL::asset('storages/' . $value->pic) }}"
                                                             alt="{{ $value->name_vi }}">
@@ -91,13 +122,14 @@
                                     </div>
                                 </div>
                             @endif
-                            @if (count($services) >= 1)
+                            @if (isset($services))
                                 <div class="">
                                     <h4 class="mb-4">Dịch vụ</h4>
                                     <div class="row product-list">
                                         @foreach ($services as $value)
                                             <div class="col-md-4 product-item">
-                                                <a href="{{ URL::route('detail.warehouse-business', $value->slug) }}">
+                                                {{-- <a href="{{ URL::route('detail.warehouse-business', $value->slug) }}"> --}}
+                                                <a href="{{ route('service.detail', $value->slug) }}">
                                                     @if ($value->pic)
                                                         <img src="{{ URL::asset('storages/' . $value->pic) }}"
                                                             alt="XPANDER CROSS">
@@ -122,15 +154,5 @@
     </main>
 @endsection
 @section('script')
-    <script>
-        document.getElementById('toggleMenu').addEventListener('click', function(event) {
-            event.preventDefault();
-            const subMenu = this.nextElementSibling;
-            if (subMenu.style.display === "block") {
-                subMenu.style.display = "none";
-            } else {
-                subMenu.style.display = "block";
-            }
-        });
-    </script>
+
 @endsection

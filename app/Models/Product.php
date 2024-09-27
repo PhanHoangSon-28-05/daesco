@@ -30,10 +30,15 @@ class Product extends Model
         'price',
         'links',
         'pic',
+        'service_type_id',
     ];
 
     public function images(): HasMany
     {
         return $this->hasMany(ImageProduct::class, 'product_id');
+    }
+
+    public function service_type() {
+        return $this->belongsTo(ServiceType::class, 'service_type_id');
     }
 }

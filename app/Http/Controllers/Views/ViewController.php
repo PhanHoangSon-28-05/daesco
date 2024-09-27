@@ -6,6 +6,7 @@ use App\Models\Info;
 use App\Models\Footer;
 use App\Models\Header;
 use App\Models\Slider;
+use App\Models\Product;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\ServiceType;
@@ -93,10 +94,14 @@ class ViewController extends Controller
         $slugCate = 'company-regulations-and-regulations';
         $sliders = $this->sliderRepo->getSlider();
         $cateFieldOperation = $this->cateRepo->getFieldOperation();
-        // $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
-        $posttakes = $this->postRepo->getMainPage()->take(5);
+        $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
+        $warehouseService = $this->serviceRepo->getByServiceTypeId(4)->sortByDesc('created_at')->first();
+        $maintenanceService = $this->serviceRepo->getByServiceTypeId(5)->sortByDesc('created_at')->first();
+        // $posttakes = $this->postRepo->getMainPage()->take(5);
         $getIntroduce = $this->cateRepo->getIntroduce();
 
+        if ($warehouseService) $posttakes[3] = $warehouseService;
+        if ($maintenanceService) $posttakes[4] = $maintenanceService;
 
         $attributes['slugCate'] = $slugCate;
         $attributes['getIntroduce'] = $getIntroduce;
@@ -180,10 +185,12 @@ class ViewController extends Controller
         $cate = $this->cateRepo->getCateSlug("mitshubishi");
         $services = $this->serviceRepo->getSlugSv('dich-vu-san-pham');
         $products = $this->prodRepo->getAll();
+        $serviceTypes = ServiceType::where('parent_id', 0)->has('childs', '>', 0)->get();
 
         $attributes['products'] = $products;
         $attributes['services'] = $services;
         $attributes['cate'] = $cate;
+        $attributes['serviceTypes'] = $serviceTypes;
 
         $result = array_merge($attributes, $this->get());
         return view(
@@ -362,6 +369,54 @@ class ViewController extends Controller
 
         $result = array_merge($attributes, $this->get());
         return view('view.dich-vu')->with($result);
+    }
+
+    public function productList($serviceTypeSlug)
+    {
+        $serviceType = ServiceType::where('slug', $serviceTypeSlug)->get()->first();
+        $serviceTypes = ServiceType::where('parent_id', 0)->has('childs', '>', 0)->get();
+        $products = Product::where('service_type_id', $serviceType->id)->get();
+
+        $attributes['serviceType'] = $serviceType;
+        $attributes['serviceTypes'] = $serviceTypes;
+        $attributes['products'] = $products;
+
+        $result = array_merge($attributes, $this->get());
+        return view(
+            'view.san-pham',
+            $result
+        );
+    }
+
+    public function serviceList($serviceTypeSlug)
+    {
+        $serviceType = ServiceType::where('slug', $serviceTypeSlug)->get()->first();
+        $serviceTypes = ServiceType::where('parent_id', 0)->has('childs', '>', 0)->get();
+        $services = Service::where('service_type_id', $serviceType->id)->get();
+
+        $attributes['serviceType'] = $serviceType;
+        $attributes['serviceTypes'] = $serviceTypes;
+        $attributes['services'] = $services;
+
+        $result = array_merge($attributes, $this->get());
+        return view(
+            'view.san-pham',
+            $result
+        );
+    }
+
+    public function productDetail($slug)
+    {
+        $productDetail = $this->prodRepo->getSlug($slug);
+
+        $products =  $this->prodRepo->getAll();
+
+        $attributes['products'] = $products;
+        $attributes['productDetail'] = $productDetail;
+
+        $result = array_merge($attributes, $this->get());
+
+        return view('view.chi-tiet-san-pham', $result);
     }
 
     public function serviceDetail($slug)

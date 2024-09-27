@@ -51,7 +51,7 @@
                                 <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                                 <td scope="row" class="text-center">{{ $product->title_vi }}</td>
                                 <td scope="row" class="text-center">{{ $product->title_en }}</td>
-                                <td scope="row" class="text-center">{{ $product->category_id }}</td>
+                                <td scope="row" class="text-center">{{ $product->service_type->title_vi ?? '' }}</td>
                                 <td scope="row" class="text-center">
                                     <button type="button" class="btn btn-sm rounded-0 btn-primary text-uppercase"
                                         data-toggle="modal" data-target="#imageProduct"

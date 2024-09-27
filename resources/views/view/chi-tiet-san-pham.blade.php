@@ -203,7 +203,8 @@
                                     @foreach ($products as $value)
                                         <div class="blog">
                                             <div class="item">
-                                                <a href="{{ route('datile.mitshubishi', $value->slug) }}">
+                                                {{-- <a href="{{ route('datile.mitshubishi', $value->slug) }}"> --}}
+                                                <a href="{{ route('product.detail', $value->slug) }}">
                                                     <div class="d-flex flex-row bd-highlight mb-3">
                                                         <div class="w-50">
                                                             @if ($value->pic)
@@ -219,7 +220,8 @@
                                                                 <strong>{{ $value->title_vi }}</strong>
                                                             </p>
                                                             <p class="text-body">
-                                                                {{ number_format($value->price, 0, ',', '.') }} (VAT)</p>
+                                                                {{ number_format($value->price, 0, ',', '.') }} (VAT)
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </a>

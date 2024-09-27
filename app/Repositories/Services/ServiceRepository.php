@@ -26,7 +26,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         $detail_vi,
         $detail_en,
         $pic,
-        // $slug_sections,
+        $slug_sections,
         $service_type_id,
     ) {
         if ($pic) {
@@ -44,7 +44,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
             'detail_vi' => trim($detail_vi),
             'detail_en' => trim($detail_en),
             'pic' => $path,
-            // 'slug_sections' => $slug_sections,
+            'slug_sections' => $slug_sections,
             'service_type_id' => $service_type_id,
         ];
 
@@ -66,7 +66,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
         $detail_vi,
         $detail_en,
         $pic,
-        // $slug_sections,
+        $slug_sections,
         $service_type_id,
     ) {
         if ($pic != $serviceModel->pic) {
@@ -85,7 +85,7 @@ class ServiceRepository extends BaseRepository implements ServiceRepositoryInter
             'detail_vi' => trim($detail_vi),
             'detail_en' => trim($detail_en),
             'pic' => $path,
-            // 'slug_sections' => $slug_sections,
+            'slug_sections' => $slug_sections,
             'service_type_id' => $service_type_id,
         ];
         if ($name_en) {

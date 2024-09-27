@@ -385,7 +385,13 @@
                                             data-aos-duration="1200" data-aos="fade-left"
                                             class="aos-init aos-animate col-md-6 b-item">
                                             <article class="blog">
+                                                @if (class_basename($posts[$i]) == 'Post')
                                                 <a href="{{ URL::route('datile.news', $posts[$i]->slug) }}">
+                                                @elseif (class_basename($posts[$i]) == 'Service')
+                                                <a href="{{ URL::route('service.detail', $posts[$i]->slug) }}">
+                                                @else
+                                                <a href="#!">
+                                                @endif
                                                     <div class="img">
                                                         <figure>
                                                             @if ($posts[$i]->pic)

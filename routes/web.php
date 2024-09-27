@@ -16,6 +16,7 @@ use App\Models\Service;
 use App\Models\Category;
 use App\Models\Document;
 use App\Models\Development;
+use App\Models\ServiceType;
 use App\Models\Organizational;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Admins\DocumentController;
 use App\Http\Controllers\Admins\RegisterController;
 use App\Http\Controllers\Admins\DevelopmentController;
 use App\Http\Controllers\Admins\InfoProductController;
+use App\Http\Controllers\Admins\ServiceTypeController;
 use App\Http\Controllers\Admins\OrganizationalController;
 use App\Repositories\Categorys\CategoryRepositoryInterface;
 use LivewireFilemanager\Filemanager\Http\Controllers\Files\FileController;
@@ -57,13 +59,17 @@ Route::get('/about-us', [ViewController::class, 'aboutus'])->name('about-us');
 Route::get('/bo-may-phat-trien/{subCate?}', [ViewController::class, 'developmentApparatus'])->name('development-apparatus');
 Route::get('/phat-trien-ben-vung', [ViewController::class, 'sustainableDevelopment'])->name('sustainable-development');
 Route::get('/phat-trien-ben-vung/{slug}', [ViewController::class, 'detailSustainableDevelopment'])->name('detail.sustainable-development');
-Route::get('/san-pham-mitshubishi', [ViewController::class, 'mitshubishi'])->name('mitshubishi');
-Route::get('/san-pham-mitshubishi/{slug}',[ViewController::class, 'detailmitshubishi'])->name('datile.mitshubishi');
+// Route::get('/san-pham-mitshubishi', [ViewController::class, 'mitshubishi'])->name('mitshubishi');
+// Route::get('/san-pham-mitshubishi/{slug}',[ViewController::class, 'detailmitshubishi'])->name('datile.mitshubishi');
+Route::get('/san-pham/{serviceTypeSlug}', [ViewController::class, 'productList'])->name('product.list');
+Route::get('/dich-vu/{serviceTypeSlug}', [ViewController::class, 'serviceList'])->name('service.list');
+Route::get('/chi-tiet-san-pham/{slug}', [ViewController::class, 'productDetail'])->name('product.detail');
+Route::get('/chi-tiet-dich-vu/{slug}', [ViewController::class, 'serviceDetail'])->name('service.detail');
 // Route::get('/dich-vu-bai', [ViewController::class, 'warehouse'])->name('warehouse-business');
 // Route::get('/dich-vu-bai/{slug}', [ViewController::class, 'detailwarehouse'])->name('detail.warehouse-business');
-Route::get('/dich-vu-bai', [ViewController::class, 'warehouseService'])->name('warehouse-business');
-Route::get('/dich-vu-bao-duong-va-sua-chua-oto', [ViewController::class, 'maintenanceService'])->name('maintenance-service');
-Route::get('/dich-vu/{slug}', [ViewController::class, 'serviceDetail'])->name('service.detail');
+// Route::get('/dich-vu-bai', [ViewController::class, 'warehouseService'])->name('warehouse-business');
+// Route::get('/dich-vu-bao-duong-va-sua-chua-oto', [ViewController::class, 'maintenanceService'])->name('maintenance-service');
+// Route::get('/dich-vu/{slug}', [ViewController::class, 'serviceDetail'])->name('service.detail');
 Route::get('/quan-he-co-dong/{subCate?}', [ViewController::class, 'shareholders'])->name('shareholders');
 Route::get('/tuyen-dung-moi-thau', [ViewController::class, 'recruitment'])->name('recruitment');
 Route::get('/tuyen-dung-moi-thau/{slugDetail}', [ViewController::class, 'recruitmentDetail'])->name('recruitment.detail');
@@ -72,7 +78,9 @@ Route::get('/tin-tuc-su-kien/{slugDetail}', [ViewController::class, 'detailnews'
 Route::get('/truyen-thong', [ViewController::class, 'library'])->name('library');
 Route::get('/lien-he', [ViewController::class, 'contact'])->name('contact');
 
-
+Route::get('/san-pham-mitshubishi', function() {
+    return redirect()->action([ViewController::class, 'productList'], ['serviceTypeSlug' => 'oto-mitshubishi']);
+})->name('mitshubishi');
 
 // Route::group(['prefix' => '/category'], function () {
 //     Route::get('/{slug}', [ViewController::class, 'page_category_product'])->name(View::PAGE_CATE_PRO);
@@ -116,6 +124,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('systems', [SystemController::class, 'index'])->name(System::INDEX);
     Route::get('documents', [DocumentController::class, 'index'])->name(Document::INDEX);
     Route::get('organizationals', [OrganizationalController::class, 'index'])->name(Organizational::INDEX);
+    Route::get('service-type', [ServiceTypeController::class, 'index'])->name(ServiceType::INDEX);
 
     Route::get('recruits', [RecruitController::class, 'index'])->name(Recruit::INDEX);
 
