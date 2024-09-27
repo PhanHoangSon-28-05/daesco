@@ -93,10 +93,14 @@ class ViewController extends Controller
         $slugCate = 'company-regulations-and-regulations';
         $sliders = $this->sliderRepo->getSlider();
         $cateFieldOperation = $this->cateRepo->getFieldOperation();
-        // $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
-        $posttakes = $this->postRepo->getMainPage()->take(5);
+        $posttakes = $this->cateRepo->getCateSlugtoPost($slugCate)->take(5);
+        $warehouseService = $this->serviceRepo->getByServiceTypeId(1)->sortByDesc('created_at')->first();
+        $maintenanceService = $this->serviceRepo->getByServiceTypeId(2)->sortByDesc('created_at')->first();
+        // $posttakes = $this->postRepo->getMainPage()->take(5);
         $getIntroduce = $this->cateRepo->getIntroduce();
 
+        if ($warehouseService) $posttakes[3] = $warehouseService;
+        if ($maintenanceService) $posttakes[4] = $maintenanceService;
 
         $attributes['slugCate'] = $slugCate;
         $attributes['getIntroduce'] = $getIntroduce;
