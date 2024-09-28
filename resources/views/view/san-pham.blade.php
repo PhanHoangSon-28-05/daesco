@@ -56,7 +56,7 @@
                                         @foreach ($serviceType->childs as $childServiceType)
                                         <li class="list-group-item">
                                             <span class="d-flex align-items-center justify-content-between">
-                                                <a class="text-dark" href="{{ route("{$serviceType->type}.list", $childServiceType->slug) }}">
+                                                <a class="text-dark" href='{{ route("{$serviceType->type}.list", $childServiceType->slug) }}'>
                                                     {{ $childServiceType->title_vi }}
                                                 </a>
                                                 <i class="fa-solid fa-circle-chevron-down" type="button" 
@@ -70,7 +70,9 @@
                                             <ul class="collapse m-0" id="{{ $childServiceType->slug }}">
                                                 @foreach ($productServices as $productService)
                                                 <li class="border-bottom border-secondary text-dark">
-                                                    <a href="#!">{{ $productService->name_vi ?? $productService->title_vi }}</a>
+                                                    <a href='{{ route("{$serviceType->type}.detail", $productService->slug) }}'>
+                                                        {{ $productService->name_vi ?? $productService->title_vi }}
+                                                    </a>
                                                 </li>
                                                 @endforeach
                                             </ul>

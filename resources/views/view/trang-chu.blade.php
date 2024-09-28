@@ -69,6 +69,11 @@
                                                 data-aos-anchor-placement="top-bottom" data-aos-delay="500"
                                                 data-aos-duration="1200" data-aos="fade-up"
                                                 class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
+                                        @elseif ($cate->slug == 'warehouse-business')
+                                            <a href=" {{ URL::route('service.list', 'dich-vu-bai') }}"
+                                                data-aos-anchor-placement="top-bottom" data-aos-delay="500"
+                                                data-aos-duration="1200" data-aos="fade-up"
+                                                class="aos-init aos-animate readmore mx-auto">Xem thêm</a>
                                         @else
                                             @if (Route::has($cate->slug))
                                                 <a href=" {{ URL::route($cate->slug) }}"
