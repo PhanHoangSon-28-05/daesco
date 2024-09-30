@@ -102,15 +102,16 @@
                                 <div class="input-group">
                                     <select class="form-control" wire:model.lazy="parent_id">
                                         <option value="0">---</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">
-                                                {{ $category->stt }}. {{ $category->name_vi }}
-                                                @if (strlen($category->name_en) > 0)
-                                                    ({{ $category->name_en }})
+                                        @foreach ($categories as $value)
+                                            @continue($value->id == ($category->id ?? 0))
+                                            <option value="{{ $value->id }}">
+                                                {{ $value->stt }}. {{ $value->name_vi }}
+                                                @if (strlen($value->name_en) > 0)
+                                                    ({{ $value->name_en }})
                                                 @endif
                                             </option>
                                             @include('admins.category.livewire.partials.category-options', [
-                                                'parentId' => $category->id,
+                                                'parentId' => $value->id,
                                                 'prefix' => '--',
                                             ])
                                         @endforeach
