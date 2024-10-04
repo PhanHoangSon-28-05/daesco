@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="content">
                     <div class="row">
-                        <div class="col-xl-6 col-text">
+                        <div class="col col-text">
                             <h2 data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
                                 data-aos="fade-right" class="aos-init aos-animate">Giới
                                 thiệu chung</h2>
@@ -37,10 +37,10 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xl-6">
+                        {{-- <div class="col-xl-6">
                             <figure><img src="{{ asset('images/o-to-MITSUBISHI/daesco-1.png') }}" alt="Giới thiệu chung">
                             </figure>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
