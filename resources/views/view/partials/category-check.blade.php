@@ -10,11 +10,10 @@
     </div>
     <div class="drop-lv-2"
         style="background-color: #ffffffc7; left: 15%;
-       @if ($parentId == 58) width: 75%;
-    @else
+
    width: 25%;
     left: auto;
-    margin-left: -5% @endif
+    margin-left: -5%
         ">
         <div class="drop-lv-2--inner">
             <div class="row">

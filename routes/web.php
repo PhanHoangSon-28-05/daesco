@@ -79,8 +79,8 @@ Route::get('/truyen-thong', [ViewController::class, 'library'])->name('library')
 Route::get('/lien-he', [ViewController::class, 'contact'])->name('contact');
 
 Route::get('/san-pham-mitshubishi', function() {
-    return redirect()->action([ViewController::class, 'productList'], ['serviceTypeSlug' => 'oto-mitshubishi']);
-})->name('mitshubishi');
+    return redirect()->action([ViewController::class, 'productList'], ['serviceTypeSlug' => 'oto-mitsubishi']);
+})->name('mitsubishi');
 
 // Route::group(['prefix' => '/category'], function () {
 //     Route::get('/{slug}', [ViewController::class, 'page_category_product'])->name(View::PAGE_CATE_PRO);

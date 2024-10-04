@@ -36,7 +36,7 @@
                         <div class="col-md-4">
                             <!-- Contact Box -->
                             <div class="contact-box mb-4 border border-secondary rounded">
-                                <div class="bg-danger px-3 py-2 text-white ">
+                                <div class="bg-info px-3 py-2 text-white ">
                                     <h5 class=""><i class="fa-solid fa-clock-rotate-left"></i> Liên hệ mua hàng</h5>
                                 </div>
                                 @foreach ($hotlines as $hotline)
@@ -48,7 +48,7 @@
                             </div>
                             @foreach ($serviceTypes as $serviceType)
                             <div class="contact-box mb-4 border border-secondary rounded">
-                                <div class="bg-danger px-3 py-2 text-white ">
+                                <div class="bg-info px-3 py-2 text-white ">
                                     <h5 class=""><i class="fas fa-car mr-1"></i>{{ $serviceType->title_vi }}</h5>
                                 </div>
                                 <div class="pt-2">
@@ -67,7 +67,7 @@
                                             @elseif ($serviceType->type == 'service')
                                             @php ($productServices = $childServiceType->services)
                                             @endif
-                                            <ul class="collapse m-0" id="{{ $childServiceType->slug }}">
+                                            <ul class="collapse ml-2 p-0" id="{{ $childServiceType->slug }}" style="list-style-type: none;">
                                                 @foreach ($productServices as $productService)
                                                 <li class="border-bottom border-secondary text-dark">
                                                     <a href='{{ route("{$serviceType->type}.detail", $productService->slug) }}'>
@@ -106,18 +106,51 @@
                                     <h4 class="mb-4">Sản phẩm mới nhất</h4>
                                     <div class="row product-list">
                                         @foreach ($products as $value)
-                                            <div class="col-md-4 product-item ">
+                                            <div class="col-md-4 mb-3">
+                                                {{-- <div class="product-item card p-2">
+                                                    <a class="text-reset" href="{{ route('product.detail', $value->slug) }}">
+                                                        @if ($value->pic)
+                                                            <img src="{{ URL::asset('storages/' . $value->pic) }}"
+                                                                alt="{{ $value->name_vi }}">
+                                                        @else
+                                                            <img src="{{ asset('storage/image-erro.png') }}"
+                                                                alt="{{ $value->name_vi }}">
+                                                        @endif
+                                                        <h6>{{ $value->title_vi }}</h6>
+                                                        <p>{{ number_format($value->price, 0, ',', '.') }} (VAT)</p>
+                                                    </a>
+                                                </div> --}}
                                                 {{-- <a href="{{  $value->links }}"> --}}
-                                                <a href="{{ route('product.detail', $value->slug) }}">
-                                                    @if ($value->pic)
-                                                        <img src="{{ URL::asset('storages/' . $value->pic) }}"
-                                                            alt="{{ $value->name_vi }}">
-                                                    @else
-                                                        <img src="{{ asset('storage/image-erro.png') }}"
-                                                            alt="{{ $value->name_vi }}">
-                                                    @endif
-                                                    <h6>{{ $value->title_vi }}</h6>
-                                                    <p>{{ number_format($value->price, 0, ',', '.') }} (VAT)</p>
+                                                <a class="text-decoration-none" href="{{ route('product.detail', $value->slug) }}">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="card-img-actions mb-1 overflow-hidden" style="aspect-ratio:3/2">
+                                                                @if ($value->pic)
+                                                                <img src="{{ URL::asset('storages/' . $value->pic) }}"
+                                                                    alt="{{ $value->name_vi }}">
+                                                                @else
+                                                                <img src="{{ asset('storage/image-erro.png') }}"
+                                                                    alt="{{ $value->name_vi }}">
+                                                                @endif
+                                                            </div>
+                                    
+                                                            <h5 class="font-weight-semibold mb-1">
+                                                                <span class="text-body" style="display:-webkit-box;
+                                                                -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">
+                                                                    {{ $value->title_vi ?? '' }}
+                                                                </span>
+                                                            </h5>
+                                    
+                                                            <ul class="list-inline list-inline-dotted text-muted mb-3 ml-0">
+                                                                <li class="list-inline-item">
+                                                                    {{ number_format($value->price, 0, ',', '.') }} (VAT)
+                                                                </li>
+                                                                <li class="list-inline-item"></li>
+                                                            </ul>
+                                                        </div>
+                                    
+                                                        
+                                                    </div>
                                                 </a>
                                             </div>
                                         @endforeach

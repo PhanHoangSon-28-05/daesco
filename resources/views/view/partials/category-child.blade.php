@@ -5,7 +5,7 @@
     $childCategories = $categoryRepo->getChildNew($parentId);
 @endphp
 
-<ul>
+<ul class="text-bold" style="font-weight: bold !important">
     {{-- @if (in_array($subCate->slug, ['tong-quan', 'about-us']))
     <li>
         <a href="{{ URL::route('about-us', '#gt1') }}">Giới thiệu chung</a>
@@ -34,23 +34,26 @@
     @foreach ($childCategories as $childCategory)
         @if ($parentId == 74)
             @if ($childCategory->id == 66)
-                <li>
-                    <a href="{{ URL::route('home', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
-                </li>
+                    <h3>
+                        <a href="{{ URL::route('home', '#' . $childCategory->slug) }}" 
+                            style="font-weight: bold !important">{{ $childCategory->name_vi }}</a>
+                    </h3>
             @else
-                <li>
-                    <a href="{{ URL::route('about-us', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
-                </li>
+                    <h3>
+                        <a href="{{ URL::route('about-us', '#' . $childCategory->slug) }}" 
+                            style="font-weight: bold !important">{{ $childCategory->name_vi }}</a>
+                    </h3>
             @endif
         @elseif ($parentId == 57)
-            <li>
-                <a
-                    href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}">{{ $childCategory->name_vi }}</a>
-            </li>
+                <h3>
+                    <a
+                        href="{{ URL::route('development-apparatus', '#' . $childCategory->slug) }}" 
+                        style="font-weight: bold !important">{{ $childCategory->name_vi }}</a>
+                </h3>
         @else
-            <li>
-                <a href="">{{ $childCategory->name_vi }}</a>
-            </li>
+                <h3>
+                    <a href="" style="font-weight: bold !important">{{ $childCategory->name_vi }}</a>
+                </h3>
         @endif
     @endforeach
 </ul>

@@ -10,7 +10,7 @@
     @endphp
     <div
         class="
-        @if (count($childCategories) == 0 && $parentId != 58) col-md-12
+        {{-- @if (count($childCategories) == 0 && $parentId != 58) col-md-12
         @else
             @if ($count == 2)
             col-md-6
@@ -18,10 +18,13 @@
             col-md-4
             @elseif ($count > 4)
             col-md-3 @endif
-        @endif
+        @endif --}}
+        col-12
     link-item">
         @if (Route::has($value->slug))
             <h3><a href="{{ URL::route($value->slug) }}">{{ $value->name_vi }}</a></h3>
+        @elseif ($value->id == 2)
+            <h3><a href="{{ URL::route('about-us') }}">{{ $value->name_vi }}</a></h3>
         @elseif (in_array($cate->slug, ['quan-he-co-dong', 'shareholders']))
             <h3><a href="{{ URL::route('shareholders', ['subCate' => $value->slug]) }}">{{ $value->name_vi }}</a></h3>
         @else
