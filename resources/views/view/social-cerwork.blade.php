@@ -2,7 +2,7 @@
     <div class="social-wrapper">
         <ul>
             <li>
-                <a target="_blank" href="https://www.facebook.com/messages/t/160566353801086"><svg
+                <a target="_blank" href="{{ $header->facebook }}"><svg
                         xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M27.5 53.2636C42.6878 53.2636 55 41.3401 55 26.6318C55 11.9235 42.6878 0 27.5 0C12.3122 0 0 11.9235 0 26.6318C0 34.6314 3.64203 41.8072 9.4079 46.6889V52.0782C9.4079 54.1845 11.5534 55.5973 13.4663 54.7506L19.4467 52.1034C21.9937 52.8577 24.6979 53.2636 27.5 53.2636Z"
@@ -20,7 +20,7 @@
                     </svg></a>
             </li>
             <li>
-                <a target="_blank" href="https://zalo.me/0929034023"><svg xmlns="http://www.w3.org/2000/svg"
+                <a target="_blank" href="https://zalo.me/{{ $header->hotline }}"><svg xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" width="55" height="55" viewBox="0 0 55 55"
                         fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -41,7 +41,7 @@
                     </svg></a>
             </li>
             <li>
-                <a target="_blank" href="tel:+842438260344"><svg xmlns="http://www.w3.org/2000/svg" width="55"
+                <a target="_blank" href="tel:+84{{ substr($header->hotline, 1) }}"><svg xmlns="http://www.w3.org/2000/svg" width="55"
                         height="55" viewBox="0 0 55 55" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M27.5 53.2636C42.6878 53.2636 55 41.3401 55 26.6318C55 11.9235 42.6878 0 27.5 0C12.3122 0 0 11.9235 0 26.6318C0 34.6314 3.64203 41.8072 9.4079 46.6889V52.0782C9.4079 54.1845 11.5534 55.5973 13.4663 54.7506L19.4467 52.1034C21.9937 52.8577 24.6979 53.2636 27.5 53.2636Z"

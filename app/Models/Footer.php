@@ -14,5 +14,6 @@ class Footer extends Model
         'address',
         'hotline',
         'email',
+        'company_name',
     ];
 }

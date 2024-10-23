@@ -20,7 +20,7 @@
         </section>
         <section class="pv__sustainability--2">
             <div class="container">
-                <span>PVM Daesco luôn đặt mục tiêu kinh doanh song hành cùng bảo vệ môi trường và lợi ích cho các bên liên
+                <span>Daesco luôn đặt mục tiêu kinh doanh song hành cùng bảo vệ môi trường và lợi ích cho các bên liên
                     quan, coi đó là kim chỉ nam định hướng mọi hoạt động để thực hiện phát triển bền vững
                 </span>
                 <div class="list-sus">

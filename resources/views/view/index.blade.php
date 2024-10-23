@@ -43,8 +43,29 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 
     <style>
+        @font-face {
+            font-family: "MMC-Bold";
+            src: url("{{ asset('fonts/Font MMC/MMC-Bold.otf') }}");
+        }
+
+        @font-face {
+            font-family: "MMC-Medium";
+            src: url("{{ asset('fonts/Font MMC/MMC-Medium.otf') }}");
+        }
+
+        @font-face {
+            font-family: "MMC-Regular";
+            src: url("{{ asset('fonts/Font MMC/MMC-Regular.otf') }}");
+        }
+
         *:not(i) {
-            font-family: var(--f-semi-bold) !important;
+            /* font-family: var(--f-semi-bold) !important; */
+            font-family: 'MMC-Regular' !important;
+        }
+
+        #main-wrapper h2 {
+            color: red !important;
+            -webkit-text-fill-color: red !important;
         }
 
         html {
@@ -76,7 +97,7 @@
         @include('view.footer')
 
         <!-- Social Cetwork -->
-        {{-- @include('view.social-cerwork') --}}
+        @include('view.social-cerwork')
 
 
         <script src='{{ URL::asset('view/style/plugins/contact-form-7/includes/swv/js/index.js') }}' id='swv-js'></script>

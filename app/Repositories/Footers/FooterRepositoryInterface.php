@@ -8,5 +8,5 @@ interface FooterRepositoryInterface extends RepositoryInterface
 {
     //ví dụ: lấy 5 sản phầm đầu tiên
     public function getFooter();
-    public function updateFooter($address, $email, $facebook);
+    public function updateFooter($company_name, $address, $hotline, $email);
 }
