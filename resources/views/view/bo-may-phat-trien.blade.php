@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-2 col-xl-3"></div>
                             <div class="col-md-8 col-xl-6 col-center">
-                                <h2>HỆ THỐNG ĐẠI LÝ MITSUBISHI MORTOR</h2>
+                                <h2>HỆ THỐNG ĐẠI LÝ MITSUBISHI MOTORS</h2>
                             </div>
                             <div class="col-md-2 col-xl-3"></div>
                         </div>

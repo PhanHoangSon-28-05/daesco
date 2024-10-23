@@ -6,21 +6,22 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="f-about">
-                            <h2>Công ty Cổ Phần Máy - Thiết Bị Dầu Khí Đà Nẵng</h2>
+                            {{-- <h2>Công ty Cổ Phần Máy - Thiết Bị Dầu Khí Đà Nẵng</h2> --}}
+                            <h2 class="text-nowrap">{{ $footer->company_name ?? '' }}</h2>
                             <ul>
                                 <li>
                                     <img src="{{ URL::asset('view/style/uploads/2022/12/map.png') }}" alt="icon contact">
-                                    <a href="#">{{ $footer->address }}</a>
+                                    <a href="#">{{ $footer->address ?? '' }}</a>
                                 </li>
                                 <li>
                                     <img src="{{ URL::asset('view/style/uploads/2022/12/tel.png') }}"
                                         alt="icon contact">
-                                    <a href="#">{{ $footer->hotline }}</a>
+                                    <a href="#">{{ $footer->hotline ?? '' }}</a>
                                 </li>
                                 <li>
                                     <img src="{{ URL::asset('view/style/uploads/2022/12/mail.png') }}"
                                         alt="icon contact">
-                                    <a href="mailto:{{ $footer->email }}">{{ $footer->email }}</a>
+                                    <a href="mailto:{{ $footer->email ?? '' }}">{{ $footer->email ?? '' }}</a>
                                 </li>
                             </ul>
                         </div>

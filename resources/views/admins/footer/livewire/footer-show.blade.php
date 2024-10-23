@@ -29,6 +29,12 @@
         <div class="card-body">
             <div class="form-group">
                 <label>
+                    Company
+                </label>
+                <input type="text" wire:model.lazy="company_name" class="form-control" placeholder="company">
+            </div>
+            <div class="form-group">
+                <label>
                     Address
                 </label>
                 <input type="text" wire:model.lazy="address" class="form-control" placeholder="address">

@@ -19,16 +19,18 @@ class FooterRepository extends BaseRepository implements FooterRepositoryInterfa
         return $this->model->get();
     }
 
-    public function updateFooter($address, $hotline, $email)
+    public function updateFooter($company_name, $address, $hotline, $email)
     {
         if ($this->model->count() == 1) {
             $footer = $this->model->all()->first()->update([
+                'company_name' => trim($company_name),
                 'address' => trim($address),
                 'hotline' => trim($hotline),
                 'email' => trim($email),
             ]);
         } else if ($this->model->count()  == 0) {
             $footer = $this->model->create([
+                'company_name' => trim($company_name),
                 'address' => trim($address),
                 'hotline' => trim($hotline),
                 'email' => trim($email),

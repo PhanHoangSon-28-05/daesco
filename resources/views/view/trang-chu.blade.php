@@ -32,11 +32,12 @@
             <div class="container">
                 <div data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200" data-aos="fade-up"
                     class="aos-init aos-animate text">
-                    <h2 class="text-bold" style="font-weight:bold !important">Lĩnh vực hoạt động
+                    <h2 class="text-bold" style="font-weight:bold">
+                        Lĩnh vực hoạt động
                     </h2>
                     <div data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
                         data-aos="fade-up" class="aos-init aos-animate short">
-                        <p>Gần 30 năm hoạt động tại khu vực miền trung, Tây nguyên và trên phạm vi toàn quốc,
+                        <p>Gần 40 năm hoạt động tại khu vực miền trung, Tây nguyên và trên phạm vi toàn quốc,
                             bằng nội lực của mình và sự hợp tác của các bạn hàng, Công ty Cổ phần Máy - Thiết Bị
                             Dầu Khí Đà Nẵng đang không ngừng phát triển, đáp ứng ngày càng tốt hơn nhu cầu của
                             mọi thành phần kinh tế, xây dựng được cho mình một thương hiệu vững chắc trên thị
@@ -353,7 +354,8 @@
                 <div class="content">
                     <div class="title">
                         <h2 data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1200"
-                            data-aos="fade-top" class="aos-init aos-animate">Tin Tức
+                        data-aos="fade-top" class="aos-init aos-animate">
+                            Tin Tức
                         </h2>
                     </div>
                     <div class="row list-event">

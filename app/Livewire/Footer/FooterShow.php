@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class FooterShow extends Component
 {
-    public $address, $hotline, $email;
+    public $company_name, $address, $hotline, $email;
     public function mount()
     {
         $this->getData();
@@ -18,10 +18,12 @@ class FooterShow extends Component
     {
         $footer = Footer::all()->first();
         if ($footer) {
+            $this->company_name = $footer->company_name;
             $this->address = $footer->address;
             $this->hotline = $footer->hotline;
             $this->email = $footer->email;
         } else {
+            $this->company_name = '';
             $this->address = '';
             $this->hotline = '';
             $this->email = '';
@@ -30,7 +32,7 @@ class FooterShow extends Component
 
     public function update(FooterRepositoryInterface $footerRepo)
     {
-        $footerRepo->updateFooter($this->address, $this->hotline, $this->email);
+        $footerRepo->updateFooter($this->company_name, $this->address, $this->hotline, $this->email);
 
         $this->dispatch('$refresh')->to('footer.footer-show');
     }

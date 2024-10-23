@@ -94,9 +94,9 @@
                                     <li class="link-lv-1 w-auto">
                                         <div class="m-link-1">
                                             @if (Route::has($cate->slug))
-                                                <a href="{{ URL::route($cate->slug) }}">{{ $cate->name_vi }} </a>
+                                                <a href="{{ URL::route($cate->slug) }}" style="font-size:.9rem">{{ $cate->name_vi }} </a>
                                             @else
-                                                <a href="">{{ $cate->name_vi }}</a>
+                                                <a href="" style="font-size:.9rem">{{ $cate->name_vi }}</a>
                                             @endif
                                             {{-- @if (Route::has($cate->slug))
                                                 @if (Str::slug($cate->name_vi) == Str::slug('Sản phẩm Mitshubishi'))
