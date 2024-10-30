@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Repositories\DummyFolder;
+
+use App\Repositories\RepositoryInterface;
+
+interface DummyRepositoryInterface extends RepositoryInterface
+{
+
+}

@@ -15,12 +15,14 @@ use App\Models\Recruit;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\Document;
+use App\Models\MailConfig;
 use App\Models\Development;
 use App\Models\ServiceType;
 use App\Models\Organizational;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Admins\AdsController;
+use App\Http\Controllers\Mails\MailController;
 use App\Http\Controllers\Views\ViewController;
 use App\Http\Controllers\Admins\InfoController;
 use App\Http\Controllers\Admins\PageController;
@@ -41,6 +43,7 @@ use App\Http\Controllers\Admins\ServiceController;
 use App\Http\Controllers\Admins\CategoryController;
 use App\Http\Controllers\Admins\DocumentController;
 use App\Http\Controllers\Admins\RegisterController;
+use App\Http\Controllers\Admins\MailConfigController;
 use App\Http\Controllers\Admins\DevelopmentController;
 use App\Http\Controllers\Admins\InfoProductController;
 use App\Http\Controllers\Admins\ServiceTypeController;
@@ -87,7 +90,8 @@ Route::get('/san-pham-mitshubishi', function() {
 //     Route::get('/{slug}/{slugDetail}', [ViewController::class, 'detailnews'])->name('datile.news');
 // });
 
-
+Route::post('/mails/contact', [MailController::class, 'sendContactEmail'])->name('mails.contact');
+Route::post('/mails/recruit', [MailController::class, 'sendRecruitEmail'])->name('mails.recruit');
 
 /**
  * Login Routes
@@ -127,6 +131,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('service-type', [ServiceTypeController::class, 'index'])->name(ServiceType::INDEX);
 
     Route::get('recruits', [RecruitController::class, 'index'])->name(Recruit::INDEX);
+    Route::get('mail-configs', [MailConfigController::class, 'index'])->name(MailConfig::INDEX);
 
     Route::get('filemanager?', function () {
         return view('admins.layouts.filemanager');
