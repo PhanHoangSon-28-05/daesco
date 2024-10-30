@@ -96,7 +96,9 @@
         <div class="modal-dialog modal-lg pt-1" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form action="#!">
+                    <form action="{{ route('mails.recruit') }}" method="post" enctype="multipart/form-data">
+                        @method('POST')
+                        @csrf
                         <div class="row mb-2">
                             <div class="col">
                                 <span>
@@ -106,6 +108,7 @@
                                 </span>
                             </div>
                         </div>
+                        <input type="text" name="to_address" class="d-none" value="{{ $recruit->email }}">
                         <div class="row">
                             <div class="col">
                                 <label class="label">Họ và tên <span class="text-danger">*</span></label>
@@ -116,7 +119,7 @@
                             <div class="col">
                                 <label class="label">Số điện thoại <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <input type="number" name="fullname" class="form-control">
+                                    <input type="number" name="phone" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -124,13 +127,13 @@
                             <div class="col">
                                 <label class="label">Email <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <input type="text" name="fullname" class="form-control">
+                                    <input type="text" name="email" class="form-control">
                                 </div>
                             </div>
                             <div class="col">
                                 <label class="label">Địa chỉ <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <input type="text" name="fullname" class="form-control">
+                                    <input type="text" name="address" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -196,7 +199,7 @@
                             </div>
                         </div>
 
-                        <button type="button">Gửi ngay</button>
+                        <button type="submit">Gửi ngay</button>
                     </form>
                 </div>
             </div>

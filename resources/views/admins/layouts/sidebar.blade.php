@@ -176,6 +176,12 @@
                     Quản lý năm phát hành
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route(\App\Models\MailConfig::INDEX) }}" class="nav-link mail-configs">
+                    <i class="fa-solid fa-at"></i>
+                    Thiết lập mail
+                </a>
+            </li>
         </ul>
     </div>
     <!-- /main navigation -->

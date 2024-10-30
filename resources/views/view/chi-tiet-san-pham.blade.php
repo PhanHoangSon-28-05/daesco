@@ -113,11 +113,12 @@
                         <div class="title">
                             <h2 class="">{{ $productDetail->title_vi }}</h2>
                         </div>
-                        <div class="containerSlider">
+                        <div class="containerSlider mb-2">
                             <?php
                             $iabove = 1;
                             $countabove = count($productDetail->images);
                             ?>
+                            
                             @foreach ($productDetail->images as $img)
                                 <div class="mySlides">
                                     <div class="numbertext">{{ $iabove }} / {{ $countabove }}</div>
@@ -133,18 +134,20 @@
                                 <p id="caption"></p>
                             </div> --}}
 
-                            <div class="row">
+                            <div class="row mt-2">
                                 <?php
                                 $ibelow = 1;
                                 ?>
-                                @foreach ($productDetail->images as $img)
-                                    <div class="column">
-                                        <img class="demo cursor" src="{{ asset('storages/' . $img->image) }}"
-                                            style="width:100%" onclick="currentSlide({{ $ibelow }})"
-                                            alt="{{ $productDetail->title_vi }}">
-                                    </div>
-                                    <?php $ibelow++; ?>
-                                @endforeach
+                                <div class="col">
+                                    @foreach ($productDetail->images as $img)
+                                        <div class="column h-100 border mr-1">
+                                            <img class="demo cursor img-fluid h-100" src="{{ asset('storages/' . $img->image) }}"
+                                                style="object-fit:cover" onclick="currentSlide({{ $ibelow }})"
+                                                alt="{{ $productDetail->title_vi }}">
+                                        </div>
+                                        <?php $ibelow++; ?>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                         <div class="content">
@@ -199,34 +202,32 @@
                             </div>
                             <div class="list-bar contact-bar mt-1 mb-2 bg-light border border-secondary">
                                 <h3 class="contact-header bg-danger text-white p-2">Sản phẩm khác</h3>
-                                <div class="blog">
-                                    @foreach ($products as $value)
-                                        <div class="blog">
-                                            <div class="item">
-                                                {{-- <a href="{{ route('datile.mitshubishi', $value->slug) }}"> --}}
-                                                <a href="{{ route('product.detail', $value->slug) }}">
-                                                    <div class="d-flex flex-row bd-highlight mb-3">
-                                                        <div class="w-50">
-                                                            @if ($value->pic)
-                                                                <img src="{{ URL::asset('storages/' . $value->pic) }}"
-                                                                    alt="{{ $value->name_vi }}">
-                                                            @else
-                                                                <img src="{{ asset('storage/image-erro.png') }}"
-                                                                    alt="{{ $value->name_vi }}">
-                                                            @endif
-                                                        </div>
-                                                        <div>
-                                                            <p class="mb-1 text-body">
-                                                                <strong>{{ $value->title_vi }}</strong>
-                                                            </p>
-                                                            <p class="text-body">
-                                                                {{ number_format($value->price, 0, ',', '.') }} (VAT)
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
+                                <div class="blog p-2">
+                                @foreach ($products as $value)
+                                    <div class="item shadow">
+                                        {{-- <a href="{{ route('datile.mitshubishi', $value->slug) }}"> --}}
+                                        <a href="{{ route('product.detail', $value->slug) }}">
+                                            <div class="d-flex flex-row bd-highlight mb-3">
+                                                <div class="w-50">
+                                                    @if ($value->pic)
+                                                        <img src="{{ URL::asset('storages/' . $value->pic) }}"
+                                                            alt="{{ $value->name_vi }}">
+                                                    @else
+                                                        <img src="{{ asset('storage/image-erro.png') }}"
+                                                            alt="{{ $value->name_vi }}">
+                                                    @endif
+                                                </div>
+                                                <div class="ml-2">
+                                                    <p class="mb-1 text-body">
+                                                        <strong>{{ $value->title_vi }}</strong>
+                                                    </p>
+                                                    <p class="text-body">
+                                                        {{ number_format($value->price, 0, ',', '.') }} (VAT)
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
+                                    </div>
                                     @endforeach
                                 </div>
                             </div>

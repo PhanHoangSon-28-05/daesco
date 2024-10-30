@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Repositories\DummyFolder;
+
+use App\Models\DummyModel;
+use App\Repositories\BaseRepository;
+
+class DummyRepository extends BaseRepository implements DummyRepositoryInterface
+{
+    public function getModel() {
+        return DummyModel::class;
+    }
+}
